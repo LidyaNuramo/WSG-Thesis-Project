@@ -1,1 +1,1 @@
-Hey there
+include '/DB/process.php';
