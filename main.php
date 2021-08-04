@@ -4,7 +4,7 @@ class Database
 {	
 	private $connection = null;
 	private $results = array();
-	private $host = "34.140.83.122";
+	private $host = "10.82.144.4";
 	private $db = "mytravelrental_RBAC";
 	private $user = "root";
 	private $password = "password";
