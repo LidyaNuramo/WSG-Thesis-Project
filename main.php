@@ -6,7 +6,7 @@ class Database
 	private $results = array();
 	private $host = "10.82.144.4";
 	private $db = "mytravelrental_RBAC";
-	private $user = "lidya_gintamonuramo";
+	private $user = "root";
 	private $password = "password";
 	private $db_prefix = "";
 
