@@ -1,1 +1,3 @@
-include '/DB/process.php';
+<?php
+    include '/DB/process.php';
+?>
