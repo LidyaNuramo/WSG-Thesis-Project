@@ -1,3 +1,3 @@
 <?php
-    include '/DB/process.php';
+    include 'process.php';
 ?>
