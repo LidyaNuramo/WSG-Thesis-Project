@@ -8,7 +8,7 @@
 <html>
     <body>
         <a href="\Client\Home\">Client Login</a>
-        <a href="\Staff\html\">Staff Login</a>
+        <a href="\Staff\Home\html\">Staff Login</a>
     </body>
 </html>
 
