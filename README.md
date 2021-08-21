@@ -10,4 +10,5 @@ sudo git config --global user.email "lidyagnuramom@gmail.com"
 sudo git config --global user.name "LidyaNuramo" 
 sudo git commit -m "initial commit" 
 sudo git remote add origin https://github.com/LidyaNuramo/WSG-Thesis-Project.git
-sudo git push -u origin master sudo git pull https://github.com/LidyaNuramo/WSG-Thesis-Project.git
+sudo git push -u origin master 
+sudo git pull https://github.com/LidyaNuramo/WSG-Thesis-Project.git
