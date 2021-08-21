@@ -1,5 +1,5 @@
 <?php
-include_once('inc\class-storefront.php');
+include('\inc\class-storefront.php');
 /**
  * The main template file.
  *
@@ -11,7 +11,6 @@ include_once('inc\class-storefront.php');
  *
  * @package storefront
  */
-
 get_header(); ?>
 
 	<div id="primary" class="content-area">
