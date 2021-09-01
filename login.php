@@ -31,11 +31,11 @@
             </div>
         </div>
 
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark" style="background-image: url('../Images/car3.jpg');">
+            <div class="text-left pt-3 pb-3">
+                <span class="db"><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/><h2>My Travel Rentals<h2></span>
+            </div>
             <div class="auth-box bg-dark border-top border-secondary">
-                <div class="text-left pt-3 pb-3">
-                    <span class="db"><img src="../Images/Logo.png" alt="Logo" style="width: 20px; height: 20 px;"/>My Travel Rentals</span>
-                </div>
                 <div id="loginform">
                     <form class="form-horizontal mt-3" id="loginform" action="index.html">
                         <div class="row pb-4">
@@ -87,6 +87,9 @@
                                     <button class="btn btn-info float-end" type="button" name="action">Recover</button>
                                 </div>
                             </div>
+                            <br>
+                            <br>
+                            <br>
                         </form>
                     </div>
                 </div>
