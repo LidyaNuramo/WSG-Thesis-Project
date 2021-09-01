@@ -31,13 +31,12 @@
             </div>
         </div>
 
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-light">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
             <div class="auth-box bg-dark border-top border-secondary">
+                <div class="text-left pt-3 pb-3">
+                    <span class="db"><img src="../Images/Logo.png" alt="Logo" style="width: 20px; height: 20 px;"/>My Travel Rentals</span>
+                </div>
                 <div id="loginform">
-                    <div class="text-center pt-3 pb-3">
-                        <span class="db"><img src="../Images/Logo.png" alt="Logo" /></span>
-                    </div>
-                    
                     <form class="form-horizontal mt-3" id="loginform" action="index.html">
                         <div class="row pb-4">
                             <div class="col-12">
