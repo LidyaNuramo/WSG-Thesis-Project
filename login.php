@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="text-left pt-3 pb-3">
+        <div class="text-left pt-2 pb-2">
             <span class="db"><h2><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>My Travel Rentals<h2></span>
         </div>
 
