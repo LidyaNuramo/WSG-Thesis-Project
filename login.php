@@ -22,7 +22,7 @@
     <![endif]-->
 </head>
 
-<body style="background: url(../Images/car3.jpg) no-repeat center center fixed;">
+<body>
     <div class="main-wrapper">
         <div class="preloader">
             <div class="lds-ripple">
@@ -35,7 +35,7 @@
             <span class="db"><h2><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>My Travel Rentals<h2></span>
         </div>
 
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-light" style="background-image: url('..\Images\car3.jpg');">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-light" style="background: url(../Images/car3.jpg) no-repeat center center fixed;">
             <div class="auth-box bg-light border-top border-secondary">
                 <div id="loginform">
                     <form class="form-horizontal mt-3" id="loginform" action="index.html">
