@@ -31,8 +31,8 @@
             </div>
         </div>
 
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-light">
-            <div class="auth-box bg-light border-top border-secondary" style="background-image: url('/Images/car3.jpg');">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-light" style="background-image: url('..\Images\car3.jpg');">
+            <div class="auth-box bg-light border-top border-secondary">
                 <div class="text-left pt-3 pb-3">
                     <span class="db"><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/><h2>My Travel Rentals<h2></span>
                 </div>
