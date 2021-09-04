@@ -34,6 +34,9 @@
         <div class="text-left pt-2 pb-2">
             <span class="db"><h2><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>My Travel Rentals<h2></span>
         </div>
+        <br>
+        <br>
+        <br>
 
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-light" style="background: url(../Images/car3.jpg) no-repeat center center fixed;">
             <br>
