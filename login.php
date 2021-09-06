@@ -31,7 +31,7 @@
 
     <div>
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
-            <a href="signup.php" style="margin-left: 80%;margin-top: 20 px;"><span class="db">Sign Up for a new account</span></a>
+            <a href="signup.php" style="padding-left: 80%;margin-top: 20 px;"><span class="db">Sign Up for a new account</span></a>
             <br>
             <br>
             <div class="auth-box bg-dark border-top border-secondary" style="margin-top: 20 px;">
