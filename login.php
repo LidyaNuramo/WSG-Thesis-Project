@@ -27,12 +27,12 @@
         <div class="text-left pt-2 pb-2">
             <a href="index.php" style="color: gray;"><span class="db"><h2><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>My Travel Rentals</h2></span></a>
         </div>
-        <div class="text-right pt-2 pb-2" style="margin-left: 80%;">
-            <a href="signup.php"><span class="db">Sign Up for a new account</span></a>
-        </div>
     </div>
 
     <div>
+        <div class="text-right pt-2 pb-2" style="margin-left: 80%;">
+            <a href="signup.php"><span class="db">Sign Up for a new account</span></a>
+        </div>
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
             <div class="auth-box bg-dark border-top border-secondary" style="margin-top: 20 px;">
                 <div id="loginform">
