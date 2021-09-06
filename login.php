@@ -31,10 +31,10 @@
 
     <div>
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
-            <a href="signup.php" style="margin-left: 80%;margin-top: 20 px;"><span class="db">Sign Up for a new account</span></a>
+            <a href="signup.php"><span class="db">Sign Up for a new account</span></a>
             <br>
             <br>
-            <div class="auth-box bg-dark border-top border-secondary" style="margin-right: 80%;margin-top: 20 px;">
+            <div class="auth-box bg-dark border-top border-secondary" style="margin-top: 20 px;">
                 <div id="loginform">
                     <form class="form-horizontal mt-3" id="loginform" action="index.html" style="margin-top: 20 px;">
                         <div class="row pb-4">
