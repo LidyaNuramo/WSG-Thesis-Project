@@ -25,7 +25,10 @@
 <body>
     <div class="main-wrapper">
         <div class="text-left pt-2 pb-2">
-            <span class="db"><h2><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>My Travel Rentals<h2></span>
+            <a href="index.php"><span class="db"><h2><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>My Travel Rentals</h2></span></a>
+        </div>
+        <div class="text-right pt-2 pb-2">
+            <a href="signup.php"><span class="db"><h3>Sign Up for a new account</h3></span></a>
         </div>
     </div>
 
