@@ -27,8 +27,8 @@
         <div class="text-left pt-2 pb-2">
             <a href="index.php" style="color: gray;"><span class="db"><h2><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>My Travel Rentals</h2></span></a>
         </div>
-        <div class="text-right pt-2 pb-2">
-            <a href="signup.php" style="align: right;"><span class="db">Sign Up for a new account</span></a>
+        <div class="text-right pt-2 pb-2" style="margin-right: 10px;">
+            <a href="signup.php"><span class="db">Sign Up for a new account</span></a>
         </div>
     </div>
 
@@ -49,7 +49,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-warning text-white h-100" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required hidden>
+                                    <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
                                 </div>
                             </div>
                         </div>
