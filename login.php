@@ -30,7 +30,7 @@
     </div>
 
     <div>
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-light" style="background: url(../Images/car3.jpg) no-repeat center center fixed;">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-light">
             <div class="auth-box bg-light border-top border-secondary">
                 <div id="loginform">
                     <form class="form-horizontal mt-3" id="loginform" action="index.html">
