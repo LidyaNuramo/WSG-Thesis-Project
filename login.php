@@ -30,13 +30,12 @@
     </div>
 
     <div>
+        <div class="text-left pt-2 pb-2">
+            <a href="signup.php"><span class="db">Sign Up for a new account</span></a>
+            <br>
+            <br>
+        </div>
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
-            <div class="text-left pt-2 pb-2">
-                <a href="signup.php"><span class="db">Sign Up for a new account</span></a>
-                <br>
-                <br>
-            </div>
-
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
                     <form class="form-horizontal mt-3" id="loginform" action="index.html">
