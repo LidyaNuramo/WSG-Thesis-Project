@@ -30,7 +30,7 @@
     </div>
 
     <div>
-        <div class="text-left pt-2 pb-2">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-right bg-dark">
             <a href="signup.php"><span class="db">Sign Up for a new account</span></a>
             <br>
             <br>
