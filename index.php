@@ -33,7 +33,7 @@
         <![endif]-->
     </head>
     <body>
-        <div class="main-wrapper" style="background-image: url(../Images/car3.jpg);">
+        <div class="main-wrapper" style="background: url(../Images/car3.jpg) no-repeat center center fixed;">
             <br>
             <br>
             <br>
@@ -47,10 +47,10 @@
         <div class="auth-wrapper d-flex no-block justify-content-left align-items-left bg-dark" >
             <div class="col-12">
                 <div class="form-group">
-                    <div class="text-left pt-3 pb-3">
+                    <div class="text-left pt-3 pb-3" style="margin-left: 20%;">
                         <a href="signup.php"><button class="btn btn-info" id="to-recover" type="button">Create an account</button></a>
                     </div>
-                    <div class="text-right pt-3 pb-3">
+                    <div class="text-right pt-3 pb-3" style="margin-right: 20%; margin-top: -20%; ">
                         <a href="login.php"><button class="btn btn-success float-end text-white" type="submit">Login</button></a>
                     </div>
                 </div>
