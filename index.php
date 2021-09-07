@@ -46,7 +46,7 @@
                 <span class="db"><h1 style="color: white;"><span class="db">My Travel Rentals</span></h1></span>
             </div>
             <div class="text-center pt-3 pb-3">
-                <span class="db"><h3 style="color: white;"><span class="db">Rent at reasonable prices. Rent Online</span></h3></span>
+                <span class="db"><h3 style="color: white;"><span class="db">Rent at reasonable prices. Rent Online.</span></h3></span>
             </div>
             <br>
             <br>
