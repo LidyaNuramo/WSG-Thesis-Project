@@ -35,12 +35,14 @@
     <body>
         <div class="main-wrapper">
         </div>
-        <div class="auth-wrapper d-flex no-block justify-content-left align-items-left bg-dark" style="background-image: url(../Images/car3.jpg);">
+        <div class="auth-wrapper d-flex no-block justify-content-left align-items-left bg-dark" style="background-image: url('../Images/car3.jpg');">
             <br>
             <br>
             <br>
             <br>
-            <h1 style="color: white;"><span class="db">Sign Up for a new account</span></h1>
+            <div class="text-center pt-3 pb-3">
+                <span class="db"><h1 style="color: white;"><span class="db">Sign Up for a new account</span></h1></span>
+            </div>
             <br>
             <br>
             <div class="col-12">
