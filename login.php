@@ -37,9 +37,9 @@
                 <br>
             </div>
 
-            <div class="auth-box bg-dark border-top border-secondary" style="margin-top: 20 px;">
+            <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
-                    <form class="form-horizontal mt-3" id="loginform" action="index.html" style="margin-top: 20 px;">
+                    <form class="form-horizontal mt-3" id="loginform" action="index.html">
                         <div class="row pb-4">
                             <div class="col-12">
                                 <div class="input-group mb-3">
