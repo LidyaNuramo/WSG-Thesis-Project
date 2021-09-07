@@ -30,7 +30,7 @@
     </div>
 
     <div>
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-right bg-dark">
+        <div class="auth-wrapper d-flex no-block justify-content-right align-items-right bg-dark">
             <a href="signup.php"><span class="db">Sign Up for a new account</span></a>
             <br>
             <br>
@@ -45,7 +45,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Email address" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input type="email" class="form-control form-control-lg" placeholder="Email address" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
