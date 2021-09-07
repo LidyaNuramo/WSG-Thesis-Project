@@ -63,7 +63,7 @@
                 <br>
                 <br>
                 <div class="form-group">
-                    <div class="text-left pt-3 pb-3" style="margin-left: 25%;">
+                    <div class="text-left pt-3 pb-3" style="margin-left: 30%;">
                         <a href="signup.php"><button class="btn btn-info" id="to-recover" type="button">Create an account</button></a>
                     </div>
                     <div class="text-right pt-3 pb-3" style="margin-right: 35%; margin-top: -7%;">
