@@ -63,7 +63,7 @@
                 <br>
                 <br>
                 <div class="form-group">
-                    <div class="text-center pt-3 pb-3">
+                    <div class="text-center pt-6 pb-6">
                         <a href="signup.php"><button class="btn btn-info" id="to-recover" type="button" style="margin-left: 30%;">Create an account</button></a>
                         <a href="login.php" style="margin-right: 20%;"><button class="btn btn-success float-end text-white" type="submit">Login</button></a>
                     </div>
