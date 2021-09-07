@@ -30,7 +30,7 @@
     </div>
 
     <div>
-        <div class="auth-wrapper d-flex no-block justify-content-left align-items-right bg-dark">
+        <div class="auth-wrapper d-flex no-block justify-content-left align-items-left bg-dark">
             <a href="signup.php" style="color: white;"><span class="db">Sign Up for a new account</span></a>
             <br>
             <br>
