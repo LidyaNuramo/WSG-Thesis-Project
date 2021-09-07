@@ -65,7 +65,7 @@
                 <div class="row border-top border-secondary">
                     <div class="col-12">
                         <div class="form-group">
-                            <div class="pt-3" style="width: 25%; margin-left: 40%;">
+                            <div class="pt-3" style="width: 25%; margin-left: 35%;">
                                 <a href="signup.php"><button class="btn btn-info" id="to-recover" type="button">Create an account</button></a>
                                 <a href="login.php"><button class="btn btn-success float-end text-white" type="submit">Login</button></a>
                             </div>
