@@ -38,9 +38,21 @@
             <br>
             <br>
             <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <div class="text-center pt-3 pb-3">
-                <span class="db"><h1 style="color: white;"><span class="db">Sign Up for a new account</span></h1></span>
+                <span class="db"><h1 style="color: white;"><span class="db">My Travel Rentals</span></h1></span>
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
             <br>
         </div>
