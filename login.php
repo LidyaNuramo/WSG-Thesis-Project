@@ -96,11 +96,10 @@
                 </div>
             </div>
         </div>
+        <footer class="footer text-center">
+            All Rights Reserved. Thesis project by Lidya Nuramo. Website templates from <a href="https://matrixadmin.wrappixel.com/">WrapPixel</a> and <a href="https://themewagon.com/themes/free-bootstrap-4-html5-car-rental-website-template-carbook/">Themewagon</a>.
+        </footer>
     </div>
-
-    <footer class="footer text-center">
-        All Rights Reserved. Thesis project by Lidya Nuramo. Website templates from <a href="https://matrixadmin.wrappixel.com/">WrapPixel</a> and <a href="https://themewagon.com/themes/free-bootstrap-4-html5-car-rental-website-template-carbook/">Themewagon</a>.
-    </footer>
 
     <script src="../../Staff/Home//assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../../Staff/Home//assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
