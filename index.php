@@ -61,14 +61,17 @@
         <div class="auth-wrapper d-flex no-block justify-content-left align-items-left bg-dark" >
             <div class="col-12">
                 <div class="form-group">
-                    <div class="text-left pt-3 pb-3" style="margin-left: 30%; width: 50 px;">
+                    <div class="text-left pt-3 pb-3" style="margin-left: 30%; width: 80%;">
                         <a href="signup.php"><button class="btn btn-info" id="to-recover" type="button">Create an account</button></a>
                     </div>
-                    <div class="text-right pt-3 pb-3" style="margin-right: 30%; margin-top: -10%; width: 50 px;">
+                    <div class="text-right pt-3 pb-3" style="margin-right: 30%; margin-top: -8%; width: 110%;">
                         <a href="login.php"><button class="btn btn-success float-end text-white" type="submit">Login</button></a>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div>
             <footer class="footer text-center">
                 All Rights Reserved. Thesis project by Lidya Nuramo. Website templates from <a href="https://matrixadmin.wrappixel.com/">WrapPixel</a> and <a href="https://themewagon.com/themes/free-bootstrap-4-html5-car-rental-website-template-carbook/">Themewagon</a>.
             </footer>
