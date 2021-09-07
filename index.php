@@ -62,10 +62,14 @@
             <div class="col-12">
                 <br>
                 <br>
-                <div class="form-group">
-                    <div class="text-center pt-6 pb-6">
-                        <a href="signup.php"><button class="btn btn-info" id="to-recover" type="button" style="margin-left: 30%;">Create an account</button></a>
-                        <a href="login.php" style="margin-right: 20%;"><button class="btn btn-success float-end text-white" type="submit">Login</button></a>
+                <div class="row border-top border-secondary">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div class="pt-3">
+                            <a href="signup.php"><button class="btn btn-info" id="to-recover" type="button">Create an account</button></a>
+                            <a href="login.php"><button class="btn btn-success float-end text-white" type="submit">Login</button></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <br>
