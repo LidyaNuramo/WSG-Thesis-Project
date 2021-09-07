@@ -33,7 +33,7 @@
         <![endif]-->
     </head>
     <body>
-        <div class="main-wrapper" style="background: url(../Images/car2.jpg) no-repeat center center fixed;">
+        <div class="main-wrapper" style="background: url(../Images/car2.jpg) no-repeat center center fixed;-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
             <br>
             <br>
             <br>
