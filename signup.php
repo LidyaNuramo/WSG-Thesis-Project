@@ -29,6 +29,8 @@
         </div>
     </div>
 
+
+
     <div>
         <div class="auth-wrapper d-flex no-block justify-content-left align-items-left bg-dark">
             <a href="login.php" style="color: white;margin-left: 80%;"><span class="db">Sign into existing account</span></a>
@@ -41,6 +43,11 @@
                     <form class="form-horizontal mt-3" action="login.php">
                         <div class="row pb-4">
                             <div class="col-12">
+                                <div class="input-group">
+                                    <span class="input-group-text">First and last name</span>
+                                    <input type="text" aria-label="First name" class="form-control">
+                                    <input type="text" aria-label="Last name" class="form-control">
+                                </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-user"></i></span>
