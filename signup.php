@@ -54,7 +54,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-danger text-white h-100" id="basic-addon1"><i class="ti-mobile"></i></span>
                                     </div>
-                                    <input type="number" class="form-control form-control-lg" id="international-mask" placeholder="Phone Number" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input type="text" class="form-control xphone-inputmask" id="xphone-mask" placeholder="Enter Phone Number" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -96,9 +96,6 @@
 
     <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-    $(".preloader").fadeOut();
-    </script>
     <script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
     <script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
     <script src="../../dist/js/waves.js"></script>
@@ -114,6 +111,9 @@
     <script src="../../assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
     <script src="../../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="../../assets/libs/quill/dist/quill.min.js"></script>
+    <script>
+    $(".preloader").fadeOut();
+    </script>
 
 </body>
 
