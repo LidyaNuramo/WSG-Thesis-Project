@@ -54,7 +54,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-danger text-white h-100" id="basic-addon1"><i class="ti-mobile"></i></span>
                                     </div>
-                                    <input type="number" class="form-control form-control-lg" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1" required>
+                                    <input type="phone" class="form-control form-control-lg" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
