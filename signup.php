@@ -44,15 +44,11 @@
                         <div class="row pb-4">
                             <div class="col-12">
                                 <div class="input-group">
-                                    <span class="input-group-text">First and last name</span>
-                                    <input type="text" aria-label="First name" class="form-control">
-                                    <input type="text" aria-label="Last name" class="form-control">
-                                </div>
-                                <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input type="text" placeholder="First name" aria-label="First name" class="form-control form-control-lg" required>
+                                    <input type="text" placeholder="Last name" aria-label="Last name" class="form-control form-control-lg" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
