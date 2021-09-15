@@ -43,7 +43,7 @@
                     <form class="form-horizontal mt-3" action="login.php">
                         <div class="row pb-4">
                             <div class="col-12">
-                                <div class="input-group">
+                                <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
