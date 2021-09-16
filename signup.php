@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
+                                        <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-calendar"></i></span>
                                     </div>
                                     <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
                                     <div class="input-group-prepend">
