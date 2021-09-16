@@ -21,9 +21,10 @@
     <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/jquery-minicolors/jquery.minicolors.css">
     <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/quill/dist/quill.snow.css">
+    <link href="../../Staff/Home/dist/css/style.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 
