@@ -17,10 +17,10 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="../../Staff/Home/assets/libs/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="../../Staff/Home/assets/libs/jquery-minicolors/jquery.minicolors.css">
-    <link rel="stylesheet" type="text/css" href="../../Staff/Home/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="../../Staff/Home/assets/libs/quill/dist/quill.snow.css">
+    <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/jquery-minicolors/jquery.minicolors.css">
+    <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/quill/dist/quill.snow.css">
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -109,23 +109,51 @@
         </footer>
     </div>
 
-    <script src="../../Staff/Home/assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../../Staff/Home/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../Staff/Home/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="../../Staff/Home/assets/extra-libs/sparkline/sparkline.js"></script>
-    <script src="../../Staff/Home/dist/js/waves.js"></script>
-    <script src="../../Staff/Home/dist/js/sidebarmenu.js"></script>
-    <script src="../../Staff/Home/dist/js/custom.min.js"></script>
-    <script src="../../Staff/Home/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
-    <script src="../../Staff/Home/dist/js/pages/mask/mask.init.js"></script>
-    <script src="../../Staff/Home/assets/libs/select2/dist/js/select2.full.min.js"></script>
-    <script src="../../Staff/Home/assets/libs/select2/dist/js/select2.min.js"></script>
-    <script src="../../Staff/Home/assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
-    <script src="../../Staff/Home/assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
-    <script src="../../Staff/Home/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
-    <script src="../../Staff/Home/assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
-    <script src="../../Staff/Home/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="../../Staff/Home/assets/libs/quill/dist/quill.min.js"></script>
+    <script src="../Staff/Home/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../Staff/Home/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../Staff/Home/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../Staff/Home/assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="../Staff/Home/dist/js/waves.js"></script>
+    <script src="../Staff/Home/dist/js/sidebarmenu.js"></script>
+    <script src="../Staff/Home/dist/js/custom.min.js"></script>
+    <script src="../Staff/Home/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="../Staff/Home/dist/js/pages/mask/mask.init.js"></script>
+    <script src="../Staff/Home/assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="../Staff/Home/assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="../Staff/Home/assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
+    <script src="../Staff/Home/assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
+    <script src="../Staff/Home/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
+    <script src="../Staff/Home/assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="../Staff/Home/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="../Staff/Home/assets/libs/quill/dist/quill.min.js"></script>
+    <script>
+        $(".select2").select2();
+        $('.demo').each(function () {
+            $(this).minicolors({
+                control: $(this).attr('data-control') || 'hue',
+                position: $(this).attr('data-position') || 'bottom left',
+
+                change: function (value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ', ' + opacity;
+                    if (typeof console === 'object') {
+                        console.log(value);
+                    }
+                },
+                theme: 'bootstrap'
+            });
+
+        });
+        jQuery('.mydatepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+
+    </script>
     <script>
     $(".preloader").fadeOut();
     </script>
