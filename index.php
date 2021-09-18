@@ -1,17 +1,3 @@
-<!--?php
-    include 'process.php';    
-    //require_once('main.php');
-    //$database=new Database();
-    //echo $database;
-?>
-
-<html>
-    <body>
-        <a href="\Client\Home\">Client Login</a>
-        <a href="\Staff\Home\html\ltr\">Staff Login</a>
-    </body>
-</html-->
-
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +10,7 @@
         <meta name="robots" content="noindex,nofollow">
         <title>My Travel Rentals</title>
         <link rel="icon" type="image/png" sizes="16x16" href="../Images/Logo.png">
-        <link href="../../Staff/Home/dist/css/style.min.css" rel="stylesheet">
+        <link href="../Staff/Home/dist/css/style.min.css" rel="stylesheet">
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <!--[if lt IE 9]>

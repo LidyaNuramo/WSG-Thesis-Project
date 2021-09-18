@@ -58,15 +58,21 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary text-white h-100" id="basic-addon1"><i class="ti-mobile"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control international-inputmask" id="international-mask" placeholder="International Phone Number"style="-webkit-appearance= none; -moz-appearance= textfield;" required>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
                                         <span class="input-group-text bg-secondary text-white h-100" id="basic-addon1"><i class="ti-calendar"></i></span>
                                     </div>
                                     <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-primary text-white h-100" id="basic-addon1"><i class="ti-mobile"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control international-inputmask" id="international-mask" placeholder="Phone Number"style="-webkit-appearance= none; -moz-appearance= textfield;" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-location-pin"></i></span>
+                                    </div>
+                                    <input type="text" placeholder="Address 1" aria-label="Address" class="form-control form-control-lg" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
