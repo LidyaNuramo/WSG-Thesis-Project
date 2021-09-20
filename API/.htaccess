@@ -1,4 +1,3 @@
 Options FollowSymLinks
 RewriteEngine On
-RewriteRule ^API/Devices/login/?([^-]*)$ api.php?action=login&login=$1 [L]
-RewriteRule ^API/Devices/add/?([^-]*)/([^-]*)/([^-]*)/([^-]*)/([^-]*)$ api.php?action=addlocation&long=$1&lat=$2&alt=$3&vel=$4&datetime=$5 [L]
+RewriteRule ^API/Devices/locate/?([^-]*)/([^-]*)/([^-]*)/([^-]*)/([^-]*)/([^-]*)$ api.php?action=addlocation&long=$1&lat=$2&alt=$3&vel=$4&datetime=$5&device=$6 [L]
