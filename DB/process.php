@@ -1,17 +1,99 @@
 <?php
-$servername = "10.82.144.4";
-$username = "root";
-$password = "password";
-$dbname="mytravelrental_RBAC";
+require_once('main.php');
 
-$response=array();
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-else{
-    echo "DB Connected";
+if(!empty($_GET['action'])){
+	switch($_GET['action']){
+		case 'login':
+	       $email=$_POST['email'];
+		   $password=$_POST['password'];
+		   $where['email']= '="'.$email.'"';
+		   $database=new Database();
+		   $user=$database->getRow("users","*",$where);
+		   if($user['password']==$password){
+				session_start();
+				$_SESSION['username']=$user['firstname'];
+				$_SESSION['lastname']=$user['lastname'];
+				$_SESSION['userID']=$user['id'];
+				$_SESSION['AccountType']=$user['accounttype'];
+				header("Location: ../Home");
+				break;
+		   }
+		   else{
+				header("Location:../index.php?action=no");
+		   }
+		   break;
+		case 'signup':
+			$fname=$_POST['firstname'];
+			$lname=$_POST['lastname'];
+			$email=$_POST['email'];
+			$phone=$_POST['phone'];
+			$password=$_POST['password'];
+			$database=new Database();
+			$where['Email']= '="'.$email.'"';
+	        $database=new Database();
+	        $results=$database->getRows("users","*",$where);
+			$num=1;
+			foreach($results as $result){
+			    $num=$num+1;
+			}
+			if ($num==1){
+				$data=array(
+					"ID"=>null,
+					"FirstName"=>$fname,
+					"LastName"=>$lname,
+					"AccountType"=>"standard",
+					"Email"=>$email,
+					"Phone"=>$phone,
+					"Password"=>$password,
+				);
+				$database->insertRows("users",$data);
+				$rr="Location: ../index.php?action=yes";
+				header($rr);
+				break;
+			}
+			$rr="Location: signup.php?action=no";
+			header($rr);
+			break;
+		case 'logout':
+			session_start();
+			if(isset($_SESSION['username'])){
+				session_destroy();
+				header('Location: ../index.php');
+			}
+			else{
+				header('Location: ../index.php');
+			}
+			break;
+		case 'deleteHost':
+			$id=$_GET['id'];
+			$where['id']= '='.$id;
+			$database=new Database();
+			$database->removeRows("hosts",$where);
+			header('Location: ../Exercise1');
+			break;
+		case 'addhost':
+			$address=$_POST['name'];
+			$port=$_POST['lastname'];
+			$failedattempts=0;
+			$failedtime=NULL;
+			$totaldowntime=0;
+			session_start();
+			$addedby=$_SESSION['userID'];
+			$database=new Database();
+			$data=array(
+				"ID"=>null,
+				"FirstName"=>$fname,
+				"LastName"=>$lname,
+				"AccountType"=>"standard",
+				"Email"=>$email,
+				"Phone"=>$phone,
+				"Password"=>$password,
+			);
+			$database->insertRows("hosts",$data);
+			$rr="Location: ../Exercise2";
+			header($rr);
+			break;
+   }
 }
 ?>
+
