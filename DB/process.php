@@ -3,28 +3,10 @@ require_once('main.php');
 
 if(!empty($_GET['action'])){
 	switch($_GET['action']){
-		case 'login':
-	       $email=$_POST['email'];
-		   $password=$_POST['password'];
-		   $where['email']= '="'.$email.'"';
-		   $database=new Database();
-		   $user=$database->getRow("users","*",$where);
-		   if($user['password']==$password){
-				session_start();
-				$_SESSION['username']=$user['firstname'];
-				$_SESSION['lastname']=$user['lastname'];
-				$_SESSION['userID']=$user['id'];
-				$_SESSION['AccountType']=$user['accounttype'];
-				header("Location: ../Home");
-				break;
-		   }
-		   else{
-				header("Location:../index.php?action=no");
-		   }
-		   break;
-		case 'signup':
+        case 'signup':
 			$fname=$_POST['firstname'];
 			$lname=$_POST['lastname'];
+            $dob=$_POST['dateofbirth'];
 			$email=$_POST['email'];
 			$phone=$_POST['phone'];
 			$password=$_POST['password'];
@@ -47,13 +29,32 @@ if(!empty($_GET['action'])){
 					"Password"=>$password,
 				);
 				$database->insertRows("users",$data);
-				$rr="Location: ../index.php?action=yes";
+				$rr="Location: ../login.php?action=yes";
 				header($rr);
 				break;
 			}
-			$rr="Location: signup.php?action=no";
+			$rr="Location: ../signup.php?action=no";
 			header($rr);
 			break;
+		case 'login':
+	       $email=$_POST['email'];
+		   $password=$_POST['password'];
+		   $where['email']= '="'.$email.'"';
+		   $database=new Database();
+		   $user=$database->getRow("users","*",$where);
+		   if($user['password']==$password){
+				session_start();
+				$_SESSION['username']=$user['firstname'];
+				$_SESSION['lastname']=$user['lastname'];
+				$_SESSION['userID']=$user['id'];
+				$_SESSION['AccountType']=$user['accounttype'];
+				header("Location: ../Home");
+				break;
+		   }
+		   else{
+				header("Location:../index.php?action=no");
+		   }
+		   break;
 		case 'logout':
 			session_start();
 			if(isset($_SESSION['username'])){

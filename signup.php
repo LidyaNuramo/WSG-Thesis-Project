@@ -1,4 +1,20 @@
 <?php
+
+include('/storage/ssd1/167/17747167/public_html/DB/main.php');
+include('/storage/ssd1/167/17747167/public_html/DB/process.php');
+
+if(!empty($_GET['action']))
+{
+  switch($_GET['action'])
+  {
+    case 'no':
+      echo '<script language="javascript">';
+      echo 'alert("An account already exists with this email address.")';
+      echo '</script>';
+      break;
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +32,7 @@
     <link href="../../Staff/Home/dist/css/style.min.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/jquery-minicolors/jquery.minicolors.css">
@@ -46,51 +63,81 @@
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
             <div class="auth-box bg-dark border-top border-secondary">
                 <div>
-                    <form class="form-horizontal mt-3" action="login.php">
+                    <form class="form-horizontal mt-3" action="DB/process.php?action=signup" method="POST" onsubmit="return checkPassword()">
                         <div class="row pb-4">
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" placeholder="First name" aria-label="First name" class="form-control form-control-lg" required>
-                                    <input type="text" placeholder="Last name" aria-label="Last name" class="form-control form-control-lg" required>
+                                    <input type="text" placeholder="First name" aria-label="First name" name="firstname" class="form-control form-control-lg" required>
+                                    <input type="text" placeholder="Last name" aria-label="Last name" name="lastname" class="form-control form-control-lg" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-secondary text-white h-100" id="basic-addon1"><i class="ti-calendar"></i></span>
                                     </div>
-                                    <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
+                                    <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="dateofbirth">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-primary text-white h-100" id="basic-addon1"><i class="ti-mobile"></i></span>
                                     </div>
-                                    <input type="text" class="form-control international-inputmask" id="international-mask" placeholder="Phone Number"style="-webkit-appearance= none; -moz-appearance= textfield;" required>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-location-pin"></i></span>
-                                    </div>
-                                    <input type="text" placeholder="Address 1" aria-label="Address" class="form-control form-control-lg" required>
+                                    <input type="text" class="form-control international-inputmask" name="phone" id="international-mask" placeholder="Phone Number"style="-webkit-appearance= none; -moz-appearance= textfield;" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-danger text-white h-100" id="basic-addon1"><i class="ti-email"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input type="text" class="form-control form-control-lg" name="email" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-warning text-white h-100" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                                    <input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-info text-white h-100" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder=" Confirm Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                                    <input type="password" class="form-control form-control-lg" id="confirm_password" placeholder=" Confirm Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                                    <span id='message'></span>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-map-alt"></i></span>
+                                    </div>
+                                    <!--select class="form-control form-control-lg" id="Country" placeholder="Country" name="Country"  required>
+                                        <option disabled selected>Country</option>
+                                        <?php
+                                            // $database=new Database();
+                                            // $where['id']="";
+                                            // $results=$database->getRows("Country","*",$where);
+                                            // foreach($results as $result){
+                                            //     $sel = "";
+                                            //     echo '<option value="' . $$result['id'] . '"' . $sel . '>' . $result['Name']. '</option>';
+                                            // }
+                                        ?>
+                                    </select-->
+                                    <select class="form-control form-control-lg" id="City" placeholder="City" name="City" required>
+                                        <option disabled selected>City</option>
+                                        <?php
+                                            $database=new Database();
+                                            $where['CountryID']=176;
+                                            $results=$database->getRows("City","*",$where,"AND","Name");
+                                            foreach($results as $result){
+                                                $sel = "";
+                                                echo '<option value="' . $$result['id'] . '"' . $sel . '>' . $result['Name']. '</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-secondary text-white h-100" id="basic-addon1"><i class="ti-location-pin"></i></span>
+                                    </div>
+                                    <input type="text" placeholder="Address 1" aria-label="Address" class="form-control form-control-lg" required>
                                 </div>
                             </div>
                         </div>
@@ -156,11 +203,23 @@
             theme: 'snow'
         });
 
+        function checkPassword() {
+            if (document.getElementById('password').value ==
+                document.getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = ' Matching';
+                return true;
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = " Password doesn't match.";
+                return false;
+            }
+        }
+
     </script>
     <script>
     $(".preloader").fadeOut();
     </script>
-
 </body>
 
 </html>

@@ -35,10 +35,43 @@
             <br>
             <br>
         </div>
+        <?php
+			if(!empty($_GET['action']))
+			{
+				switch($_GET['action'])
+				{
+				  case 'yes':?>
+					<div class="form-group bg-light">
+					  <label for="exampleInputEmail1" style="color: green;" class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Account successfully created. Please log in.</label>
+					  <br>
+					</div>
+					<?php
+					break;
+				  case 'no':
+				  ?>
+
+					<div class="form-group bg-light">
+					  <label for="exampleInputEmail1" style="color: red;" class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Incorrect email or password. Please try again.</label>
+					  <br>
+					</div>
+					<?php
+					break;
+				  case 'noaccount':
+				  ?>
+
+					<div class="form-group bg-light">
+					  <label for="exampleInputEmail1" style="color: red;" class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Please log in first as you are currently not logged in.</label>
+					<br>
+					</div>
+					<?php
+					break;
+				}
+			}
+		?>
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
-                    <form class="form-horizontal mt-3" id="loginform" action="index.html">
+                    <form class="form-horizontal mt-3" id="loginform" action="../DB/process.php?action=login">
                         <div class="row pb-4">
                             <div class="col-12">
                                 <div class="input-group mb-3">
