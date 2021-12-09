@@ -4,10 +4,10 @@ class Database
 {	
 	private $connection = null;
 	private $results = array();
-	private $host = "10.82.144.4";
-	private $db = "mytravelrental_RBAC";
-	private $user = "root";
-	private $password = "password";
+	private $host = "localhost";
+	private $db = "id17747167_mytravelrental";
+	private $user = "id17747167_root";
+	private $password = "1t++CZ3AZ0<Q(SS^";
 	private $db_prefix = "";
 
 	function __construct() {
