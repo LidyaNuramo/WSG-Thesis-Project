@@ -6,29 +6,41 @@ if(!empty($_GET['action'])){
         case 'signup':
 			$fname=$_POST['firstname'];
 			$lname=$_POST['lastname'];
-            $dob=$_POST['dateofbirth'];
+            $dobinput=$_POST['dateofbirth'];
+			$dob=strtotime($dobinput);
 			$email=$_POST['email'];
 			$phone=$_POST['phone'];
 			$password=$_POST['password'];
+			$city=$_POST['city'];
+			$address=$_POST['address'];
+			$postcode=$_POST['postcode'];
+			date_default_timezone_set("Europe/Warsaw"); 
+			$time = date("Y-m-d h:i:sa");
 			$database=new Database();
-			$where['Email']= '="'.$email.'"';
-	        $database=new Database();
-	        $results=$database->getRows("users","*",$where);
+			$where['Email'] ='="'.$email.'"';
+	        $results=$database->getRows("Client","*",$where);
 			$num=1;
 			foreach($results as $result){
-			    $num=$num+1;
+				if ($email == $result['Email']){
+					$num=$num+1;
+				}
 			}
 			if ($num==1){
 				$data=array(
-					"ID"=>null,
 					"FirstName"=>$fname,
 					"LastName"=>$lname,
-					"AccountType"=>"standard",
+					"DOB"=>$dob,
+					"Phone"=>$phone,
 					"Email"=>$email,
 					"Phone"=>$phone,
 					"Password"=>$password,
+					"Address"=>$address,
+					"PostCode"=>$postcode,
+					"CityID"=>$city,
+					"CreatedOn"=>$time,
+					"LastModifiedOn"=>$time,
 				);
-				$database->insertRows("users",$data);
+				$database->insertRows("Client",$data);
 				$rr="Location: ../login.php?action=yes";
 				header($rr);
 				break;

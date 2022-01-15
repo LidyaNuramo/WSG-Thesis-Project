@@ -96,6 +96,7 @@ if(!empty($_GET['action']))
                                         <span class="input-group-text bg-warning text-white h-100" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
                                     <input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                                    <span id='passmessage'></span>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -106,38 +107,38 @@ if(!empty($_GET['action']))
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-map-alt"></i></span>
+                                        <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-location-pin"></i></span>
                                     </div>
-                                    <!--select class="form-control form-control-lg" id="Country" placeholder="Country" name="Country"  required>
-                                        <option disabled selected>Country</option>
-                                        <?php
-                                            // $database=new Database();
-                                            // $where['id']="";
-                                            // $results=$database->getRows("Country","*",$where);
-                                            // foreach($results as $result){
-                                            //     $sel = "";
-                                            //     echo '<option value="' . $$result['id'] . '"' . $sel . '>' . $result['Name']. '</option>';
-                                            // }
-                                        ?>
-                                    </select-->
-                                    <select class="form-control form-control-lg" id="City" placeholder="City" name="City" required>
+                                    <input type="text" placeholder="Address 1" name="address" aria-label="Address" class="form-control form-control-lg" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                <!--div class="input-group mb-3"--> 
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="me-2 mdi mdi-mailbox"></i></span>
+                                    </div>
+                                    <input type="number" min="00000" max="99999" placeholder="Post Code" name="postcode" aria-label="Post Code" class="form-control form-control-lg" style="-webkit-appearance: none; margin: 0;-moz-appearance: textfield;" required>
+                                <!--/div-->
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-secondary text-white h-100" id="basic-addon1"><i class="me-2 mdi mdi-city"></i></span>
+                                    </div>
+                                    <select class="form-control form-control-lg" id="city" placeholder="City" name="city" required>
                                         <option disabled selected>City</option>
                                         <?php
                                             $database=new Database();
-                                            $where['CountryID']=176;
+                                            $where['id']="";
                                             $results=$database->getRows("City","*",$where,"AND","Name");
                                             foreach($results as $result){
-                                                $sel = "";
-                                                echo '<option value="' . $$result['id'] . '"' . $sel . '>' . $result['Name']. '</option>';
+                                                echo '<option value="' .$result['id'].'">' . $result['Name']. '</option>';
                                             }
                                         ?>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-secondary text-white h-100" id="basic-addon1"><i class="ti-location-pin"></i></span>
+                                        <span class="input-group-text bg-secondary text-white h-100" id="basic-addon1"> 
+                                            <input id="acceptTerms" name="acceptTerms" type="checkbox" required> I agree with the Terms and Conditions.
+                                        </span>
                                     </div>
-                                    <input type="text" placeholder="Address 1" aria-label="Address" class="form-control form-control-lg" required>
                                 </div>
                             </div>
                         </div>
@@ -204,16 +205,24 @@ if(!empty($_GET['action']))
         });
 
         function checkPassword() {
-            if (document.getElementById('password').value ==
-                document.getElementById('confirm_password').value) {
-                document.getElementById('message').style.color = 'green';
-                document.getElementById('message').innerHTML = ' Matching';
-                return true;
-            } else {
-                document.getElementById('message').style.color = 'red';
-                document.getElementById('message').innerHTML = " Password doesn't match.";
-                return false;
+            if (document.getElementById('password').value.length <6 ){
+					document.getElementById('passmessage').style.color = 'red';
+                    document.getElementById('passmessage').innerHTML = " Password length is less than 6.";
+					return false;
+			}
+            else{
+                if (document.getElementById('password').value ==
+                    document.getElementById('confirm_password').value) {
+                    document.getElementById('message').style.color = 'green';
+                    document.getElementById('message').innerHTML = ' Matching';
+                    return true;
+                } else {
+                    document.getElementById('message').style.color = 'red';
+                    document.getElementById('message').innerHTML = " Password doesn't match.";
+                    return false;
+                }
             }
+            
         }
 
     </script>
