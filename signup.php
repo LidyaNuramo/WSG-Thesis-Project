@@ -39,6 +39,25 @@ if(!empty($_GET['action']))
     <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" type="text/css" href="../Staff/Home/assets/libs/quill/dist/quill.snow.css">
     <link href="../../Staff/Home/dist/css/style.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../Client/Home/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../Client/Home/css/animate.css">
+    
+    <link rel="stylesheet" href="../Client/Home/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../Client/Home/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../Client/Home/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../Client/Home/css/aos.css">
+
+    <link rel="stylesheet" href="../Client/Home/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../Client/Home/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../Client/Home/css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="../Client/Home/css/flaticon.css">
+    <link rel="stylesheet" href="../Client/Home/css/icomoon.css">
+    <link rel="stylesheet" href="../Client/Home/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -46,19 +65,20 @@ if(!empty($_GET['action']))
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <div class="text-left pt-2 pb-2">
-            <a href="index.php" style="color: gray;"><span class="db"><h2><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>My Travel Rentals</h2></span></a>
-        </div>
-    </div>
-
-
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container" style="margin-right: 80%;">
+            <a href="index.php" style="color: gray;"><span class="db"><a class="navbar-brand" href="index.php"><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>MyTravel<span>Rentals</span></a>
+	    </div>
+	</nav>
 
     <div>
         <div class="auth-wrapper d-flex no-block justify-content-left align-items-left bg-dark">
-            <a href="login.php" style="color: white;margin-left: 80%;"><span class="db">Sign into existing account</span></a>
-            <br>
-            <br>
+            <span class="db" style="margin-left: 65%;">
+                <br>
+                <a href="login.php" style="color: white;">Sign into existing account</a>
+                <br>
+                <br>
+            </span>
         </div>
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
             <div class="auth-box bg-dark border-top border-secondary">
