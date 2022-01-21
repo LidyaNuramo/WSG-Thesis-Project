@@ -23,17 +23,20 @@
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <div class="text-left pt-2 pb-2">
-            <a href="index.php" style="color: gray;"><span class="db"><h2><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>My Travel Rentals</h2></span></a>
-        </div>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container" style="margin-right: 80%;">
+            <a href="index.php" style="color: gray;"><span class="db"><a class="navbar-brand" href="index.php"><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>MyTravel<span>Rentals</span></a>
+	    </div>
+	</nav>
 
     <div>
         <div class="auth-wrapper d-flex no-block justify-content-left align-items-left bg-dark">
-            <a href="signup.php" style="color: white;margin-left: 80%;"><span class="db">Sign Up for a new account</span></a>
-            <br>
-            <br>
+            <span class="db" style="margin-left: 60%;">
+                <br>
+                <a href="signup.php" style="color: white;">Sign Up for a new account</a>
+                <br>
+                <br>
+            </span>
         </div>
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
             <div class="auth-box bg-dark border-top border-secondary">
