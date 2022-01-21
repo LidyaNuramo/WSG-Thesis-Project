@@ -16,6 +16,26 @@
     <link href="../Staff/Home/dist/css/style.min.css" rel="stylesheet">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    
+    <link rel="stylesheet" href="../Client/Home/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../Client/Home/css/animate.css">
+    
+    <link rel="stylesheet" href="../Client/Home/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../Client/Home/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../Client/Home/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../Client/Home/css/aos.css">
+
+    <link rel="stylesheet" href="../Client/Home/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../Client/Home/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../Client/Home/css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="../Client/Home/css/flaticon.css">
+    <link rel="stylesheet" href="../Client/Home/css/icomoon.css">
+    <link rel="stylesheet" href="../Client/Home/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -25,7 +45,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container" style="margin-right: 80%;">
-            <a href="index.php" style="color: gray;"><span class="db"><a class="navbar-brand" href="index.php"><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>MyTravel<span>Rentals</span></a>
+            <a href="index.php"><span class="db"><a class="navbar-brand" href="index.php">MyTravel<span>Rentals</span></a>
 	    </div>
 	</nav>
 
@@ -41,7 +61,7 @@
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
-                    <form class="form-horizontal mt-3" id="loginform" action="../DB/process.php?action=login">
+                    <form class="form-horizontal mt-3" id="loginform" action="DB/process.php?action=login" method="POST">
                         <div class="row pb-4">
                             <div class="col-12">
         <?php
@@ -85,13 +105,13 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="email" class="form-control form-control-lg" placeholder="Email address" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input type="email" name="email" class="form-control form-control-lg" placeholder="Email address" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-warning text-white h-100" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +133,7 @@
                     </div>
                     <div class="row mt-3">
                         
-                        <form class="col-12" action="index.html">
+                        <form class="col-12" action="DB/process.php?action=recoverpassword" method="POST">
                             
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -143,6 +163,23 @@
 
     <script src="../Staff/Home/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../Staff/Home/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../Client/Home/js/jquery.min.js"></script>
+    <script src="../Client/Home/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../Client/Home/js/popper.min.js"></script>
+    <script src="../Client/Home/js/bootstrap.min.js"></script>
+    <script src="../Client/Home/js/jquery.easing.1.3.js"></script>
+    <script src="../Client/Home/js/jquery.waypoints.min.js"></script>
+    <script src="../Client/Home/js/jquery.stellar.min.js"></script>
+    <script src="../Client/Home/js/owl.carousel.min.js"></script>
+    <script src="../Client/Home/js/jquery.magnific-popup.min.js"></script>
+    <script src="../Client/Home/js/aos.js"></script>
+    <script src="../Client/Home/js/jquery.animateNumber.min.js"></script>
+    <script src="../Client/Home/js/bootstrap-datepicker.js"></script>
+    <script src="../Client/Home/js/jquery.timepicker.min.js"></script>
+    <script src="../Client/Home/js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="../Client/Home/js/google-map.js"></script>
+    <script src="../Client/Home/js/main.js"></script>
     <script>
         $(".preloader").fadeOut();
         // ============================================================== 

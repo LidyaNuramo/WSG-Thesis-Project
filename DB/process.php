@@ -51,22 +51,25 @@ if(!empty($_GET['action'])){
 		case 'login':
 	       $email=$_POST['email'];
 		   $password=$_POST['password'];
-		   $where['email']= '="'.$email.'"';
+		   $where['Email']= '="'.$email.'"';
 		   $database=new Database();
-		   $user=$database->getRow("users","*",$where);
-		   if($user['password']==$password){
+		   $user=$database->getRow("Client","*",$where);
+		   if($user['Password']==$password){
 				session_start();
-				$_SESSION['username']=$user['firstname'];
-				$_SESSION['lastname']=$user['lastname'];
+				$_SESSION['username']=$user['FirstName'];
+				$_SESSION['lastname']=$user['LastName'];
 				$_SESSION['userID']=$user['id'];
-				$_SESSION['AccountType']=$user['accounttype'];
-				header("Location: ../Home");
+				$_SESSION['AccountStatus']=$user['VerificationStatus'];
+				header("Location: ../Client/Home");
 				break;
 		   }
 		   else{
 				header("Location:../index.php?action=no");
 		   }
 		   break;
+		case 'recoverpassword':
+			header("Location:../login.php");
+			break;
 		case 'logout':
 			session_start();
 			if(isset($_SESSION['username'])){

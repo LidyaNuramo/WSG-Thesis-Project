@@ -3,18 +3,6 @@
 include('/storage/ssd1/167/17747167/public_html/DB/main.php');
 include('/storage/ssd1/167/17747167/public_html/DB/process.php');
 
-if(!empty($_GET['action']))
-{
-  switch($_GET['action'])
-  {
-    case 'no':
-      echo '<script language="javascript">';
-      echo 'alert("An account already exists with this email address.")';
-      echo '</script>';
-      break;
-  }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +55,7 @@ if(!empty($_GET['action']))
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container" style="margin-right: 80%;">
-            <a href="index.php" style="color: gray;"><span class="db"><a class="navbar-brand" href="index.php"><img src="../Images/Logo.png" alt="Logo" style="width: 40px; height: 40 px;"/>MyTravel<span>Rentals</span></a>
+            <a href="index.php"><span class="db"><a class="navbar-brand" href="index.php">MyTravel<span>Rentals</span></a>
 	    </div>
 	</nav>
 
@@ -80,12 +68,31 @@ if(!empty($_GET['action']))
                 <br>
             </span>
         </div>
+        
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
             <div class="auth-box bg-dark border-top border-secondary">
                 <div>
                     <form class="form-horizontal mt-3" action="DB/process.php?action=signup" method="POST" onsubmit="return checkPassword()">
                         <div class="row pb-4">
                             <div class="col-12">
+                                <?php
+                            if(!empty($_GET['action']))
+                            {
+                                switch($_GET['action'])
+                                {
+                                    case 'no':
+                                    ?>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label for="exampleInputEmail1" style="color: red;" class="control-label">An account already exists with this email address.</label>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <?php 
+                                    break;
+                                }
+                            }
+                            ?>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-user"></i></span>
@@ -197,6 +204,23 @@ if(!empty($_GET['action']))
     <script src="../Staff/Home/assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
     <script src="../Staff/Home/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="../Staff/Home/assets/libs/quill/dist/quill.min.js"></script>
+    <script src="../Client/Home/js/jquery.min.js"></script>
+    <script src="../Client/Home/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../Client/Home/js/popper.min.js"></script>
+    <script src="../Client/Home/js/bootstrap.min.js"></script>
+    <script src="../Client/Home/js/jquery.easing.1.3.js"></script>
+    <script src="../Client/Home/js/jquery.waypoints.min.js"></script>
+    <script src="../Client/Home/js/jquery.stellar.min.js"></script>
+    <script src="../Client/Home/js/owl.carousel.min.js"></script>
+    <script src="../Client/Home/js/jquery.magnific-popup.min.js"></script>
+    <script src="../Client/Home/js/aos.js"></script>
+    <script src="../Client/Home/js/jquery.animateNumber.min.js"></script>
+    <script src="../Client/Home/js/bootstrap-datepicker.js"></script>
+    <script src="../Client/Home/js/jquery.timepicker.min.js"></script>
+    <script src="../Client/Home/js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="../Client/Home/js/google-map.js"></script>
+    <script src="../Client/Home/js/main.js"></script>
     <script>
         $(".select2").select2();
         $('.demo').each(function () {
