@@ -48,6 +48,16 @@
 				</div>
 				<?php
 				break;
+            case 'createaccount':
+                ?>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label for="exampleInputEmail1" style="color: red;" class="control-label">This email address is not linked with any existing account. Try with another email or sign up for an account.</label>
+                            <br>
+                        </div>
+                    </div>
+                    <?php
+                    break;
 			}
 		}
 	?>

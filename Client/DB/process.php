@@ -49,23 +49,30 @@ if(!empty($_GET['action'])){
 			header($rr);
 			break;
 		case 'login':
-	       $email=$_POST['email'];
-		   $password=$_POST['password'];
-		   $where['Email']= '="'.$email.'"';
-		   $database=new Database();
-		   $user=$database->getRow("Client","*",$where);
-		   if($user['Password']==$password){
-				session_start();
-				$_SESSION['username']=$user['FirstName'];
-				$_SESSION['lastname']=$user['LastName'];
-				$_SESSION['userID']=$user['id'];
-				$_SESSION['AccountStatus']=$user['VerificationStatus'];
-				header("Location: ../Home");
+			$email=$_POST['email'];
+			$password=$_POST['password'];
+			$where['Email']= '="'.$email.'"';
+			$database=new Database();
+			$user=$database->getRow("Client","*",$where);
+			if ($user==NULL){
+				header("Location: ../login.php?action=createaccount");
 				break;
-		   }
-		   else{
-				header("Location: ../index.php?action=no");
-		   }
+			}
+			else{
+				if($user['Password']==$password){
+					session_start();
+					$_SESSION['username']=$user['FirstName'];
+					$_SESSION['lastname']=$user['LastName'];
+					$_SESSION['userID']=$user['id'];
+					$_SESSION['AccountStatus']=$user['VerificationStatus'];
+					header("Location: ../Home/");
+					break;
+			   }
+			   else{
+					header("Location: ../login.php?action=no");
+					break;
+			   }
+			}
 		   break;
 		case 'recoverpassword':
 			header("Location: ../login.php");
