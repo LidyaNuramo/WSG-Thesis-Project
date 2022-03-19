@@ -12,7 +12,7 @@
         <div class="auth-box bg-dark border-top border-secondary">
             <a href="login.php" style="color: white; margin-left: 60%;">Sign into existing account</a>
                 <div>
-                    <form class="form-horizontal mt-3" action="DB/process.php?action=signup" method="POST" onsubmit="return checkPassword()">
+                    <form class="form-horizontal mt-3" action="DB/process.php?action=signup" method="POST" onsubmit="return validateForm()">
                         <div class="row pb-4">
                             <div class="col-12">
                                 <?php
@@ -44,7 +44,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-secondary text-white h-100" id="basic-addon1"><i class="ti-calendar"></i></span>
                                     </div>
-                                    <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="dateofbirth">
+                                    <input type="text" id ="dateofbirth" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="dateofbirth">
+                                    <span id='agemessage'></span>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -154,15 +155,25 @@
             theme: 'snow'
         });
 
-        function checkPassword() {
+        function validateForm() {
+            var dob = document.getElementById("dateofbirth").value;
+            var now = new Date();
+            var birthdate = dob.split("/");
+            var born = new Date(birthdate[2], birthdate[0]-1, birthdate[1]);
+            age=get_age(born,now);
+            if (age<18)
+            {
+                document.getElementById('agemessage').style.color = 'red';
+                document.getElementById('agemessage').innerHTML = " You must be of 18+ age to create an account.";
+                return false;
+            }
             if (document.getElementById('password').value.length <6 ){
 					document.getElementById('passmessage').style.color = 'red';
                     document.getElementById('passmessage').innerHTML = " Password length is less than 6.";
 					return false;
 			}
             else{
-                if (document.getElementById('password').value ==
-                    document.getElementById('confirm_password').value) {
+                if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
                     document.getElementById('message').style.color = 'green';
                     document.getElementById('message').innerHTML = ' Matching';
                     return true;
@@ -173,6 +184,14 @@
                 }
             }
             
+        }
+
+        function get_age(born, now) {
+            var birthday = new Date(now.getFullYear(), born.getMonth(), born.getDate());
+            if (now >= birthday) 
+                return now.getFullYear() - born.getFullYear();
+            else
+                return now.getFullYear() - born.getFullYear() - 1;
         }
 
     </script>

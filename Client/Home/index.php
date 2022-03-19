@@ -8,13 +8,12 @@
 				<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
 				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link">Catalog</a>
 					<div class="dropdown-content">
-						<a href="#" class="nav-link">Bicycles</a>
-						<a href="car.php" class="nav-link">Cars</a>
-						<a href="#" class="nav-link">Motorscyles</a>
-						<a href="#" class="nav-link">Scooters</a>
+						<a href="catalog.php?type=1" class="nav-link">Bicycles</a>
+						<a href="catalog.php?type=2" class="nav-link">Cars</a>
+						<a href="catalog.php?type=3" class="nav-link">Motorscyles</a>
+						<a href="catalog.php?type=4" class="nav-link">Scooters</a>
 					</div>
 				</li>
-				<li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
 				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link">Orders</a>
 					<div class="dropdown-content">
 						<a href="#" class="nav-link">Current Rental</a>
@@ -27,7 +26,7 @@
 					<div class="dropdown-content">
 						<a href="#" class="nav-link">Edit Profile</a>
 						<a href="#" class="nav-link">Messages</a>
-						<a href="#" class="nav-link">Notification</a>
+						<a href="#" class="nav-link">Notifications</a>
 						<a href="../DB/process.php?action=logout" class="nav-link">Logout</a>
 					</div>
 				</li>
@@ -186,35 +185,72 @@
 										if(!empty($_GET['action'])){
 											switch($_GET['action']){
 												case 'load':
+													$pickupcity = $_POST['pickupcity'];
+													$dropoffcity = $_POST['dropoffcity'];
+													$bookpickdate = $_POST['book_pick_date'];
+													$bookoffdate = $_POST['book_off_date'];
+													$timepick = $_POST['time_pick'];
+													$catagory=  $_POST['catagory'];
+													$database=new Database();
+													$where['AssetTypeID']='="'.$catagory.'"';
+													$results=$database->getRows("Assets","*",$where);
+													$carouselIndicators='';
+													$carouselInner='<h5 style="font-weight: bold;">No result available with these requirements.</h5>';
+													$i=0;
+													foreach($results as $result){
+														if ($i==0){
+															$carouselIndicators='<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';
+															$carouselInner='<div class="carousel-item active">
+																<img class="d-block w-100" src="'.$result['PhotoLinks'].'" alt="'.$result['AssetTypeName'].'" style="width:100px;height:300px;">
+																<div style="width: 100%; display:table;">
+																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
+																		<button id="info" class="btn btn-block btn-lg btn-info" type="submit" onclick="showInfo()">Show Description</button>
+																	</div>
+																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
+																		<button id="info" class="btn btn-block btn-lg btn-success" type="submit" method ="POST" action="../DB/process.php?action=rentapplication&assetid='.$result['id'].'" onclick="return checkPayment()">Rent '.$result['CatalogType'].'</button>
+																	</div>
+																</div>
+																<h5 style="font-weight: bold;">'.$result['AssetName'].'</h5>
+																<p style="font-weight: bold;"> Price: '.$result['RentPricePerHour'].' zl / Hour </p>
+																<span id="infobox" style="display: none; color: black; background:rgba(255,255,255, 0.9); font-size:10pt; text-align: justify; white-space: pre-line;">
+																	<p>'.$result['Features'].'</p>
+																	<p>'.$result['Description'].'</p>
+																</span>
+															</div>';
+															}
+														else{
+															$carouselIndicators=$carouselIndicators.'<li data-target="#carouselExampleIndicators" data-slide-to="'.$i.'"></li>';
+															$carouselInner=$carouselInner.'<div class="carousel-item active">
+																<img class="d-block w-100" src="'.$result['PhotoLinks'].'" alt="'.$result['AssetTypeName'].'" style="width:100px;height:300px;">
+																<div style="width: 100%; display:table;">
+																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
+																		<button id="info" class="btn btn-block btn-lg btn-info" type="submit" onclick="showInfo()">Show Description</button>
+																	</div>
+																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
+																		<button id="info" class="btn btn-block btn-lg btn-success" type="submit" method ="POST" action="../DB/process.php?action=rentapplication&assetid='.$result['id'].'" onclick="return checkPayment()">Rent '.$result['CatalogType'].'</button>
+																	</div>
+																</div>
+																<h5 style="font-weight: bold;">'.$result['AssetName'].'</h5>
+																<p style="font-weight: bold;"> Price: '.$result['RentPricePerHour'].' zl / Hour </p>
+																<span id="infobox" style="display: none; color: black; background:rgba(255,255,255, 0.9); font-size:10pt; text-align: justify; white-space: pre-line;">
+																	<p>'.$result['Features'].'</p>
+																	<p>'.$result['Description'].'</p>
+																</span>
+															</div>';
+														}
+														$i=$i+1;
+													}
 													?>
 													<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 														<ol class="carousel-indicators">
-															<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-															<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-															<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+															<?php
+																echo $carouselIndicators;
+															?>
 														</ol>
 														<div class="carousel-inner">
-															<div class="carousel-item active">
-																<img class="d-block w-100" src="images/car-1.jpg" alt="First slide" style="width:100px;height:350px;">
-																<div class="carousel-caption d-none d-md-block">
-																	<h5>...</h5>
-																	<p>...</p>
-																</div>
-															</div>
-															<div class="carousel-item">
-																<img class="d-block w-100" src="images/car-2.jpg" alt="Second slide" style="width:100px;height:350px;"> 
-																<div class="carousel-caption d-none d-md-block">
-																	<h5>...</h5>
-																	<p>...</p>
-																</div>
-															</div>
-															<div class="carousel-item">
-																<img class="d-block w-100" src="images/car-3.jpg" alt="Third slide" style="width:100px;height:350px;">
-																<div class="carousel-caption d-none d-md-block">
-																	<h5>...</h5>
-																	<p>...</p>
-																</div>
-															</div>
+															<?php
+																echo $carouselInner;
+															?>
 														</div>
 														<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 															<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -226,7 +262,6 @@
 														</a>
 													</div>
 													<?php
-													echo $_POST['catagory'];
 													break;
 											}
 										}
@@ -279,6 +314,21 @@
             else{
                 return true;
             }
+		}
+
+		function showInfo(){
+			var x = document.getElementById("infobox");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+				document.getElementById('info').innerHTML = "Hide Description";
+			} else {
+				x.style.display = "none";
+				document.getElementById('info').innerHTML = "Show Description";
+			}
+		}
+
+		function checkPayment(){
+			return true;
 		}
 	</script>
 
