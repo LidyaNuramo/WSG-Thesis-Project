@@ -3,10 +3,18 @@
   require_once('/storage/ssd1/167/17747167/public_html/Client/DB/main.php');
 ?>
 
+<?php 
+	if(!empty($_GET['type'])){
+		$type=$_GET['type'];
+	}
+	else{
+		header('index.php');
+	}
+?>
       <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
-				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link">Catalog</a>
+				<li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+				<li class="nav-item active" id="nav-item-drop-down"><a href="#" class="nav-link">Catalog</a>
 					<div class="dropdown-content">
 						<a href="catalog.php?type=1" class="nav-link">Bicycles</a>
 						<a href="catalog.php?type=2" class="nav-link">Cars</a>
@@ -35,19 +43,32 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-    
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
-          <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Cars <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-3 bread">Choose Your Car</h1>
+
+	<?php 
+		switch($type){
+			case '1':
+				break;
+			case '2':
+				echo '<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url("/Images/parkedcars.jpg");" data-stellar-background-ratio="0.5">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+					<div class="col-md-9 ftco-animate pb-5">
+						<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Cars <i class="ion-ios-arrow-forward"></i></span></p>
+						<h1 class="mb-3 bread">Choose Your Car</h1>';
+				break;
+			}
+	?>
           </div>
         </div>
       </div>
     </section>
-		
+	
+	<?php
+		$database=new Database();
+		$where['AssetTypeID']='="'.$catagory.'"';
+		$results=$database->getRows("Assets","*",$where);
+	?>
 
 		<section class="ftco-section bg-light">
     	<div class="container">
