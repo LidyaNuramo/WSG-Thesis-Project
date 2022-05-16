@@ -77,7 +77,7 @@
 								}
 							?> 
 							<form action="index.php?action=load" class="request-form ftco-animate bg-primary" method="POST" onsubmit="return validateDate()" autofocus>
-								<h2>Make your trip</h2>
+								<h2>Search your trip</h2>
 								<div class="form-group">
 									<label for="" class="label">Pick-up location</label>
 									<select class="form-control" id="city" id="pickupcity" name="pickupcity" placeholder="City" name="city" required>
@@ -201,40 +201,38 @@
 														if ($i==0){
 															$carouselIndicators='<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';
 															$carouselInner='<div class="carousel-item active">
+																<h5 style="font-weight: bold;">'.$result['AssetName'].'</h5>
 																<img class="d-block w-100" src="'.$result['PhotoLinks'].'" alt="'.$result['AssetTypeName'].'" style="width:100px;height:300px;">
 																<div style="width: 100%; display:table;">
 																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
-																		<button id="info" class="btn btn-block btn-lg btn-info" type="submit" onclick="showInfo()">Show Description</button>
+																		<button id="info" class="btn btn-block btn-lg btn-info" type="submit" onclick="showInfo()">Show features</button>
 																	</div>
 																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
-																		<button id="info" class="btn btn-block btn-lg btn-success" type="submit" method ="POST" action="../DB/process.php?action=rentapplication&assetid='.$result['id'].'" onclick="return checkPayment()">Rent '.$result['CatalogType'].'</button>
+																		<a href="single.php?assetID='.$result['id'].'"><button id="info" class="btn btn-block btn-lg btn-success" type="submit">View full '.$result['CatalogType'].' Info</button></a>
 																	</div>
 																</div>
-																<h5 style="font-weight: bold;">'.$result['AssetName'].'</h5>
 																<p style="font-weight: bold;"> Price: '.$result['RentPricePerHour'].' zl / Hour </p>
 																<span id="infobox" style="display: none; color: black; background:rgba(255,255,255, 0.9); font-size:10pt; text-align: justify; white-space: pre-line;">
 																	<p>'.$result['Features'].'</p>
-																	<p>'.$result['Description'].'</p>
 																</span>
 															</div>';
 															}
 														else{
 															$carouselIndicators=$carouselIndicators.'<li data-target="#carouselExampleIndicators" data-slide-to="'.$i.'"></li>';
 															$carouselInner=$carouselInner.'<div class="carousel-item active">
+																<h5 style="font-weight: bold;">'.$result['AssetName'].'</h5>
 																<img class="d-block w-100" src="'.$result['PhotoLinks'].'" alt="'.$result['AssetTypeName'].'" style="width:100px;height:300px;">
 																<div style="width: 100%; display:table;">
 																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
-																		<button id="info" class="btn btn-block btn-lg btn-info" type="submit" onclick="showInfo()">Show Description</button>
+																		<button id="info" class="btn btn-block btn-lg btn-info" type="submit" onclick="showInfo()">Show features</button>
 																	</div>
 																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
-																		<button id="info" class="btn btn-block btn-lg btn-success" type="submit" method ="POST" action="../DB/process.php?action=rentapplication&assetid='.$result['id'].'" onclick="return checkPayment()">Rent '.$result['CatalogType'].'</button>
+																		<a href="single.php?assetID='.$result['id'].'"><button id="info" class="btn btn-block btn-lg btn-success" type="submit">View full '.$result['CatalogType'].' Info</button></a>
 																	</div>
 																</div>
-																<h5 style="font-weight: bold;">'.$result['AssetName'].'</h5>
 																<p style="font-weight: bold;"> Price: '.$result['RentPricePerHour'].' zl / Hour </p>
 																<span id="infobox" style="display: none; color: black; background:rgba(255,255,255, 0.9); font-size:10pt; text-align: justify; white-space: pre-line;">
 																	<p>'.$result['Features'].'</p>
-																	<p>'.$result['Description'].'</p>
 																</span>
 															</div>';
 														}
@@ -320,15 +318,11 @@
 			var x = document.getElementById("infobox");
 			if (x.style.display === "none") {
 				x.style.display = "block";
-				document.getElementById('info').innerHTML = "Hide Description";
+				document.getElementById('info').innerHTML = "Hide features";
 			} else {
 				x.style.display = "none";
-				document.getElementById('info').innerHTML = "Show Description";
+				document.getElementById('info').innerHTML = "Show features";
 			}
-		}
-
-		function checkPayment(){
-			return true;
 		}
 	</script>
 
