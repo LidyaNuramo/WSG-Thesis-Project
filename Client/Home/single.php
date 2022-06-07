@@ -77,6 +77,9 @@
 								<li class="nav-item">
 									<a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Description</a>
 								</li>
+								<li class="nav-item">
+							      <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-expanded="true">Rent</a>
+							    </li>
 							</ul>
 						</div>
 
@@ -92,6 +95,12 @@
 							<div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
 								<p style="text-align: justify; white-space: pre-line;"><?php echo $result['Description'] ?></p>
 							</div>
+
+							<div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+						      	<div class="row">
+							   		
+								</div>
+						    </div>
 						</div>
 					</div>
 				</div>
