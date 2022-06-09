@@ -1,5 +1,5 @@
 <?php
-require_once('main.php');
+require_once('cloudsql.php');
 
 if(!empty($_GET['action'])){
 	switch($_GET['action']){
