@@ -1,7 +1,7 @@
 <?php
   session_start();
   if(isset($_SESSION['username'])){
-      include('/storage/ssd1/167/17747167/public_html/Client/DB/main.php');
+      include('/storage/ssd1/167/17747167/public_html/DB/main.php');
 ?>
 
 <!DOCTYPE html>

@@ -1,6 +1,6 @@
 <?php
   include('/storage/ssd1/167/17747167/public_html/Client/Home/header.php');
-  require_once('/storage/ssd1/167/17747167/public_html/Client/DB/main.php');
+  require_once('/storage/ssd1/167/17747167/public_html/DB/main.php');
 ?>
 
 <?php 
