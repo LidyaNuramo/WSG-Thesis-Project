@@ -1,6 +1,6 @@
 <?php
-    include('/storage/ssd1/167/17747167/public_html/Client/header.php');
-    include('/storage/ssd1/167/17747167/public_html/Client/DB/main.php');
+    include('header.php');
+    include('../DB/cloudesql.php');
 ?>
 
     <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
@@ -12,7 +12,7 @@
         <div class="auth-box bg-dark border-top border-secondary">
             <a href="login.php" style="color: white; margin-left: 60%;">Sign into existing account</a>
                 <div>
-                    <form class="form-horizontal mt-3" action="DB/process.php?action=signup" method="POST" onsubmit="return validateForm()">
+                    <form class="form-horizontal mt-3" action="../DB/process.php?action=signup" method="POST" onsubmit="return validateForm()">
                         <div class="row pb-4">
                             <div class="col-12">
                                 <?php
@@ -197,5 +197,5 @@
     </script>
 
 <?php
-    include('/storage/ssd1/167/17747167/public_html/Client/footer.php');
+    include('footer.php');
 ?>
