@@ -11,7 +11,7 @@
         <div class="auth-box bg-dark border-top border-secondary">
             <a href="signup.php" style="color: white; margin-left: 70%;">Sign Up for a new account</a>
             <div id="loginform" style="margin-top:50 px;">
-                <form class="form-horizontal mt-3" id="loginform" action="DB/process.php?action=login" method="POST">
+                <form class="form-horizontal mt-3" id="loginform" action="../DB/process.php?action=login" method="POST">
                     <div class="row pb-4">
                         <div class="col-12">
     <?php
