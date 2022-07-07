@@ -1,6 +1,6 @@
 <?php
     include('header.php');
-    include('../DB/cloudesql.php');
+    include('../DB/cloudsql.php');
 ?>
 
     <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
