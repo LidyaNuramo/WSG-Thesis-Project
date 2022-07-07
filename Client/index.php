@@ -1,5 +1,5 @@
 <?php
-    include('/storage/ssd1/167/17747167/public_html/Client/header.php');
+    include('header.php');
 ?>
     
     <body>
@@ -50,6 +50,6 @@
         </div>
 
 <?php
-    include('/storage/ssd1/167/17747167/public_html/Client/footer.php');
+    include('footer.php');
 ?>
 

@@ -1,5 +1,5 @@
 <?php
-    include('/storage/ssd1/167/17747167/public_html/Client/header.php');
+    include('header.php');
 ?>
 
     <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
@@ -133,5 +133,5 @@
     </script>
 
 <?php
-    include('/storage/ssd1/167/17747167/public_html/Client/footer.php');
+    include('footer.php');
 ?>
