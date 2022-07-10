@@ -1,6 +1,6 @@
 <?php
   include('header.php');
-  require_once('../../DB/cloudesql.php');
+  require_once('../../DB/cloudsql.php');
 ?>
 
       <div class="collapse navbar-collapse" id="ftco-nav">

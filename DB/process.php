@@ -41,11 +41,11 @@ if(!empty($_GET['action'])){
 					"LastModifiedOn"=>$time,
 				);
 				$database->insertRows("Client",$data);
-				$rr="Location: ../login.php?action=yes";
+				$rr="Location: ../Client/login.php?action=yes";
 				header($rr);
 				break;
 			}
-			$rr="Location: ../signup.php?action=no";
+			$rr="Location: ../Client/signup.php?action=no";
 			header($rr);
 			break;
 		case 'login':
@@ -55,7 +55,7 @@ if(!empty($_GET['action'])){
 			$database=new Database();
 			$user=$database->getRow("Client","*",$where);
 			if ($user==NULL){
-				header("Location: ../login.php?action=createaccount");
+				header("Location: ../Client/login.php?action=createaccount");
 				break;
 			}
 			else{
@@ -64,26 +64,54 @@ if(!empty($_GET['action'])){
 					$_SESSION['username']=$user['FirstName'];
 					$_SESSION['lastname']=$user['LastName'];
 					$_SESSION['userID']=$user['id'];
-					header("Location: ../Home/");
+					$_SESSION['type']='client';
+					header("Location: ../Client/Home/");
 					break;
 			   }
 			   else{
-					header("Location: ../login.php?action=no");
+					header("Location: ../Client/login.php?action=no");
 					break;
 			   }
 			}
 		   break;
 		case 'recoverpassword':
-			header("Location: ../login.php");
+			header("Location: ../Client/login.php");
 			break;
 		case 'logout':
 			session_start();
 			if(isset($_SESSION['username'])){
 				session_destroy();
-				header('Location: ../index.php');
+				header('Location: ../Client/index.php');
 			}
 			else{
-				header('Location: ../index.php');
+				header('Location: ../Client/index.php');
+			}
+			break;
+		case 'stafflogin':
+			$email=$_POST['email'];
+			$password=$_POST['password'];
+			$where['Email']= '="'.$email.'"';
+			$database=new Database();
+			$user=$database->getRow("Staff","*",$where);
+			if ($user==NULL){
+				header("Location: ../Staff/index.php?action=createaccount");
+				break;
+			}
+			else{
+				if($user['Password']==$password){
+					session_start();
+					$_SESSION['username']=$user['FirstName'];
+					$_SESSION['lastname']=$user['LastName'];
+					$_SESSION['userID']=$user['id'];
+					$_SESSION['type']='staff';
+					$_SESSION['role']=$user['role'];
+					header("Location: ../Staff/Home/");
+					break;
+				}
+				else{
+					header("Location: /Staff/index.php?action=no");
+					break;
+				}
 			}
 			break;
 		case 'deleteHost':
