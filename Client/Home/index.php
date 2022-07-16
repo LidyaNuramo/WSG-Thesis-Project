@@ -1,6 +1,5 @@
 <?php
-  include('header.php');
-  require_once('../../DB/cloudsql.php');
+	require_once('header.php');
 ?>
 
       <div class="collapse navbar-collapse" id="ftco-nav">
@@ -27,7 +26,7 @@
 						<a href="#" class="nav-link">Edit Profile</a>
 						<a href="#" class="nav-link">Messages</a>
 						<a href="#" class="nav-link">Notifications</a>
-						<a href="../DB/process.php?action=logout" class="nav-link">Logout</a>
+						<a href="../../DB/process.php?action=logout" class="nav-link">Logout</a>
 					</div>
 				</li>
 	        </ul>
