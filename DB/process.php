@@ -92,7 +92,7 @@ if(!empty($_GET['action'])){
 			$password=$_POST['password'];
 			$where['Email']= '="'.$email.'"';
 			$database=new Database();
-			$user=$database->getRow("Staff","*",$where);
+			$user=$database->getRow("Employee","*",$where);
 			if ($user==NULL){
 				header("Location: ../Staff/index.php?action=createaccount");
 				break;
@@ -104,7 +104,7 @@ if(!empty($_GET['action'])){
 					$_SESSION['lastname']=$user['LastName'];
 					$_SESSION['userID']=$user['id'];
 					$_SESSION['type']='staff';
-					$_SESSION['role']=$user['role'];
+					$_SESSION['role']=$user['RoleID'];
 					header("Location: ../Staff/Home/");
 					break;
 				}
@@ -112,6 +112,16 @@ if(!empty($_GET['action'])){
 					header("Location: /Staff/index.php?action=no");
 					break;
 				}
+			}
+			break;
+		case 'logoutstaff':
+			session_start();
+			if(isset($_SESSION['username'])){
+				session_destroy();
+				header('Location: ../Staff/index.php');
+			}
+			else{
+				header('Location: ../Staff/index.php');
 			}
 			break;
 		case 'deleteHost':

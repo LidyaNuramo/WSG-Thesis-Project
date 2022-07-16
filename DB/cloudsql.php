@@ -7,7 +7,7 @@ class Database
 	private $host = "localhost";
 	private $db = "id17747167_mytravelrental";
 	private $user = "id17747167_root";
-	private $password = "1t++CZ3AZ0<Q(SS^";
+	private $password = "2^vR_Z0jye9#rCy7";
 	private $db_prefix = "";
 
 	function __construct() {

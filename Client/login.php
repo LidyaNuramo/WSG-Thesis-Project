@@ -32,7 +32,7 @@
 			  ?>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-				        <label for="exampleInputEmail1" style="color: red;" class="control-label">Incorrect email or password. Please try again.</label>
+				        <label for="exampleInputEmail1" style="color: red;" class="control-label">Incorrect password. Please try again.</label>
 				        <br>
                     </div>
 				</div>
