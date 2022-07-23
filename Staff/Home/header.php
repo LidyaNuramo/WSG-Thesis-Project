@@ -47,60 +47,30 @@
             <header class="topbar" data-navbarbg="skin5">
                 <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                     <div class="navbar-header" data-logobg="skin5">
-                        
-                        <!-- ============================================================== -->
-                        <!-- Logo -->
-                        <!-- ============================================================== -->
-                        <a class="navbar-brand" href="index.php">
-                            <!-- Logo icon -->
-                            <b class="logo-icon ps-2">
-                                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                                <!-- Dark Logo icon -->
-                                <img src="../Images/Logo.png" alt="homepage" class="light-logo" style="width: 50px; height:50 px;"/>
-                            </b>
-                            <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <a class="navbar-brand" href="index.php">MyTravel<span>Rentals</span></a>
-
-                            </span>
-                            <!-- Logo icon -->
-                            <!-- <b class="logo-icon"> -->
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <!-- <img src="../../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-
-                            <!-- </b> -->
-                            <!--End Logo icon -->
+                        <a class="navbar-brand" href="index.html">
+                            <a href="index.php" aria-expanded="false">
+                                <img src="../Images/Logo.png" alt="homepage" style="background-color: white;width: 50px; height:50 px;"/>
+                                <span class="logo-text">
+                                    <span class="hide-menu" style="color:white; font-weight: bold;font-size: 15px;">
+                                        MYTRAVEL<span style="color:green;">RENTALS</span>
+                                    </span>
+                                </span>
+                            </a>
                         </a>
-                        <!-- ============================================================== -->
-                        <!-- End Logo -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- Toggle which is visible on mobile only -->
-                        <!-- ============================================================== -->
-                        <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
-                                class="ti-menu ti-close"></i></a>
+                        <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                            <i class="ti-menu ti-close"></i>
+                        </a>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
                     <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                         <!-- ============================================================== -->
                         <!-- toggle and nav items -->
                         <!-- ============================================================== -->
                         <ul class="navbar-nav float-start me-auto">
-                            <li class="nav-item d-none d-lg-block"><a
-                                    class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)"
-                                    data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
-                            <!-- ============================================================== -->
-                            <!-- create new -->
-                            <!-- ============================================================== -->
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="d-none d-md-block"><?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?> <i class="fa fa-angle-down"></i></span>
-                                <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
-                            </a>
+                            <li class="nav-item d-none d-lg-block">
+                                <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar">
+                                    <i class="mdi mdi-menu font-24"></i>
+                                </a>
+                            </li>
                             <!-- ============================================================== -->
                             <!-- Search -->
                             <!-- ============================================================== -->
@@ -119,6 +89,11 @@
                             <!-- ============================================================== -->
                             <!-- Comment -->
                             <!-- ============================================================== -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?>
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="mdi mdi-bell font-24"></i>
@@ -231,9 +206,11 @@
                     <!-- Sidebar navigation-->
                     <nav class="sidebar-nav">
                         <ul id="sidebarnav" class="pt-4">
-                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                    href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                                        class="hide-menu">Dashboard</span></a>
+                            <li class="sidebar-item"> 
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span class="hide-menu">Dashboard</span>
+                                </a>
                             </li>
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
@@ -260,6 +237,10 @@
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
                                         <i class="mdi mdi-message-outline"></i>
                                         <span class="hide-menu"> Message Requests </span></a>
+                                    </li>
+                                    <li class="sidebar-item"><a href="#" class="sidebar-link">
+                                        <i class="mdi mdi-note-outline"></i>
+                                        <span class="mdi mdi-bulletin-board"> Announcements </span></a>
                                     </li>
                                 </ul>
                             </li>
