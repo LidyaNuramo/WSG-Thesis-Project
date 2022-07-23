@@ -56,8 +56,7 @@
                             <b class="logo-icon ps-2">
                                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                                 <!-- Dark Logo icon -->
-                                <img src="Images/Logo.png" alt="homepage" class="light-logo" />
-
+                                <img src="../Images/Logo.png" alt="homepage" class="light-logo" style="width: 50px; height:50 px;"/>
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
@@ -98,10 +97,10 @@
                             <!-- ============================================================== -->
                             <!-- create new -->
                             <!-- ============================================================== -->
-                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="d-none d-md-block"><?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?> <i class="fa fa-angle-down"></i></span>
                                 <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
-                            </li>
+                            </a>
                             <!-- ============================================================== -->
                             <!-- Search -->
                             <!-- ============================================================== -->
@@ -243,7 +242,7 @@
                                 </a>
                                 <ul aria-expanded="false" class="collapse  first-level">
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
-                                        <i class="mdi mdi-note-outline"></i>
+                                        <i class="mdi mdi-emoticon"></i>
                                         <span class="hide-menu"> Accounts </span></a>
                                     </li>
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
@@ -259,7 +258,7 @@
                                         <span class="hide-menu"> Completed Ordered </span></a>
                                     </li>
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
-                                        <i class="mdi mdi-note-outline"></i>
+                                        <i class="mdi mdi-message-outline"></i>
                                         <span class="hide-menu"> Message Requests </span></a>
                                     </li>
                                 </ul>
@@ -271,12 +270,12 @@
                                 </a>
                                 <ul aria-expanded="false" class="collapse  first-level">
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
-                                        <i class="mdi mdi-note-outline"></i>
+                                        <i class="mdi mdi-emoticon-cool"></i>
                                         <span class="hide-menu"> Accounts </span></a>
                                     </li>
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
                                         <i class="mdi mdi-note-outline"></i>
-                                        <span class="hide-menu"> Announcements </span></a>
+                                        <span class="mdi mdi-bulletin-board"> Announcements </span></a>
                                     </li>
                                 </ul>
                             </li>
