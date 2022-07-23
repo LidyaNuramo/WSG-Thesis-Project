@@ -104,7 +104,7 @@ if(!empty($_GET['action'])){
 					$_SESSION['lastname']=$user['LastName'];
 					$_SESSION['userID']=$user['id'];
 					$_SESSION['type']='staff';
-					$_SESSION['role']=$user['RoleID'];
+					$_SESSION['role']=strval($user['RoleID']);
 					header("Location: ../Staff/Home/");
 					break;
 				}
