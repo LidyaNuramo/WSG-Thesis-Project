@@ -98,7 +98,7 @@
 	<section class="ftco-section bg-light">
     	<div class="container">
 				<?php
-					$i=20;
+					$i=15;
 					$k= $i*($page-1);
 					$resultrows="".$k.",".$i.";";
 					$database=new Database();
@@ -109,7 +109,7 @@
 					echo '<div class="row"> 
 							<div class="col-md-4" style=""> Results: '.$count.'</div>
 							<div class="col-md-4" style=""></div>
-							<div class="col-md-4" style=""> Show: '.$i.'/page </div>
+							<div class="col-md-4" style=""> Showing: '.$i.' items / page </div>
 						</div> <div class="row">';
 					foreach ($results as $result){
 						echo '
@@ -165,9 +165,6 @@
         </div>
     	</div>
     </section>
-    
-  
-
 <?php
     include('footer.php');
 ?>

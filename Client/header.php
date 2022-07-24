@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="rentals, cars, motors, bicycles, scooters, online payment">
         <meta name="description" content="Travel Rental is plaform where you can rent, pay for and get rental cars, motors, bicycles, and scooters through the Internet.">
-        <title>My Travel Rentals</title>
+        <title>MyTravelRentals</title>
         <link rel="icon" type="image/png" sizes="16x16" href="Images/Logo.png">
         <link href="dist/css/style.min.css" rel="stylesheet">
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

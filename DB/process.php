@@ -39,6 +39,7 @@ if(!empty($_GET['action'])){
 					"CityID"=>$city,
 					"CreatedOn"=>$time,
 					"LastModifiedOn"=>$time,
+					"VerificationStatus"=>'No',
 				);
 				$database->insertRows("Client",$data);
 				$rr="Location: ../Client/login.php?action=yes";
