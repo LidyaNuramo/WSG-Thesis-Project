@@ -34,7 +34,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Inventory:</h5>
+                                <h5 class="card-title">Assets With Offline GPS for more than an hour:</h5>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
@@ -54,20 +54,23 @@
                                         <tbody>
                                         <?php
                                         $database=new Database();
-                                        $assets=$database->getRows("Assets","*");
+                                        $assets=$database->getRows("Assets","*",$where);
                                         foreach ($assets as $asset){
-                                            echo '<tr>
-                                                    <td>'.$asset['AssetNumber'].'</td>
-                                                    <td>'.$asset['AssetName'].'</td>
-                                                    <td>'.$asset['AssetTypeName'].'</td>
-                                                    <td>'.$asset['CatalogType'].'</td>
-                                                    <td>'.$asset['ManufacturerName'].'</td>
-                                                    <td>'.$asset['RegistrationDate'].'</td>
-                                                    <td>'.$asset['RentPricePerHour'].'</td>
-                                                    <td>'.$asset['CurrentRentStatus'].'</td>
-                                                    <td>'.$asset['LastLocationDate'].'</td>
-                                                    <td>'.$asset['TotalRentedDays'].'</td>
+                                            $Locationdatetime = strtotime ( $asset['LastLocationDate'] );
+                                            if ($Locationdatetime <= strtotime("-1 hour")){
+                                                echo '<tr>
+                                                <td>'.$asset['AssetNumber'].'</td>
+                                                <td>'.$asset['AssetName'].'</td>
+                                                <td>'.$asset['AssetTypeName'].'</td>
+                                                <td>'.$asset['CatalogType'].'</td>
+                                                <td>'.$asset['ManufacturerName'].'</td>
+                                                <td>'.$asset['RegistrationDate'].'</td>
+                                                <td>'.$asset['RentPricePerHour'].'</td>
+                                                <td>'.$asset['CurrentRentStatus'].'</td>
+                                                <td>'.$asset['LastLocationDate'].'</td>
+                                                <td>'.$asset['TotalRentedDays'].'</td>
                                                 </tr>';
+                                            }
                                         }
                                         ?>
                                         </tbody>

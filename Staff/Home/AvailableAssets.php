@@ -34,7 +34,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Inventory:</h5>
+                                <h5 class="card-title">Assets Available for Rental:</h5>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
@@ -46,15 +46,15 @@
                                                 <th>Manufacturer Name</th>
                                                 <th>Registration Date</th>
                                                 <th>Rent Per Hour</th>
-                                                <th>Asset Status</th>
                                                 <th>Last Location On</th>
                                                 <th>Rented Days</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php
+                                        $where['CurrentRentStatusID'] ='="1"';
                                         $database=new Database();
-                                        $assets=$database->getRows("Assets","*");
+                                        $assets=$database->getRows("Assets","*",$where);
                                         foreach ($assets as $asset){
                                             echo '<tr>
                                                     <td>'.$asset['AssetNumber'].'</td>
@@ -64,7 +64,6 @@
                                                     <td>'.$asset['ManufacturerName'].'</td>
                                                     <td>'.$asset['RegistrationDate'].'</td>
                                                     <td>'.$asset['RentPricePerHour'].'</td>
-                                                    <td>'.$asset['CurrentRentStatus'].'</td>
                                                     <td>'.$asset['LastLocationDate'].'</td>
                                                     <td>'.$asset['TotalRentedDays'].'</td>
                                                 </tr>';
@@ -80,7 +79,6 @@
                                                 <th>Manufacturer Name</th>
                                                 <th>Registration Date</th>
                                                 <th>Rent Per Hour</th>
-                                                <th>Asset Status</th>
                                                 <th>Last Location On</th>
                                                 <th>Rented Days</th>
                                             </tr>
