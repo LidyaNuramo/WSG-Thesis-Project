@@ -14,12 +14,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Employees</h4>
+                        <h4 class="page-title">Assets</h4>
                         <div class="ms-auto text-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Employees</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Assets</li>
                                 </ol>
                             </nav>
                         </div>
@@ -34,49 +34,49 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Accounts:</h5>
+                                <h5 class="card-title">Inventory:</h5>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>City</th>
-                                                <th>Country</th>
-                                                <th>Created On</th>
-                                                <th>Last Modified On</th>
-                                                <th>Job Title</th>
-                                                <th>Department</th>
+                                                <th>Asset Number</th>
+                                                <th>Model Name</th>
+                                                <th>Model Type</th>
+                                                <th>Catalog Type</th>
+                                                <th>Manufacturer Name</th>
+                                                <th>Registration Date</th>
+                                                <th>Rent Per Hour</th>
+                                                <th>Rented Days</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php
                                         $database=new Database();
-                                        $users=$database->getRows("Employees","*");
-                                        foreach ($users as $user){
+                                        $assets=$database->getRows("Assets","*");
+                                        foreach ($assets as $asset){
                                             echo '<tr>
-                                                <td>'.$user['FullName'].'</td>
-                                                <td>'.$user['Email'].'</td>
-                                                <td>'.$user['CityName'].'</td>
-                                                <td>'.$user['CountryName'].'</td>
-                                                <td>'.$user['CreatedOn'].'</td>
-                                                <td>'.$user['LastModifiedOn'].'</td>
-                                                <td>'.$user['JobTitle'].'</td>
-                                                <td>'.$user['DeptName'].'</td>
+                                                <td>'.$asset['AssetNumber'].'</td>
+                                                <td>'.$asset['AssetName'].'</td>
+                                                <td>'.$asset['AssetTypeName'].'</td>
+                                                <td>'.$asset['CatalogType'].'</td>
+                                                <td>'.$asset['ManufacturerName'].'</td>
+                                                <td>'.$asset['RegistrationDate'].'</td>
+                                                <td>'.$asset['RentPricePerHour'].'</td>
+                                                <td>'.$asset['TotalRentedDays'].'</td>
                                                 </tr>';
                                         }
                                         ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>City</th>
-                                                <th>Country</th>
-                                                <th>Created On</th>
-                                                <th>Last Modified On</th>
-                                                <th>Job Title</th>
-                                                <th>Department</th>
+                                                <th>Asset Number</th>
+                                                <th>Model Name</th>
+                                                <th>Model Type</th>
+                                                <th>Catalog Type</th>
+                                                <th>Manufacturer Name</th>
+                                                <th>Registration Date</th>
+                                                <th>Rent Per Hour</th>
+                                                <th>Rented Days</th>
                                             </tr>
                                         </tfoot>
                                     </table>
