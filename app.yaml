@@ -14,12 +14,12 @@ automatic_scaling:
 resources:
     cpu: 2
     memory_gb: 4
-    disk_size_gb: 100
+    disk_size_gb: 10
 
 env_variables:
     # Put production environment variables here.
     APP_DEBUG: true
     APP_ENV: production
     APP_NAME: "Thesis-Project-Webapp"
-    
+
     LOG_LEVEL: debug
