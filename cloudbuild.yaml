@@ -3,3 +3,10 @@ steps:
   args: [ 'build', '-t', 'europe-west1-docker.pkg.dev/thesis-project-lidya-nuramo/mytravelrental/mytravelrental:latest', '.' ]
 images:
 - 'europe-west1-docker.pkg.dev/thesis-project-lidya-nuramo/mytravelrental/mytravelrental:latest'
+- name: 'gcr.io/cloud-builders/gke-deploy'
+  args:
+  - 'run'
+  - '--filename'
+  - 'deployment.yaml'
+  - '--location'
+  - 'europe-west1'
