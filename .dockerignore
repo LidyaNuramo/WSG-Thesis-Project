@@ -8,6 +8,7 @@ vendor/
 # Exclude "build-time" ignore files.
 .dockerignore
 .gcloudignore
+Cloud.yaml
 
 # Exclude git history and configuration.
 .gitignore
