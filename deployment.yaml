@@ -1,24 +1,19 @@
----
-apiVersion: "apps/v1"
-kind: "Deployment"
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: "mytravelrental"
-  namespace: "default"
-  labels:
-    app: "mytravelrental"
+  name: mytravelrental
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: "mytravelrental"
+      app: mytravelrental
   template:
     metadata:
       labels:
-        app: "mytravelrental"
+        app: mytravelrental
     spec:
       containers:
-      - name: "wsg-thesis-project-1"
-        image: "europe-west1-docker.pkg.dev/thesis-project-lidya-nuramo/mytravelrental/mytravelrental:latest"
----
-apiVersion: "autoscaling/v2beta1"
-kind: "HorizontalPodAutoscaler"
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
