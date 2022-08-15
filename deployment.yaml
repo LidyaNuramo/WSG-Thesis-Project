@@ -17,3 +17,18 @@ spec:
         image: nginx:1.7.9
         ports:
         - containerPort: 80
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "mytravelrental-service"
+  namespace: "default"
+  labels:
+    app: "mytravelrental"
+spec:
+  ports:
+  - protocol: "TCP"
+    port: 80
+  selector:
+    app: "mytravelrental"
+  type: "LoadBalancer"
+  loadBalancerIP: ""
