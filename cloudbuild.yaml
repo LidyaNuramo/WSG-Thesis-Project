@@ -15,16 +15,16 @@ images:
 #   - '--platform'
 #   - 'managed'
 #   - '--allow-unauthenticated'
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - > 
-    gcloud container clusters create mytravelrental-container-cluster \
-    --project=thesis-project-lidya-nuramo \
-    --zone=europe-west1-c
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: ['set', 'image', 'deployment/mydepl', 'my-image=europe-west1-docker.pkg.dev/thesis-project-lidya-nuramo/mytravelrental/mytravelrental:latest']
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-c'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=mytravelrental-container-cluster'
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#   entrypoint: 'bash'
+#   args:
+#   - '-c'
+#   - > 
+#     gcloud container clusters create mytravelrental-container-cluster \
+#     --project=thesis-project-lidya-nuramo \
+#     --zone=europe-west1-c
+# - name: 'gcr.io/cloud-builders/kubectl'
+#   args: ['set', 'image', 'deployment/mydepl', 'my-image=europe-west1-docker.pkg.dev/thesis-project-lidya-nuramo/mytravelrental/mytravelrental:latest']
+#   env:
+#   - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-c'
+#   - 'CLOUDSDK_CONTAINER_CLUSTER=mytravelrental-container-cluster'
