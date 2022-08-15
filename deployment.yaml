@@ -1,0 +1,24 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "mytravelrental"
+  namespace: "default"
+  labels:
+    app: "mytravelrental"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "mytravelrental"
+  template:
+    metadata:
+      labels:
+        app: "mytravelrental"
+    spec:
+      containers:
+      - name: "wsg-thesis-project-1"
+        image: "gcr.io/thesis-project-lidya-nuramo/github.com/lidyanuramo/wsg-thesis-project:latest" europe-west1-docker.pkg.dev/thesis-project-lidya-nuramo/mytravelrental
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
