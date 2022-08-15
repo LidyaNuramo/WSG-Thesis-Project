@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: "wsg-thesis-project-1"
-        image: "gcr.io/thesis-project-lidya-nuramo/github.com/lidyanuramo/wsg-thesis-project:latest" europe-west1-docker.pkg.dev/thesis-project-lidya-nuramo/mytravelrental
+        image: "europe-west1-docker.pkg.dev/thesis-project-lidya-nuramo/mytravelrental/mytravelrental:latest"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
