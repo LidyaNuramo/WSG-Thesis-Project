@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: "wsg-thesis-project-1"
-        image: "gcr.io/thesis-project-lidya-nuramo/github.com/lidyanuramo/wsg-thesis-project:009588c53939a1d6c683c1ee6a442437d1a40f9a"
+        image: "gcr.io/thesis-project-lidya-nuramo/github.com/lidyanuramo/wsg-thesis-project:latest"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
