@@ -46,7 +46,9 @@
                                         <!-- column -->
                                         <div class="col-lg-9">
                                             <div>
-                                                <iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00"></iframe>
+                                                <?php 
+                                                    include("https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00");
+                                                ?>
                                             </div>
                                         </div>
                                         <!-- column -->
