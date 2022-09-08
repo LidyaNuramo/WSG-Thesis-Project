@@ -27,7 +27,7 @@
     <script src="assets/libs/quill/dist/quill.min.js"></script>
     <script src="Home/js/jquery.min.js"></script>
     <script src="Home/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="/Home/js/popper.min.js"></script>
+    <script src="Home/js/popper.min.js"></script>
     <script src="Home/js/bootstrap.min.js"></script>
     <script src="Home/js/jquery.easing.1.3.js"></script>
     <script src="Home/js/jquery.waypoints.min.js"></script>

@@ -25,7 +25,7 @@
 
         <link rel="stylesheet" href="Home/css/ionicons.min.css">
 
-        <link rel="stylesheet" href="/Home/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="Home/css/bootstrap-datepicker.css">
         <link rel="stylesheet" href="Home/css/jquery.timepicker.css">
 
         <link rel="stylesheet" href="Home/css/flaticon.css">
