@@ -1,4 +1,4 @@
-    <footer class="footer text-center">
+                <footer class="footer text-center">
                     All Rights Reserved. Thesis project by Lidya Nuramo. Website templates from  <a
                         href="https://www.wrappixel.com">WrapPixel</a>.
                 </footer>
