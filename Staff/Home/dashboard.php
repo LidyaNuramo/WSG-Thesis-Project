@@ -46,7 +46,7 @@
                                         <!-- column -->
                                         <div class="col-lg-9">
                                             <div class="flot-chart">
-                                                <iframe src="https://lidyagnuramo.grafana.net/goto/dH0Ec0M4z?orgId=1" width="450" height="200" frameborder="0"></iframe>
+                                                <iframe src="https://snapshots.raintank.io/dashboard/snapshot/Spkdjy2i9xt49g7dLOOX4ExJJ12iH4PJ" width="450" height="200" frameborder="0"></iframe>
                                             </div>
                                         </div>
                                         <!-- column -->
