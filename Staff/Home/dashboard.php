@@ -46,6 +46,7 @@
                                         <!-- column -->
                                         <div class="col-lg-9">
                                             <div>
+                                                <iframe src="1.php"></iframe>
                                                 <div id ="content"> </div>
                                             </div>
                                         </div>
