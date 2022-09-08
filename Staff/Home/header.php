@@ -201,27 +201,26 @@
                                 </ul>
                             </li>
                             <?php
-                            if ($role or string($role) == "1" ){
-                                echo '
-                                    <li class="sidebar-item"> 
-                                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                                            <i class="mdi mdi-account-key "></i>
-                                            <span class="hide-menu"> Employees </span>
-                                        </a>
-                                        <ul aria-expanded="false" class="collapse  first-level">
-                                            <li class="sidebar-item"><a href="eaccounts.php" class="sidebar-link">
-                                                <i class="mdi mdi-account-multiple"></i>
-                                                <span class="hide-menu"> Accounts </span></a>
-                                            </li>
-                                            <!--li class="sidebar-item"><a href="#" class="sidebar-link">
-                                                <i class="fas fa-bullhorn"></i>
-                                                <span class="hide-menu"> Announcements </span></a>
-                                            </li-->
-                                        </ul>
-                                    </li>
-                                '
-
-                            }
+                                if ($role == "1" ){
+                                    echo '
+                                        <li class="sidebar-item"> 
+                                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                                <i class="mdi mdi-account-key "></i>
+                                                <span class="hide-menu"> Employees </span>
+                                            </a>
+                                            <ul aria-expanded="false" class="collapse  first-level">
+                                                <li class="sidebar-item"><a href="eaccounts.php" class="sidebar-link">
+                                                    <i class="mdi mdi-account-multiple"></i>
+                                                    <span class="hide-menu"> Accounts </span></a>
+                                                </li>
+                                                <!--li class="sidebar-item"><a href="#" class="sidebar-link">
+                                                    <i class="fas fa-bullhorn"></i>
+                                                    <span class="hide-menu"> Announcements </span></a>
+                                                </li-->
+                                            </ul>
+                                        </li>
+                                    ';
+                                }
                             ?>
                             <li class="sidebar-item"> 
                                 <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
@@ -264,27 +263,26 @@
                                 </ul>
                             </li>
                             <?php
-                            if ($role or string($role) == "1" ){
-                                echo '
-                                    <li class="sidebar-item"> 
-                                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                                            <i class="mdi mdi-cash-multiple"></i>
-                                            <span class="hide-menu"> Finances </span>
-                                        </a>
-                                        <ul aria-expanded="false" class="collapse  first-level">
-                                            <li class="sidebar-item"><a href="#" class="sidebar-link">
-                                                <i class="mdi mdi-chart-bar"></i>
-                                                <span class="hide-menu"> Monthly Stats </span></a>
-                                            </li>
-                                            <li class="sidebar-item"><a href="#" class="sidebar-link">
-                                                <i class="mdi mdi-chart-histogram"></i>
-                                                <span class="hide-menu"> Annual Stats </span></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                '
-
-                            }
+                                if ($role == "1" ){
+                                    echo '
+                                        <li class="sidebar-item"> 
+                                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                                <i class="mdi mdi-cash-multiple"></i>
+                                                <span class="hide-menu"> Finances </span>
+                                            </a>
+                                            <ul aria-expanded="false" class="collapse  first-level">
+                                                <li class="sidebar-item"><a href="#" class="sidebar-link">
+                                                    <i class="mdi mdi-chart-bar"></i>
+                                                    <span class="hide-menu"> Monthly Stats </span></a>
+                                                </li>
+                                                <li class="sidebar-item"><a href="#" class="sidebar-link">
+                                                    <i class="mdi mdi-chart-histogram"></i>
+                                                    <span class="hide-menu"> Annual Stats </span></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    ';
+                                }
                             ?>
                         </ul>
                     </nav>
