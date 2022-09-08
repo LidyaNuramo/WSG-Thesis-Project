@@ -46,7 +46,7 @@
                                         <!-- column -->
                                         <div class="col-lg-9">
                                             <div class="flot-chart">
-                                            <iframe src="https://lidyagnuramo.grafana.net/d-solo/wnSDH0M4k/mytravelrental-dashboard?orgId=1&from=1662589482707&to=1662611082707&panelId=2" width="450" height="200" frameborder="0"></iframe>
+                                            <iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" width="450" height="200" frameborder="0"></iframe>
                                             </div>
                                         </div>
                                         <!-- column -->
