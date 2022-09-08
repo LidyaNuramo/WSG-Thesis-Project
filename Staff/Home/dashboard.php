@@ -60,7 +60,7 @@
                 <script>
 
                     function load_dashboard() {
-                        document.getElementById("content").innerHTML='<object type="text/html" data="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" ></object>';
+                        $("#content").load("https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00");
                     }
 
                     load_dashboard();
