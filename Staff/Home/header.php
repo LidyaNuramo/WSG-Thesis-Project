@@ -2,6 +2,10 @@
   session_start();
   if(isset($_SESSION['username'])&& $_SESSION['type']=='staff'){
       include('../../DB/cloudsql.php');
+      if(isset($_SESSION['role'])){
+        $role = $_SESSION['role'];
+      }
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -186,14 +190,14 @@
                                         <i class="fas fa-users"></i>
                                         <span class="hide-menu"> Accounts </span></a>
                                     </li>
-                                    <li class="sidebar-item"><a href="#" class="sidebar-link">
+                                    <!--li class="sidebar-item"><a href="#" class="sidebar-link">
                                         <i class="mdi mdi-message-outline"></i>
                                         <span class="hide-menu"> Message Requests </span></a>
                                     </li>
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
                                         <i class="fas fa-bullhorn"></i>
                                         <span class="hide-menu"> Announcements </span></a>
-                                    </li>
+                                    </li-->
                                 </ul>
                             </li>
                             <li class="sidebar-item"> 
@@ -206,10 +210,10 @@
                                         <i class="mdi mdi-account-multiple"></i>
                                         <span class="hide-menu"> Accounts </span></a>
                                     </li>
-                                    <li class="sidebar-item"><a href="#" class="sidebar-link">
+                                    <!--li class="sidebar-item"><a href="#" class="sidebar-link">
                                         <i class="fas fa-bullhorn"></i>
                                         <span class="hide-menu"> Announcements </span></a>
-                                    </li>
+                                    </li-->
                                 </ul>
                             </li>
                             <li class="sidebar-item"> 
@@ -238,10 +242,10 @@
                                     <span class="hide-menu"> Rentals </span></a>
                                 </a>
                                 <ul aria-expanded="false" class="collapse  first-level">
-                                    <li class="sidebar-item"><a href="#" class="sidebar-link">
+                                    <!--li class="sidebar-item"><a href="#" class="sidebar-link">
                                         <i class="far fa-bookmark"></i>
                                         <span class="hide-menu"> Reservations </span></a>
-                                    </li>
+                                    </li-->
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
                                         <i class="fas fa-clock"></i>
                                         <span class="hide-menu"> Active Orders </span></a>
