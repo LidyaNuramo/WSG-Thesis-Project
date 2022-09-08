@@ -83,23 +83,23 @@
                                     <?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?>
                                 </a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <!--li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="far fa-envelope"></i>
                                 </a>
-                            </li>
+                            </li-->
                             <!-- End Comment -->
                             <!-- Messages -->
-                            <li class="nav-item dropdown">
+                            <!--li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="mdi mdi-bell font-24"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end mailbox animated bounceInDown" aria-labelledby="2">
                                     <ul class="list-style-none">
                                         <li>
-                                            <div class="">
+                                            <div class=""-->
                                                 <!-- Message -->
-                                                <a href="javascript:void(0)" class="link border-top">
+                                                <!--a href="javascript:void(0)" class="link border-top">
                                                     <div class="d-flex no-block align-items-center p-10">
                                                         <span class="btn btn-success btn-circle"><i
                                                                 class="ti-calendar"></i></span>
@@ -108,9 +108,9 @@
                                                             <span class="mail-desc">Just a reminder that event</span>
                                                         </div>
                                                     </div>
-                                                </a>
+                                                </a-->
                                                 <!-- Message -->
-                                                <a href="javascript:void(0)" class="link border-top">
+                                                <!--a href="javascript:void(0)" class="link border-top">
                                                     <div class="d-flex no-block align-items-center p-10">
                                                         <span class="btn btn-info btn-circle"><i
                                                                 class="ti-settings"></i></span>
@@ -119,9 +119,9 @@
                                                             <span class="mail-desc">You can customize this template</span>
                                                         </div>
                                                     </div>
-                                                </a>
+                                                </a-->
                                                 <!-- Message -->
-                                                <a href="javascript:void(0)" class="link border-top">
+                                                <!--a href="javascript:void(0)" class="link border-top">
                                                     <div class="d-flex no-block align-items-center p-10">
                                                         <span class="btn btn-primary btn-circle"><i
                                                                 class="ti-user"></i></span>
@@ -130,9 +130,9 @@
                                                             <span class="mail-desc">Just see the my admin!</span>
                                                         </div>
                                                     </div>
-                                                </a>
+                                                </a-->
                                                 <!-- Message -->
-                                                <a href="javascript:void(0)" class="link border-top">
+                                                <!--a href="javascript:void(0)" class="link border-top">
                                                     <div class="d-flex no-block align-items-center p-10">
                                                         <span class="btn btn-danger btn-circle"><i
                                                                 class="fa fa-link"></i></span>
@@ -146,7 +146,7 @@
                                         </li>
                                     </ul>
                                 </ul>
-                            </li>
+                            </li-->
                             <!-- End Messages -->
                             <!-- User profile and search -->
                             <li class="nav-item dropdown">
