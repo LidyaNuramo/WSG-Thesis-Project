@@ -46,11 +46,7 @@
                                         <!-- column -->
                                         <div class="col-lg-9">
                                             <div>
-                                                <iframe width="560" height="315" src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                                                <?php 
-                                                    include("https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00");
-                                                ?>
+                                                <div id ="content"> </div>
                                             </div>
                                         </div>
                                         <!-- column -->
@@ -60,3 +56,13 @@
                         </div>
                     </div>
                 </div>
+
+                <script>
+
+                    function load_dashboard() {
+                        document.getElementById("content").innerHTML='<object type="text/html" data="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" ></object>';
+                    }
+
+                    load_dashboard();
+
+                </script>
