@@ -45,8 +45,8 @@
                                     <div class="row">
                                         <!-- column -->
                                         <div class="col-lg-9">
-                                            <div class="flot-chart">
-                                            <iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" width="450" height="200" frameborder="0"></iframe>
+                                            <div>
+                                                <iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00"></iframe>
                                             </div>
                                         </div>
                                         <!-- column -->
