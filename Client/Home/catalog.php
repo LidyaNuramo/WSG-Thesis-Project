@@ -41,7 +41,7 @@
 						<a href="#" class="nav-link">Edit Profile</a>
 						<!--a href="#" class="nav-link">Messages</a>
 						<a href="#" class="nav-link">Notifications</a-->
-						<a href="../DB/process.php?action=logout" class="nav-link">Logout</a>
+						<a href="../../DB/process.php?action=logout" class="nav-link">Logout</a>
 					</div>
 				</li>
 	        </ul>
