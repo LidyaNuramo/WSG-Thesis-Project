@@ -46,7 +46,7 @@
                                         <!-- column -->
                                         <div class="col-lg-9">
                                             <div>
-                                                <iframe src="1.php"></iframe>
+                                                <iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" sandbox="allow--origin allow-scripts"></iframe>
                                                 <div id ="content"> </div>
                                             </div>
                                         </div>
