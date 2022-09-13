@@ -52,7 +52,7 @@
                                             <div>
                                                 <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
                                                 <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
-                                                <iframe is="x-frame-bypass" src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00"></iframe>
+                                                <iframe is="x-frame-bypass" src="https://snapshots.raintank.io/dashboard/snapshot/F0mMsjghC4OAF4nisuIcUqEre01dbuLX"></iframe>
                                             </div>
                                          </div>
                                         <!-- column -->
