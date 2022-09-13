@@ -46,7 +46,8 @@
                                         <!-- column -->
                                         <div class="col-lg-9">
                                             <div>
-                                                <iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" sandbox="allow--origin allow-scripts"></iframe>
+                                                <!--iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" sandbox="allow--origin allow-scripts"></iframe-->
+                                                <image src="https://snapshots.raintank.io/dashboard/snapshot/a2z6qBfLwqTU25jZcJSj11Eb3delabSL">
                                                 <div id ="content"> </div>
                                             </div>
                                         </div>
