@@ -49,11 +49,12 @@
                                                 <!--iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" sandbox="allow--origin allow-scripts"></iframe>
                                                 <image src="https://snapshots.raintank.io/dashboard/snapshot/a2z6qBfLwqTU25jZcJSj11Eb3delabSL"-->
                                             </div>
-                                            <div> 
-                                                    <object type="text/html" data="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" width="800px" height="600px" style="overflow:auto;border:5px ridge blue">
-                                                    </object>
-                                                 </div>
-                                        </div>
+                                            <div>
+                                                <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
+                                                <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
+                                                <iframe is="x-frame-bypass" src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00"></iframe>
+                                            </div>
+                                         </div>
                                         <!-- column -->
                                     </div>
                                 </div>
