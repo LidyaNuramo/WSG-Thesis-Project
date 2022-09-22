@@ -1,3 +1,0 @@
-Options FollowSymLinks
-RewriteEngine On
-RewriteRule ^API/Devices/locate/?([^-]*)/([^-]*)/([^-]*)/([^-]*)/([^-]*)/([^-]*)$ api.php?action=addlocation&long=$1&lat=$2&alt=$3&vel=$4&datetime=$5&device=$6 [L]
