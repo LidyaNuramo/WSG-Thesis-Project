@@ -46,10 +46,15 @@
                                         <!-- column -->
                                         <div class="col-lg-9">
                                             <div>
-                                                <iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" sandbox="allow--origin allow-scripts"></iframe>
-                                                <div id ="content"> </div>
+                                                <!--iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" sandbox="allow--origin allow-scripts"></iframe>
+                                                <image src="https://snapshots.raintank.io/dashboard/snapshot/a2z6qBfLwqTU25jZcJSj11Eb3delabSL"-->
                                             </div>
-                                        </div>
+                                            <div>
+                                                <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
+                                                <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
+                                                <iframe is="x-frame-bypass" src="https://snapshots.raintank.io/dashboard/snapshot/F0mMsjghC4OAF4nisuIcUqEre01dbuLX"></iframe>
+                                            </div>
+                                         </div>
                                         <!-- column -->
                                     </div>
                                 </div>
@@ -58,7 +63,7 @@
                     </div>
                 </div>
 
-                <script>
+                <!--script>
 
                     function load_dashboard() {
                         $("#content").load("https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00");
@@ -66,4 +71,4 @@
 
                     load_dashboard();
 
-                </script>
+                </script-->
