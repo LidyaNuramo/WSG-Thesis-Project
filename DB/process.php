@@ -125,34 +125,26 @@ if(!empty($_GET['action'])){
 				header('Location: ../Staff/index.php');
 			}
 			break;
-		case 'deleteHost':
-			$id=$_GET['id'];
-			$where['id']= '='.$id;
+		case 'addlocation':
 			$database=new Database();
-			$database->removeRows("hosts",$where);
-			header('Location: ../Exercise1');
-			break;
-		case 'addhost':
-			$address=$_POST['name'];
-			$port=$_POST['lastname'];
-			$failedattempts=0;
-			$failedtime=NULL;
-			$totaldowntime=0;
-			session_start();
-			$addedby=$_SESSION['userID'];
-			$database=new Database();
-			$data=array(
-				"ID"=>null,
-				"FirstName"=>$fname,
-				"LastName"=>$lname,
-				"AccountType"=>"standard",
-				"Email"=>$email,
-				"Phone"=>$phone,
-				"Password"=>$password,
-			);
-			$database->insertRows("hosts",$data);
-			$rr="Location: ../Exercise2";
-			header($rr);
+			$device=$_GET['device'];
+			$where['AssetNumber']= '="'.$device.'"';
+			$dev=$database->getRow("DeviceInfo","*",$where);
+			date_default_timezone_set("Europe/Warsaw"); 
+			$time = date("Y-m-d h:i:sa");
+			if ($dev != NULL){
+				$devid=$dev['id'];
+				$long=$_GET['long'];
+				$lat=$_GET['lat'];
+				$datetime=$time;
+				$data = array(
+					"DeviceId" => $devid,
+					"Long" => $long,
+					"Lat" => $lat,
+					"LocationDate" => $datetime
+				);
+				$database->insertRows('GPSLocation', $data);
+			}
 			break;
    }
 }
