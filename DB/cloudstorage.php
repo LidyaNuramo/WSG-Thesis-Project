@@ -4,10 +4,10 @@ require '../vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
 
-// // Providing the Google Cloud project ID.
-// $storage = new StorageClient([
-//     'projectId' => 'wsg-thesis-project-359600'
-// ]);
+// Providing the Google Cloud project ID.
+$storage = new StorageClient([
+    'projectId' => 'wsg-thesis-project-359600'
+]);
 
 // $bucket = $storage->bucket('mytravelrental-bucket');
 
