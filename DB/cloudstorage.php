@@ -11,17 +11,12 @@ $storage = new StorageClient([
 
 $bucket = $storage->bucket('mytravelrental-bucket');
 
-$temp = tmpfile();
-fwrite($temp, "writing to tempfile");
-fseek($temp, 0);
-echo fread($temp, 1024);
 
 $bucket->upload(
     "Test file",
     ['name' => "Test.txt"]
 );
 
-fclose($temp); // this removes the file
 
 // Using Predefined ACLs to manage object permissions, you may
 // upload a file and give read access to anyone with the URL.
