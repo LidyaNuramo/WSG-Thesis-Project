@@ -9,7 +9,7 @@ $storage = new StorageClient([
     'projectId' => 'wsg-thesis-project-359600'
 ]);
 
-// $bucket = $storage->bucket('mytravelrental-bucket');
+$bucket = $storage->bucket('mytravelrental-bucket');
 
 // $bucket->upload(
 //     fopen('cloudsql.php', 'r')
