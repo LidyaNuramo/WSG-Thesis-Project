@@ -11,9 +11,9 @@ $storage = new StorageClient([
 
 $bucket = $storage->bucket('mytravelrental-bucket');
 
-// $bucket->upload(
-//     fopen('cloudsql.php', 'r')
-// );
+$bucket->upload(
+    fopen('cloudsql.php', 'r')
+);
 
 // Using Predefined ACLs to manage object permissions, you may
 // upload a file and give read access to anyone with the URL.
