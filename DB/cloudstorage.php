@@ -11,11 +11,17 @@ $storage = new StorageClient([
 
 $bucket = $storage->bucket('mytravelrental-bucket');
 
+try {
+    $bucket->upload(
+        "Test file",
+        ['name' => "Test.txt"]
+    );
+}
 
-$bucket->upload(
-    "Test file",
-    ['name' => "Test.txt"]
-);
+catch (Exception $e) {
+    // maybe invalid private key ?
+    print $e;
+}
 
 
 // Using Predefined ACLs to manage object permissions, you may
