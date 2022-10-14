@@ -18,7 +18,7 @@ echo fread($temp, 1024);
 
 $bucket->upload(
     "Test file",
-    ['name' => "Test.txt"
+    ['name' => "Test.txt"]
 );
 
 fclose($temp); // this removes the file
