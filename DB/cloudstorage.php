@@ -5,8 +5,12 @@ require '../vendor/autoload.php';
 use Google\Cloud\Storage\StorageClient;
 
 // Providing the Google Cloud project ID.
+// $storage = new StorageClient([
+//     'projectId' => 'wsg-thesis-project-359600'
+// ]);
+
 $storage = new StorageClient([
-    'projectId' => 'wsg-thesis-project-359600'
+    'keyFile' => json_decode(file_get_contents('../credentials/svcaccount.JSON'), true)
 ]);
 
 $bucket = $storage->bucket('mytravelrental-bucket');
