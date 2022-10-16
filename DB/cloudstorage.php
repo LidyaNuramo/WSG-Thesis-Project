@@ -18,7 +18,7 @@ class Bucket{
         try {
             $this->$storage_bucket->upload(
                 "Test file",
-                ['name' => "Test.txt"]
+                ['name' => "Test2.txt"]
             );
         }
         
@@ -59,5 +59,8 @@ class Bucket{
 	}
 
 }
+
+$bucket = new Bucket();
+$bucket.upload_file();
 
 ?>
