@@ -2,9 +2,9 @@
 
 require '../vendor/autoload.php';
 
-class Bucket{
+use Google\Cloud\Storage\StorageClient;
 
-    use Google\Cloud\Storage\StorageClient;
+class Bucket{
 
     private $storage_bucket = null;
     private $keypath = "../credentials/svcaccount.JSON";
