@@ -28,11 +28,11 @@
 						<a href="#" class="nav-link">History</a>
 					</div>
 				</li>
-				<!--li class="nav-item"><a href="news.php" class="nav-link">News</a></li-->
-				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li>
+				<!--li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
+				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li-->
 				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link"><?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?></a>
 					<div class="dropdown-content">
-						<a href="#" class="nav-link">Edit Profile</a>
+						<a href="profile.php" class="nav-link">Edit Profile</a>
 						<!--a href="#" class="nav-link">Messages</a>
 						<a href="#" class="nav-link">Notifications</a-->
 						<a href="../../DB/process.php?action=logout" class="nav-link">Logout</a>

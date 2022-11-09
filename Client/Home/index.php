@@ -19,11 +19,11 @@
 						<a href="#" class="nav-link">History</a>
 					</div>
 				</li>
-				<!--li class="nav-item"><a href="news.php" class="nav-link">News</a></li-->
-				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li>
+				<!--li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
+				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li-->
 				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link"><?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?></a>
 					<div class="dropdown-content">
-						<a href="#" class="nav-link">Edit Profile</a>
+						<a href="profile.php" class="nav-link">Edit Profile</a>
 						<!--a href="#" class="nav-link">Messages</a>
 						<a href="#" class="nav-link">Notifications</a-->
 						<a href="../../DB/process.php?action=logout" class="nav-link">Logout</a>
@@ -300,13 +300,21 @@
     </section>
 
 	<script>
+
 		function validateDate(){
 			var startDate = document.getElementById("book_pick_date").value;
     		var endDate = document.getElementById("book_off_date").value;
+			var now = new Date();
+  			now.setHours(0,0,0,0);
+			if (Date.parse(startDate) > now){
+				document.getElementById('message').style.color = 'red';
+				document.getElementById('message').innerHTML = " Selected pickup date is in the past. ";
+				return false;
+			}
 			if (Date.parse(startDate) > Date.parse(endDate)){
-					document.getElementById('message').style.color = 'red';
-                    document.getElementById('message').innerHTML = " Drop off date should be equal to or greater than Pick up date. ";
-					return false;
+				document.getElementById('message').style.color = 'red';
+				document.getElementById('message').innerHTML = " Drop off date should be equal to or greater than Pick up date. ";
+				return false;
 			}
             else{
                 return true;
