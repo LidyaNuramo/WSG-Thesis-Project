@@ -102,7 +102,7 @@
 					$k= $i*($page-1);
 					$resultrows="".$k.",".$i.";";
 					$database=new Database();
-					$where['AssetTypeID']='="'.$type.'"';
+					$where['CatalogTypeID']='="'.$type.'"';
 					$where['CurrentRentStatus']='="Available"';
 					$results=$database->getRows("Assets","*",$where,"AND",null,$resultrows);
 					$count=count($results);
