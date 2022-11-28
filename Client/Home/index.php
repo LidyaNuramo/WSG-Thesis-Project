@@ -19,13 +19,13 @@
 						<a href="#" class="nav-link">History</a>
 					</div>
 				</li>
-				<!--li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
-				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li-->
+				<li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
+				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li>
 				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link"><?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?></a>
 					<div class="dropdown-content">
 						<a href="profile.php" class="nav-link">Edit Profile</a>
-						<!--a href="#" class="nav-link">Messages</a>
-						<a href="#" class="nav-link">Notifications</a-->
+						<a href="#" class="nav-link">Messages</a>
+						<a href="#" class="nav-link">Notifications</a>
 						<a href="../../DB/process.php?action=logout" class="nav-link">Logout</a>
 					</div>
 				</li>
@@ -89,13 +89,13 @@
 											}
                                             $database=new Database();
                                             $where['id']="";
-                                            $results=$database->getRows("City","*",$where,"AND","Name");
+                                            $results=$database->getRows("assetlocations","DISTINCT id, CityID, CityName",$where,"AND","CityName");
                                             foreach($results as $result){
-												if(!empty($catagory) && $result['id']==$pickupcity){
-													echo '<option value="' .$result['id'].'" selected style="color: black; size:6;">' . $result['Name']. '</option>';
+												if(!empty($catagory) && $result['CityID']==$pickupcity){
+													echo '<option value="'.$result['CityID'].'" selected style="color: black; size:6;">'.$result['CityName'].'</option>';
 												}
 												else{
-													echo '<option value="' .$result['id'].'" style="color: black; size:6;">' . $result['Name']. '</option>';
+													echo '<option value="'.$result['CityID'].'" style="color: black; size:6;">'.$result['CityName'].'</option>';
 												}
                                             }
                                         ?>
@@ -113,13 +113,13 @@
 											}
                                             $database=new Database();
                                             $where['id']="";
-                                            $results=$database->getRows("City","*",$where,"AND","Name");
+                                            $results=$database->getRows("assetlocations","DISTINCT id, CityID, CityName",$where,"AND","CityName");
                                             foreach($results as $result){
-												if(!empty($catagory) && $result['id']==$dropoffcity){
-													echo '<option value="' .$result['id'].'" selected style="color: black; size:6;">' . $result['Name']. '</option>';
+												if(!empty($catagory) && $result['CityID']==$dropoffcity){
+													echo '<option value="'.$result['CityID'].'" selected style="color: black; size:6;">'.$result['CityName'].'</option>';
 												}
 												else{
-													echo '<option value="' .$result['id'].'" style="color: black; size:6;">' . $result['Name']. '</option>';
+													echo '<option value="'.$result['CityID'].'" style="color: black; size:6;">'.$result['CityName'].'</option>';
 												}
                                             }
                                         ?>
@@ -175,7 +175,6 @@
 								<div class="form-group">
 									<input type="submit" value="Rent A Car Now" class="btn btn-secondary py-3 px-4">
 								</div>
-							</form>
 						</div>
 						<div class="col-md-8 d-flex align-items-center">
 							<div class="services-wrap rounded-right w-100" id="here">
@@ -191,7 +190,8 @@
 													$timepick = $_POST['time_pick'];
 													$catagory=  $_POST['catagory'];
 													$database=new Database();
-													$where['AssetTypeID']='="'.$catagory.'"';
+													$where['CatalogTypeID']='="'.$catagory.'"';
+													$where['AssetCityID']='="'.$pickupcity.'"';
 													$results=$database->getRows("Assets","*",$where);
 													$carouselIndicators='';
 													$carouselInner='<h5 style="font-weight: bold;">No result available with these requirements.</h5>';
@@ -207,7 +207,7 @@
 																		<button id="info" class="btn btn-block btn-lg btn-info" type="submit" onclick="showInfo()">Show features</button>
 																	</div>
 																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
-																		<a href="single.php?assetID='.$result['id'].'"><button id="info" class="btn btn-block btn-lg btn-success" type="submit">View full '.$result['CatalogType'].' Info</button></a>
+																		<a href="single.php?assetID='.$result['id'].'&action=loadform"><button id="info" class="btn btn-block btn-lg btn-success" type="submit">View full '.$result['CatalogType'].' Info</button></a>
 																	</div>
 																</div>
 																<p style="font-weight: bold;"> Price: '.$result['RentPricePerHour'].' zl / Hour </p>
@@ -226,7 +226,7 @@
 																		<button id="info" class="btn btn-block btn-lg btn-info" type="submit" onclick="showInfo()">Show features</button>
 																	</div>
 																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
-																		<a href="single.php?assetID='.$result['id'].'"><button id="info" class="btn btn-block btn-lg btn-success" type="submit">View full '.$result['CatalogType'].' Info</button></a>
+																		<a href="single.php?assetID='.$result['id'].'&action=loadform"><button id="info" class="btn btn-block btn-lg btn-success" type="submit">View full '.$result['CatalogType'].' Info</button></a>
 																	</div>
 																</div>
 																<p style="font-weight: bold;"> Price: '.$result['RentPricePerHour'].' zl / Hour </p>
@@ -291,6 +291,7 @@
 								<?php
 								}
 								?>
+								</form>
 							</div>      
 						</div>
 					</div>
@@ -306,9 +307,19 @@
     		var endDate = document.getElementById("book_off_date").value;
 			var now = new Date();
   			now.setHours(0,0,0,0);
-			if (Date.parse(startDate) > now){
+			var sdate = new Date(startDate);
+			const msBetweenDates = Math.abs(sdate.getTime() - now.getTime());
+			const daysBetweenDates = msBetweenDates / (24 * 60 * 60 * 1000);
+			if (daysBetweenDates < 30) {
+				if (Date.parse(startDate) < now){
+					document.getElementById('message').style.color = 'red';
+					document.getElementById('message').innerHTML = " Selected pickup date is in the past. ";
+					return false;
+				}
+			}
+			else {
 				document.getElementById('message').style.color = 'red';
-				document.getElementById('message').innerHTML = " Selected pickup date is in the past. ";
+				document.getElementById('message').innerHTML = " Selected pickup date should be within 30 days. ";
 				return false;
 			}
 			if (Date.parse(startDate) > Date.parse(endDate)){
