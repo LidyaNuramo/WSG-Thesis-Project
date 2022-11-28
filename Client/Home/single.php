@@ -28,13 +28,13 @@
 						<a href="#" class="nav-link">History</a>
 					</div>
 				</li>
-				<!--li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
-				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li-->
+				<li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
+				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li>
 				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link"><?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?></a>
 					<div class="dropdown-content">
 						<a href="profile.php" class="nav-link">Edit Profile</a>
-						<!--a href="#" class="nav-link">Messages</a>
-						<a href="#" class="nav-link">Notifications</a-->
+						<a href="#" class="nav-link">Messages</a>
+						<a href="#" class="nav-link">Notifications</a>
 						<a href="../../DB/process.php?action=logout" class="nav-link">Logout</a>
 					</div>
 				</li>
@@ -54,7 +54,7 @@
 				<div class="container">
 					<div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
 					<div class="col-md-9 ftco-animate pb-5">
-						<p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="catalog.php?type='.$result['AssetTypeID'].'">'.$result['CatalogType'].' <i class="ion-ios-arrow-forward"></i></a></span> <span>'.$result['CatalogType'].' details <i class="ion-ios-arrow-forward"></i></span></p>
+						<p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="catalog.php?type='.$result['CatalogTypeID'].'">'.$result['CatalogType'].' <i class="ion-ios-arrow-forward"></i></a></span> <span>'.$result['CatalogType'].' details <i class="ion-ios-arrow-forward"></i></span></p>
 						<h1 class="mb-3 bread">'.$result['AssetName'].'</h1>
 					</div>
 				</div>
@@ -66,6 +66,12 @@
 
 	<section class="ftco-section ftco-car-details">
       	<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					Location: 
+					<h2 class="mb-0"><?php echo $result['AssetCityName']; ?></h2>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-md-12 pills">
 					<div class="bd-example bd-example-tabs">
@@ -97,8 +103,53 @@
 							</div>
 
 							<div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+								<?php
+									$pickupcity = $result['AssetCityID'];
+									$dropoffcity = NULL;
+									$book_pick_date = NULL;
+									$book_off_date = NULL;
+									$time_pick = NULL;
+									$catagory=  NULL;
+									if(!empty($_GET['action'])){
+										switch($_GET['action']){
+											case 'loadform':
+												$pickupcity = $_POST['pickupcity'];
+												$dropoffcity = $_POST['dropoffcity'];
+												$bookpickdate = $_POST['book_pick_date'];
+												$bookoffdate = $_POST['book_off_date'];
+												$timepick = $_POST['time_pick'];
+												$catagory=  $_POST['catagory'];
+												break;
+										}
+									}
+								?>
 						      	<div class="row">
-							   		
+								  	<form action="../../DB/process.php?action=rent" class="request-form ftco-animate bg-primary" method="POST" onsubmit="return validateDate()" autofocus>
+									  <div class="form-group">
+									<label for="" class="label">Drop-off location</label>
+									<select class="form-control" id="city" id="dropoffcity" name="dropoffcity" placeholder="City" name="city" required>
+										<?php
+											if(!empty($catagory)){
+												?><option disabled>City</option><?php
+											}
+											else{
+												?><option disabled selected>City</option><?php
+											}
+                                            $database=new Database();
+                                            $where['id']="";
+                                            $results=$database->getRows("assetlocations","DISTINCT id, CityID, CityName",$where,"AND","CityName");
+                                            foreach($results as $result){
+												if(!empty($catagory) && $result['CityID']==$dropoffcity){
+													echo '<option value="'.$result['CityID'].'" selected style="color: black; size:6;">'.$result['CityName'].'</option>';
+												}
+												else{
+													echo '<option value="'.$result['CityID'].'" style="color: black; size:6;">'.$result['CityName'].'</option>';
+												}
+                                            }
+                                        ?>
+                                    </select>
+								</div>
+									</form>
 								</div>
 						    </div>
 						</div>
@@ -142,53 +193,37 @@
 			<div class="container">
 				<div class="row justify-content-center">
 			<div class="col-md-12 heading-section text-center ftco-animate mb-5">
-				<span class="subheading">Choose Car</span>
-				<h2 class="mb-2">Related Cars</h2>
+				<span class="subheading">Choose <?php echo $result['CatalogType']; ?></span>
+				<h2 class="mb-2"><?php echo $result['CatalogType']; ?> in similar location.</h2>
 			</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
-						<div class="car-wrap rounded ftco-animate">
-							<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
-							</div>
-							<div class="text">
-								<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-								<div class="d-flex mb-3">
-									<span class="cat">Cheverolet</span>
-									<p class="price ml-auto">$500 <span>/day</span></p>
+				<?php
+					$database=new Database();
+					$where['id']='<>"'.$result['id'].'"';
+					$where['CatalogTypeID']='="'.$result['CatalogTypeID'].'"';
+					$where['CurrentRentStatus']='="Available"';
+					$resultrows="3;";
+					$relatedresults=$database->getRows("Assets","*",$where,"AND","AssetCityID",$resultrows);
+					foreach ($relatedresults as $related){
+						echo '
+						<div class="col-md-4">
+							<div class="car-wrap rounded ftco-animate">
+								<div class="img rounded d-flex align-items-end" style="background-image: url('.$related['PhotoLinks'].');"  alt="'.$related['AssetTypeName'].'">
 								</div>
-								<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+								<div class="text">
+									<h2 class="mb-0"><a href="car-single.html">'.$related['AssetName'].'</a></h2>
+									<div class="d-flex mb-3">
+										<span class="cat">'.$related['ManufacturerName'].'</span>
+										<p class="price ml-auto">'.$related['RentPricePerHour'].' zl <span>/ Hour</span></p>
+									</div>
+									<p class="d-flex mb-0 d-block"><a href="single.php?assetID='.$related['id'].'" class="btn btn-secondary py-2 ml-1">Select</a></p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="car-wrap rounded ftco-animate">
-							<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-2.jpg);">
-							</div>
-							<div class="text">
-								<h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
-								<div class="d-flex mb-3">
-									<span class="cat">Subaru</span>
-									<p class="price ml-auto">$500 <span>/day</span></p>
-								</div>
-								<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="car-wrap rounded ftco-animate">
-							<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-3.jpg);">
-							</div>
-							<div class="text">
-								<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-								<div class="d-flex mb-3">
-									<span class="cat">Cheverolet</span>
-									<p class="price ml-auto">$500 <span>/day</span></p>
-								</div>
-								<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-							</div>
-						</div>
-					</div>
+						';
+					}
+				?>
 			</div>
     	</div>
     </section>

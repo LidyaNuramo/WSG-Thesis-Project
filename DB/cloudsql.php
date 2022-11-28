@@ -4,15 +4,16 @@ class Database
 {	
 	private $connection = null;
 	private $results = array();
-	// private $host = "localhost";
+	private $host = "localhost";
 	// private $db = "id17747167_mytravelrental";
 	// private $user = "id17747167_root";
 	// private $password = "2^vR_Z0jye9#rCy7";
 	// private $host = "34.140.88.200";
-	private $host = "10.122.64.4";
+	// private $host = "10.122.64.4";
 	private $db = "mytravelrental";
 	private $user = "root";
-	private $password = "/m8=2?Ve;g.Hr?uc";
+	// private $password = "/m8=2?Ve;g.Hr?uc";
+	private $password = "";
 	private $db_prefix = "";
 
 	function __construct() {

@@ -23,7 +23,7 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Customer Support</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="contact.php" class="py-2 d-block">Contact Us</a></li>
               </ul>
             </div>
           </div>

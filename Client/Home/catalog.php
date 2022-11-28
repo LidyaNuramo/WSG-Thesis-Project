@@ -34,13 +34,13 @@
 						<a href="#" class="nav-link">History</a>
 					</div>
 				</li>
-				<!--li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
-				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li-->
+				<li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
+				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li>
 				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link"><?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?></a>
 					<div class="dropdown-content">
 						<a href="profile.php" class="nav-link">Edit Profile</a>
-						<!--a href="#" class="nav-link">Messages</a>
-						<a href="#" class="nav-link">Notifications</a-->
+						<a href="#" class="nav-link">Messages</a>
+						<a href="#" class="nav-link">Notifications</a>
 						<a href="../../DB/process.php?action=logout" class="nav-link">Logout</a>
 					</div>
 				</li>
@@ -104,14 +104,28 @@
 					$database=new Database();
 					$where['CatalogTypeID']='="'.$type.'"';
 					$where['CurrentRentStatus']='="Available"';
-					$results=$database->getRows("Assets","*",$where,"AND",null,$resultrows);
+					$results=$database->getRows("Assets","*",$where,"AND","AssetCityID",$resultrows);
 					$count=count($results);
 					echo '<div class="row"> 
 							<div class="col-md-4" style=""> Results: '.$count.'</div>
 							<div class="col-md-4" style=""></div>
 							<div class="col-md-4" style=""> Showing: '.$i.' items / page </div>
-						</div> <div class="row">';
+						</div><div class="row">';
+					$city_id="";
 					foreach ($results as $result){
+						if ($city_id==$result['AssetCityID']){
+							true;
+						}
+						else{
+							$city_id=$result['AssetCityID'];
+							echo '
+								<div class="col-md-4">
+									<h2 class="mb-0">'.$result['AssetCityName'].'</h2>
+								</div>
+							</div>
+							<div class="row">
+							';
+						}
 						echo '
 						<div class="col-md-4">
 							<div class="car-wrap rounded ftco-animate">

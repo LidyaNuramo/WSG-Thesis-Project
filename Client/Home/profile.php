@@ -20,13 +20,13 @@
 						<a href="#" class="nav-link">History</a>
 					</div>
 				</li>
-				<!--li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
-				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li-->
+				<li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
+				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li>
 				<li class="nav-item active" id="nav-item-drop-down"><a href="#" class="nav-link"><?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?></a>
 					<div class="dropdown-content">
 						<a href="profile.php" class="nav-link">Edit Profile</a>
-						<!--a href="#" class="nav-link">Messages</a>
-						<a href="#" class="nav-link">Notifications</a-->
+						<a href="#" class="nav-link">Messages</a>
+						<a href="#" class="nav-link">Notifications</a>
 						<a href="../../DB/process.php?action=logout" class="nav-link">Logout</a>
 					</div>
 				</li>
@@ -75,8 +75,19 @@
                             break;
                         case 'updateprofile':
                             $where['id']= '="'.$_SESSION['userID'].'"';
+                            $fname = $_POST['fname'];
+                            $lname = $_POST['lname'];
+                            $phone = $_POST['phone'];
+                            $address = $_POST['address'];
+                            $postcode = $_POST['postcode'];
+                            $city = $_POST['city'];
                             $data=array(
-                                "VerificationStatus"=>"Yes"
+                                "FirstName"=>$fname,
+                                "LastName"=>$lname,
+                                "Phone"=>$phone,
+                                "Address"=>$address,
+                                "PostCode"=>$postcode,
+                                "CItyID"=>$city
                             );
                             $database=new Database();
                             $database->updateRows("Client",$data,$where);
@@ -131,39 +142,58 @@
                     <?php
                         $where['id']= '="'.$_SESSION['userID'].'"';
                         $database=new Database();
-                        $user=$database->getRow("Client","*",$where);
+                        $user=$database->getRow("Clients","*",$where);
                     ?>
                     <div class="card-body">
                         <h4 class="card-title">Personal Info</h4>
                         <div class="form-group row">
                             <label for="fname" class="col-sm-3 text-end control-label col-form-label">First Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="fname" placeholder="First Name Here">
+                                <input type="text" class="form-control" name="fname" id="fname" value="<?php echo $user['FirstName'];?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-end control-label col-form-label">Last Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="lname"
-                                    placeholder="Last Name Here">
+                                <input type="text" class="form-control" name="lname" id="lname" value="<?php echo $user['LastName'];?>">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-end control-label col-form-label">Company</label>
+                            <label for="email1" class="col-sm-3 text-end control-label col-form-label">Phone</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="email1" placeholder="Company Name Here">
+                                <input type="text" class="form-control international-inputmask" name="phone" id="international-mask" placeholder="Phone Number"style="-webkit-appearance= none; -moz-appearance= textfield;" value="<?php echo $user['Phone'];?>" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Contact No</label>
+                            <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Address</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="cono1" placeholder="Contact No Here">
+                            <input type="text" placeholder="Address 1" name="address" aria-label="Address" class="form-control form-control-lg" value="<?php echo $user['Address'];?>" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Message</label>
+                            <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Post Code</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control"></textarea>
+                                <input type="number" min="00000" max="99999" name="postcode" aria-label="Post Code" class="form-control form-control-lg" style="-webkit-appearance: none; margin: 0;-moz-appearance: textfield;" value="<?php echo $user['PostCode'];?>" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cono1" class="col-sm-3 text-end control-label col-form-label">City</label>
+                            <div class="col-sm-9">
+                                <select class="form-control form-control-lg" id="city" placeholder="City" name="city" required>
+                                    <?php
+                                        $db=new Database();
+                                        $where['id']="";
+                                        $results=$db->getRows("City","*",$where,"AND","Name");
+                                        foreach($results as $result){
+                                            if ($user['CItyID']==$result['id']){
+                                                echo '<option value="' .$result['id'].'" selected>' . $result['Name']. '</option>';
+                                            }
+                                            else{
+                                                echo '<option value="' .$result['id'].'">' . $result['Name']. '</option>';
+                                            }
+                                        }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                     </div>
