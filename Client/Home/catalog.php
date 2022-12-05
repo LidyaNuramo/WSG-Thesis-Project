@@ -119,6 +119,8 @@
 						else{
 							$city_id=$result['AssetCityID'];
 							echo '
+							</div>
+							<div class="row">
 								<div class="col-md-4">
 									<h2 class="mb-0">'.$result['AssetCityName'].'</h2>
 								</div>
@@ -140,7 +142,8 @@
 									<p class="d-flex mb-0 d-block"><a href="single.php?assetID='.$result['id'].'" class="btn btn-secondary py-2 ml-1">Select</a></p>
 								</div>
 							</div>
-						</div>';
+						</div>
+						';
 					}
 				?>
     		</div>

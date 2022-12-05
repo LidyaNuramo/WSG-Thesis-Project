@@ -70,12 +70,13 @@
 											$bookpickdate = $_POST['book_pick_date'];
 											$bookoffdate = $_POST['book_off_date'];
 											$timepick = $_POST['time_pick'];
+											$time_drop = $_POST['time_drop'];
 											$catagory=  $_POST['catagory'];
 											break;
 									}
 								}
 							?> 
-							<form action="index.php?action=load" class="request-form ftco-animate bg-primary" method="POST" onsubmit="return validateDate()" autofocus>
+							<form class="request-form ftco-animate bg-primary" method="POST" autofocus>
 								<h2>Search your trip</h2>
 								<div class="form-group">
 									<label for="" class="label">Pick-up location</label>
@@ -138,7 +139,11 @@
 								<span id='message'style="font-size:10pt;"></span>
 								<div class="form-group">
 									<label for="" class="label">Pick-up time</label>
-									<input type="text" class="form-control" id="time_pick" name="time_pick" placeholder="Time" value="<?php if(!empty($timepick)){echo $timepick;}?>" required>
+									<input type="time" class="form-control" id="time_pick_up" name="time_pick" placeholder="Time" value="<?php if(!empty($timepick)){echo $timepick;}?>" required>
+								</div>
+								<div class="form-group">
+									<label for="" class="label">Drop-Off time</label>
+									<input type="time" class="form-control" id="time_drop_off" name="time_drop" placeholder="Time" value="<?php if(!empty($time_drop)){echo $time_drop;}?>" required>
 								</div>
 								<div class="form-group">
 									<label for="" class="label">I'm looking for a </label>
@@ -173,7 +178,7 @@
                                     </select>
 								</div>
 								<div class="form-group">
-									<input type="submit" value="Rent A Car Now" class="btn btn-secondary py-3 px-4">
+									<button type="submit" class="btn btn-secondary py-3 px-4" formaction="index.php?action=load" onclick="return validateDate()" >Search</button>
 								</div>
 						</div>
 						<div class="col-md-8 d-flex align-items-center">
@@ -199,7 +204,8 @@
 													foreach($results as $result){
 														if ($i==0){
 															$carouselIndicators='<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';
-															$carouselInner='<div class="carousel-item active">
+															$carouselInner='
+															<div class="carousel-item active">
 																<h5 style="font-weight: bold;">'.$result['AssetName'].'</h5>
 																<img class="d-block w-100" src="'.$result['PhotoLinks'].'" alt="'.$result['AssetTypeName'].'" style="width:100px;height:300px;">
 																<div style="width: 100%; display:table;">
@@ -207,7 +213,7 @@
 																		<button id="info" class="btn btn-block btn-lg btn-info" type="submit" onclick="showInfo()">Show features</button>
 																	</div>
 																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
-																		<a href="single.php?assetID='.$result['id'].'&action=loadform"><button id="info" class="btn btn-block btn-lg btn-success" type="submit">View full '.$result['CatalogType'].' Info</button></a>
+																		<button id="info" class="btn btn-block btn-lg btn-success" type="submit" formaction="single.php?assetID='.$result['id'].'&action=loadform">View full '.$result['CatalogType'].' Info</button>
 																	</div>
 																</div>
 																<p style="font-weight: bold;"> Price: '.$result['RentPricePerHour'].' zl / Hour </p>
@@ -217,8 +223,9 @@
 															</div>';
 															}
 														else{
-															$carouselIndicators=$carouselIndicators.'<li data-target="#carouselExampleIndicators" data-slide-to="'.$i.'"></li>';
-															$carouselInner=$carouselInner.'<div class="carousel-item active">
+															$carouselIndicators=$carouselIndicators.'<li data-target="#carouselExampleIndicators" data-slide-to="'.$i.'" class="active"></li>';
+															$carouselInner=$carouselInner.'
+															<div class="carousel-item">
 																<h5 style="font-weight: bold;">'.$result['AssetName'].'</h5>
 																<img class="d-block w-100" src="'.$result['PhotoLinks'].'" alt="'.$result['AssetTypeName'].'" style="width:100px;height:300px;">
 																<div style="width: 100%; display:table;">
@@ -226,7 +233,7 @@
 																		<button id="info" class="btn btn-block btn-lg btn-info" type="submit" onclick="showInfo()">Show features</button>
 																	</div>
 																	<div class="introwrapper" style="float:left;height:100%; width:50%;display:table-cell;">
-																		<a href="single.php?assetID='.$result['id'].'&action=loadform"><button id="info" class="btn btn-block btn-lg btn-success" type="submit">View full '.$result['CatalogType'].' Info</button></a>
+																		<button id="info" class="btn btn-block btn-lg btn-success" type="submit" formaction="single.php?assetID='.$result['id'].'&action=loadform">View full '.$result['CatalogType'].' Info</button>
 																	</div>
 																</div>
 																<p style="font-weight: bold;"> Price: '.$result['RentPricePerHour'].' zl / Hour </p>
@@ -310,7 +317,7 @@
 			var sdate = new Date(startDate);
 			const msBetweenDates = Math.abs(sdate.getTime() - now.getTime());
 			const daysBetweenDates = msBetweenDates / (24 * 60 * 60 * 1000);
-			if (daysBetweenDates < 30) {
+			if (daysBetweenDates < 10) {
 				if (Date.parse(startDate) < now){
 					document.getElementById('message').style.color = 'red';
 					document.getElementById('message').innerHTML = " Selected pickup date is in the past. ";
@@ -319,7 +326,7 @@
 			}
 			else {
 				document.getElementById('message').style.color = 'red';
-				document.getElementById('message').innerHTML = " Selected pickup date should be within 30 days. ";
+				document.getElementById('message').innerHTML = " Selected pickup date should be within 10 days. ";
 				return false;
 			}
 			if (Date.parse(startDate) > Date.parse(endDate)){

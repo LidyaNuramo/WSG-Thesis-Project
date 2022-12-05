@@ -100,6 +100,16 @@
                             </div>
                             <?php
                             break;
+                        case 'missingpayment':
+                            ?>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label for="exampleInputEmail1" style="color: red;" class="control-label">No payment method is set up. Set up a payment method and search a rental once again.</label>
+                                    <br>
+                                </div>
+                            </div>
+                            <?php
+                            break;
                         case 'updatepassword':
                             $where['id']= '="'.$_SESSION['userID'].'"';
                             $where['Password']='="'.$_POST['oldpassword'].'"';

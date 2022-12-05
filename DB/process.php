@@ -146,6 +146,49 @@ if(!empty($_GET['action'])){
 				$database->insertRows('GPSLocation', $data);
 			}
 			break;
+		case 'rent':
+  			session_start();
+			$user_id = $_SESSION['userID'];
+			$where['id']= '="'.$user_id.'"';
+			$database=new Database();
+			$user=$database->getRow("clients","*",$where);
+			if ($user['VerificationStatus']=="No"){
+				header("Location: ../Client/Home/profile.php?action=missingpayment");
+			}
+			else{
+				$clientid=$user_id;
+				$deviceid=$_GET['id'];
+				date_default_timezone_set("Europe/Warsaw"); 
+				$applicationtime = date("Y-m-d h:i:sa");
+				$where['id']= '="'.$deviceid.'"';
+				$device=$database->getRow("assets","*",$where);
+				$payment=$device['RentPricePerHour'];
+				$bookpickdate = $_POST['book_pick_date']." ".$_POST['time_pick'];
+				$bookoffdate = $_POST['book_off_date']." ".$_POST['time_drop'];
+				$pickuplocation = $device['CurrentAssetLocationID'];
+				$wherecity['CityID']= '="'.$_POST['dropoffcity'].'"';
+				$location=$database->getRow("assetlocation","*",$wherecity);
+				$dropofflocation = $location['id'];
+				$data = array(
+					"ClientId" => $clientid,
+					"DeviceId" => $deviceid,
+					"ApplicationDate" => $applicationtime,
+					"PaymentPerHr" => $payment,
+					"PickupDate" => $bookpickdate,
+					"ReturnDate" => $bookoffdate,
+					"PickupLocation" => $pickuplocation,
+					"DropOffLocation" => $dropofflocation,
+					"ApplicationStatusID" => 1
+				);
+				$database->insertRows('rentapplication', $data);
+				$updatedevice['id']= '="'.$deviceid.'"';
+				$data = array(
+					"CurrentRentStatusID" => 2
+				);
+				$database->updateRows('deviceinfo', $data, $updatedevice);
+				header('Location: ../Client/Home/currentrental.php');
+			}
+			break;
    }
 }
 ?>
