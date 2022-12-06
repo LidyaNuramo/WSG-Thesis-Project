@@ -156,37 +156,45 @@ if(!empty($_GET['action'])){
 				header("Location: ../Client/Home/profile.php?action=missingpayment");
 			}
 			else{
-				$clientid=$user_id;
-				$deviceid=$_GET['id'];
-				date_default_timezone_set("Europe/Warsaw"); 
-				$applicationtime = date("Y-m-d h:i:sa");
-				$where['id']= '="'.$deviceid.'"';
-				$device=$database->getRow("assets","*",$where);
-				$payment=$device['RentPricePerHour'];
-				$bookpickdate = $_POST['book_pick_date']." ".$_POST['time_pick'];
-				$bookoffdate = $_POST['book_off_date']." ".$_POST['time_drop'];
-				$pickuplocation = $device['CurrentAssetLocationID'];
-				$wherecity['CityID']= '="'.$_POST['dropoffcity'].'"';
-				$location=$database->getRow("assetlocation","*",$wherecity);
-				$dropofflocation = $location['id'];
-				$data = array(
-					"ClientId" => $clientid,
-					"DeviceId" => $deviceid,
-					"ApplicationDate" => $applicationtime,
-					"PaymentPerHr" => $payment,
-					"PickupDate" => $bookpickdate,
-					"ReturnDate" => $bookoffdate,
-					"PickupLocation" => $pickuplocation,
-					"DropOffLocation" => $dropofflocation,
-					"ApplicationStatusID" => 1
-				);
-				$database->insertRows('rentapplication', $data);
-				$updatedevice['id']= '="'.$deviceid.'"';
-				$data = array(
-					"CurrentRentStatusID" => 2
-				);
-				$database->updateRows('deviceinfo', $data, $updatedevice);
-				header('Location: ../Client/Home/currentrental.php');
+				$whereapplication['ClientId']= '="'.$user_id.'"';
+				$whereapplication['ApplicationStatusID']= '!= "5"';
+				$application=$database->getRow("rentapplication","*",$whereapplication);
+				if ($application == NULL) { 
+					$clientid=$user_id;
+					$deviceid=$_GET['id'];
+					date_default_timezone_set("Europe/Warsaw"); 
+					$applicationtime = date("Y-m-d h:i:sa");
+					$where['id']= '="'.$deviceid.'"';
+					$device=$database->getRow("assets","*",$where);
+					$payment=$device['RentPricePerHour'];
+					$bookpickdate = $_POST['book_pick_date']." ".$_POST['time_pick'];
+					$bookoffdate = $_POST['book_off_date']." ".$_POST['time_drop'];
+					$pickuplocation = $device['CurrentAssetLocationID'];
+					$wherecity['CityID']= '="'.$_POST['dropoffcity'].'"';
+					$location=$database->getRow("assetlocation","*",$wherecity);
+					$dropofflocation = $location['id'];
+					$data = array(
+						"ClientId" => $clientid,
+						"DeviceId" => $deviceid,
+						"ApplicationDate" => $applicationtime,
+						"PaymentPerHr" => $payment,
+						"PickupDate" => $bookpickdate,
+						"ReturnDate" => $bookoffdate,
+						"PickupLocation" => $pickuplocation,
+						"DropOffLocation" => $dropofflocation,
+						"ApplicationStatusID" => 1
+					);
+					$database->insertRows('rentapplication', $data);
+					$updatedevice['id']= '="'.$deviceid.'"';
+					$data = array(
+						"CurrentRentStatusID" => 2
+					);
+					$database->updateRows('deviceinfo', $data, $updatedevice);
+					header('Location: ../Client/Home/currentrental.php');
+				}
+				else {
+					header('Location: ../Client/Home/currentrental.php?action=declinedrental');
+				}
 			}
 			break;
    }

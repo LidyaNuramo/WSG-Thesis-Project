@@ -30,8 +30,8 @@
 				</li>
 				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link">Orders</a>
 					<div class="dropdown-content">
-						<a href="#" class="nav-link">Current Rental</a>
-						<a href="#" class="nav-link">History</a>
+						<a href="currentrental.php" class="nav-link">Current Rental</a>
+						<a href="allrentals.php" class="nav-link">History</a>
 					</div>
 				</li>
 				<li class="nav-item"><a href="news.php" class="nav-link">News</a></li>

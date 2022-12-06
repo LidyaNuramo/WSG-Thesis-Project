@@ -1,6 +1,5 @@
 <?php
-  include('header.php');
-  require_once('../../DB/cloudsql.php');
+	require_once('header.php');
 ?>
 
       <div class="collapse navbar-collapse" id="ftco-nav">
@@ -14,13 +13,13 @@
 						<a href="catalog.php?type=4" class="nav-link">Scooters</a>
 					</div>
 				</li>
-				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link">Orders</a>
+				<li class="nav-item active" id="nav-item-drop-down"><a href="#" class="nav-link">Orders</a>
 					<div class="dropdown-content">
 						<a href="currentrental.php" class="nav-link">Current Rental</a>
 						<a href="allrentals.php" class="nav-link">History</a>
 					</div>
 				</li>
-				<li class="nav-item active"><a href="news.php" class="nav-link">News</a></li>
+				<li class="nav-item"><a href="news.php" class="nav-link">News</a></li>
 				<li class="nav-item"><a href="contact.php" class="nav-link">Help</a></li>
 				<li class="nav-item" id="nav-item-drop-down"><a href="#" class="nav-link"><?php echo $_SESSION['username']." ".$_SESSION['lastname'] ?></a>
 					<div class="dropdown-content">
@@ -36,25 +35,45 @@
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(../Images/news.jpg);" data-stellar-background-ratio="0.5">
+	<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(../Images/order-arrow.jpg);" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
                 <div class="col-md-9 ftco-animate pb-5">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>News <i class="ion-ios-arrow-forward"></i></span></p>
-                    <h1 class="mb-3 bread">New and Improved Services</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span> Rental History<i class="ion-ios-arrow-forward"></i></span></p>
+                    <h1 class="mb-3 bread">Your rentals</h1>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="ftco-section bg-light">
-    	<div class="container">	
-			<div class="form-group row">
-                <div class="col-md-4" style=""> News </div>
+    	<div class="container">
+			<?php
+				if(!empty($_GET['action']))
+				{
+					switch($_GET['action'])
+					{
+					case 'declinedrental':
+						echo '
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<label for="exampleInputEmail1" style="color: red;" class="control-label">Request not accepted as there is an existing rental in progress. Please complete this order or cancel this order before making a new one.</label>
+									<br>
+								</div>
+							</div>
+						';
+						break;
+					}
+				}
+			?>
+            <div class="form-group row">
+                <div class="col-md-4" style=""> Contact us via phone </div>
             </div>
+            
         </div>
     </section>
+
 
 <?php
     include('footer.php');
