@@ -48,7 +48,7 @@
     </section>
 
     <section class="ftco-section bg-light">
-    	<div class="container">
+		<div class="container-fluid">
 			<?php
 				if(!empty($_GET['action']))
 				{
@@ -67,10 +67,97 @@
 					}
 				}
 			?>
-            <div class="form-group row">
-                <div class="col-md-4" style=""> Contact us via phone </div>
-            </div>
-            
+			<h5 class="card-title">All rentals:</h5>
+			<div class="table-responsive">
+				<table id="zero_config" class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Application Date</th>
+							<th>Pick Up Date</th>
+							<th>Drop Off Date</th>
+							<th>Pick Up Location</th>
+							<th>Drop Off Location</th>
+							<th>Status</th>
+							<th>Receipt</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+					$database=new Database();
+					$whereapplication['ClientId']= '="'.$_SESSION['userID'].'"';
+					$rentals=$database->getRows("rentapplications","*",$whereapplication);
+					foreach ($rentals as $rental){
+						$wherecity['id'] = '='.$rental['PickUpLocation'];
+						$pick = $database->getRow("assetlocations","CityName",$wherecity);
+						$wherecity['id'] = '='.$rental['DropOffLocation'];
+						$drop = $database->getRow("assetlocations","*",$wherecity);
+						$wherereceipt['RentApplicationId'] = '='.$rental['id'];
+						$receipt = $database->getRow("clientreceipt","*",$wherereceipt);
+						if(!empty($receipt)){
+							$lastrow = '<button class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter'.$rental['id'].'">View</button>';
+						}
+						else{
+							$lastrow = ' ';
+						}
+						echo '<tr>
+								<td>'.$rental['AssetName'].'</td>
+								<td>'.$rental['ApplicationDate'].'</td>
+								<td>'.$rental['PickupDate'].'</td>
+								<td>'.$rental['ActualReturnDate'].'</td>
+								<td>'.$pick['CityName'].'</td>
+								<td>'.$drop['CityName'].'</td>
+								<td>'.$rental['RentApplicationStatus'].'</td>
+								<td>'.$lastrow.'</td>
+							</tr>';
+
+						if(!empty($receipt)){
+							echo '<!-- Modal -->
+							<div class="modal fade" id="exampleModalCenter'.$rental['id'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+										<button type="button" class="close" d
+										ata-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										...
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									</div>
+									</div>
+								</div>
+							</div>';
+						}
+					}
+					?>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Name</th>
+							<th>Application Date</th>
+							<th>Pick Up Date</th>
+							<th>Drop Off Date</th>
+							<th>Pick Up Location</th>
+							<th>Drop Off Location</th>
+							<th>Status</th>
+							<th>Receipt</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			</div>
+            <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+            <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+            <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+            <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+            <script>
+                $('#zero_config').DataTable();
+            </script> 
         </div>
     </section>
 

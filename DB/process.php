@@ -197,6 +197,10 @@ if(!empty($_GET['action'])){
 				}
 			}
 			break;
+		case 'cancelrental':
+			break;
+		case 'returnrental':
+			break;
    }
 }
 ?>

@@ -65,6 +65,40 @@
 							</div>
 						';
 						break;
+					case 'startrental':
+						$database=new Database();
+						$whereapplication['id']= '="'.$_GET['id'].'"';
+						$currentrental=$database->getRow("rentapplications","*",$whereapplication);
+						date_default_timezone_set("Europe/Warsaw"); 
+						$pickuptime = $currentrental['PickupDate'];
+						$pickupdate = date('d/M/Y H:i:s', strtotime($pickuptime));
+						$nowdate = date("Y-m-d h:i:sa");
+						if ($pickupdate > $nowdate){
+							echo '
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label for="exampleInputEmail1" style="color: red;" class="control-label">Pick up time has not yet arrived.</label>
+										<br>
+									</div>
+								</div>
+							';
+						}
+						else{
+							$updaterent['id']= '="'.$_GET['id'].'"';
+							$data = array(
+								"ApplicationStatusID" => 3
+							);
+							$database->updateRows('rentapplication', $data, $updaterent);
+							echo '
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label for="exampleInputEmail1" style="color: Green;" class="control-label">Rental now in progress.</label>
+										<br>
+									</div>
+								</div>
+							';
+						}
+						break;
 					}
 				}
 
@@ -72,15 +106,120 @@
 				$whereapplication['ClientId']= '="'.$_SESSION['userID'].'"';
 				$whereapplication['ApplicationStatusID']= '!= "5"';
 				$rental=$database->getRow("rentapplications","*",$whereapplication);
+
+				if(!empty($rental)){
+				?>
 				
-			?>
-            <div class="form-group row">
-                <div class="col-md-4" style=""> Contact us via phone </div>
-            </div>
+				<div class="form-group row">
+					<div class="col-md-4"> Status: <font color="black"> <?php echo $rental['RentApplicationStatus']; ?> </font> </div>
+				</div>
+
+				<?php
+					if ($rental['ApplicationStatusID'] == "1"){
+					?>
+						<div class="form-group row">
+							<div class="col-md-4"> 
+								<a href="../../DB/process.php?action=cancelrental&id=<?php echo $rental['id']; ?>"> 
+									<button class="btn btn-danger">Cancel</button> 
+								</a>
+								<a href="currentrental.php?action=startrental&id=<?php echo $rental['id']; ?>">
+									<button class="btn btn-secondary">Start</button>
+								</a>
+							</div>
+						</div>
+					<?php
+					}
+					else{
+					?>
+						<div class="form-group row">
+							<div class="col-md-4">  
+								<a href="../../DB/process.php?action=returnrental&id=<?php echo $rental['id']; ?>"> 
+									<button class="btn btn-primary">Return Rental</button>
+								</a>
+							</div>
+						</div>
+					<?php
+					}
+				?>
+
+				<?php
+					$wheredevice['DeviceId']= '="'.$rental['DeviceId'].'"';
+					$wherepickup['id']= '="'.$rental['PickUpLocation'].'"';
+					$wheredropoff['id']= '="'.$rental['DropOffLocation'].'"';
+					$device=$database->getRow("rentapplications","*",$wheredevice);
+					$pickup=$database->getRow("assetlocations","*",$wherepickup);
+					$dropoff=$database->getRow("assetlocations","*",$wheredropoff);
+				?>
+
+				<div class="row">
+					<div class="col-md-4">
+						Pick-up Location: 
+						<p class="mb-0" style="color: black;"><span id="Address"><?php echo $pickup['Address'].", ".$pickup['PostCode'].", ".$pickup['CityName'].", ".$pickup['CountryName']; ?></span></p>
+						<!--div id="map"></div-->
+					</div>
+					<div class="col-md-4">
+						Drop-Off Location: 
+						<p class="mb-0" style="color: black;"><?php echo $dropoff['Address'].", ".$dropoff['PostCode'].", ".$dropoff['CityName'].", ".$dropoff['CountryName']; ?></p>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-4">
+						Pick-up Time: 
+						<p class="mb-0" style="color: black;"><?php echo $rental['PickupDate']; ?></p>
+					</div>
+					<div class="col-md-4">
+						Drop-Off Time: 
+						<p class="mb-0" style="color: black;"><?php echo $rental['ReturnDate']; ?></p>
+					</div>
+				</div>
+
+				<?php 
+				}
+				else{
+				?>
+				<div class="form-group row">
+					<div class="col-md-4" style=""> No active rental is available. </div>
+				</div>
+
+				<?php
+				}
+				?>
             
         </div>
     </section>
+	
+	<script src="https://unpkg.com/@googlemaps/js-api-loader@1.0.0/dist/index.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script>
+		var geocoder = new google.maps.Geocoder(); // initialize google map object
+		var address = document.getElementById('Address').innerHTML;
 
+		geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				var latitude = results[0].geometry.location.lat();
+				var longitude = results[0].geometry.location.lng();
+				var myCenter=new google.maps.LatLng(latitude,longitude);
+				function initialize()
+				{
+					var mapProp = {
+						center:myCenter,
+						zoom:7,
+						mapTypeId:google.maps.MapTypeId.ROADMAP
+					};
+					
+					var map=new google.maps.Map(document.getElementById("map"),mapProp);
+					
+					var marker=new google.maps.Marker({
+						position:myCenter,
+					});
+					
+					marker.setMap(map);
+				}
+				google.maps.event.addDomListener(window, 'load', initialize); 
+			} 
+		}); 
+	</script>
 
 <?php
     include('footer.php');

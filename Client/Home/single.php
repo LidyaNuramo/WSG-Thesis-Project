@@ -69,7 +69,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					Pick-up Location: 
-					<h2 class="mb-0"><?php echo $result['AssetAddress'].", ".$result['AssetPostCode']." ".$result['AssetCityName']; ?></h2>
+					<p class="mb-0" style="color: black;"><?php echo $result['AssetAddress'].", ".$result['AssetPostCode'].", ".$result['AssetCityName']; ?></p>
 				</div>
 			</div>
 			<div class="row">
