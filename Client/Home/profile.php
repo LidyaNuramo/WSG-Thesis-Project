@@ -59,7 +59,10 @@
                         {
                         case 'addcard':
                             $where['id']= '="'.$_SESSION['userID'].'"';
+                            date_default_timezone_set("Europe/Warsaw"); 
+			                $updatedate = date("Y-m-d h:i:s");
                             $data=array(
+                                "LastModifiedOn" => $updatedate,
                                 "VerificationStatus"=>"Yes"
                             );
                             $database=new Database();
@@ -81,13 +84,16 @@
                             $address = $_POST['address'];
                             $postcode = $_POST['postcode'];
                             $city = $_POST['city'];
+                            date_default_timezone_set("Europe/Warsaw"); 
+			                $updatedate = date("Y-m-d h:i:s");
                             $data=array(
                                 "FirstName"=>$fname,
                                 "LastName"=>$lname,
                                 "Phone"=>$phone,
                                 "Address"=>$address,
                                 "PostCode"=>$postcode,
-                                "CItyID"=>$city
+                                "CItyID"=>$city,
+                                "LastModifiedOn" => $updatedate,
                             );
                             $database=new Database();
                             $database->updateRows("Client",$data,$where);
@@ -127,8 +133,11 @@
                         <?php
                             }
                             else{
+                                date_default_timezone_set("Europe/Warsaw"); 
+			                    $updatedate = date("Y-m-d h:i:s");
                                 $data=array(
-                                    "Password"=>$newpassword
+                                    "Password"=>$newpassword,
+                                    "LastModifiedOn" => $updatedate
                                 );
                                 $database=new Database();
                                 $database->updateRows("Client",$data,$where);

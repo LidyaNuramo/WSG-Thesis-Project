@@ -15,7 +15,7 @@ if(!empty($_GET['action'])){
 			$address=$_POST['address'];
 			$postcode=$_POST['postcode'];
 			date_default_timezone_set("Europe/Warsaw"); 
-			$time = date("Y-m-d h:i:sa");
+			$time = date("Y-m-d h:i:s");
 			$database=new Database();
 			$where['Email'] ='="'.$email.'"';
 	        $results=$database->getRows("Client","*",$where);
@@ -131,7 +131,7 @@ if(!empty($_GET['action'])){
 			$where['AssetNumber']= '="'.$device.'"';
 			$dev=$database->getRow("DeviceInfo","*",$where);
 			date_default_timezone_set("Europe/Warsaw"); 
-			$time = date("Y-m-d h:i:sa");
+			$time = date("Y-m-d h:i:s");
 			if ($dev != NULL){
 				$devid=$dev['id'];
 				$long=$_GET['long'];
@@ -163,7 +163,7 @@ if(!empty($_GET['action'])){
 					$clientid=$user_id;
 					$deviceid=$_GET['id'];
 					date_default_timezone_set("Europe/Warsaw"); 
-					$applicationtime = date("Y-m-d h:i:sa");
+					$applicationtime = date("Y-m-d h:i:s");
 					$where['id']= '="'.$deviceid.'"';
 					$device=$database->getRow("assets","*",$where);
 					$payment=$device['RentPricePerHour'];
@@ -198,8 +198,107 @@ if(!empty($_GET['action'])){
 			}
 			break;
 		case 'cancelrental':
+			session_start();
+			$user_id = $_SESSION['userID'];
+			$rentalid=$_GET['id'];
+			$database=new Database();
+			date_default_timezone_set("Europe/Warsaw"); 
+			$returndate = date("Y-m-d h:i:s");
+			$whererental['id']= '="'.$rentalid.'"';
+			$data = array(
+				"ActualReturnDate" => $returndate,
+				"ApplicationStatusID" => 7
+			);
+			$database->updateRows('rentapplication', $data, $whererental);
+			$whereapplication['id']= '="'.$rentalid.'"';
+			$rental=$database->getRow("rentapplications","*",$whereapplication);
+			$f = 'Y-m-d H:i:s';
+			$applicationdate = new DateTime($rental['ApplicationDate']);
+			$applicationstartdate = new DateTime($rental['PickupDate']);
+			$actualreturndate = new DateTime($returndate);
+			/**
+			 * @var \DateInterval $diff
+			 */
+			if($actualreturndate > $applicationstartdate) {
+				$diff= $actualreturndate->diff($applicationstartdate); 
+				$hourint = $diff->h + ($diff->days * 24);
+				$cancelationfee = (0.5) * $rental['PaymentPerHr'] * $hourint;
+			}
+			else {
+				$diff= $applicationdate->diff($actualreturndate); 
+				$hourint = $diff->h + ($diff->days * 24);
+				$cancelationfee = (0.2) * $rental['PaymentPerHr'] * $hourint;
+			}
+			$total = $cancelationfee;
+			$data = array(
+				"RentApplicationId" => $rentalid,
+				"SumRentPayment" => 0,
+				"EarlyReturnDiscount" => 0,
+				"LateReturnPayment" => 0,
+				"CustomDescription" => "Cancelation Fee",
+				"CustomDescriptionPayment" => $cancelationfee,
+				"TotalAmount" => $total
+			);
+			$database->insertRows('clientreceipt', $data);
+			$updatedevice['id']= '="'.$rental['DeviceId'].'"';
+			$data = array(
+				"CurrentRentStatusID" => 1
+			);
+			$database->updateRows('deviceinfo', $data, $updatedevice);
+			header('Location: ../Client/Home/allrentals.php');
 			break;
 		case 'returnrental':
+			session_start();
+			$user_id = $_SESSION['userID'];
+			$rentalid=$_GET['id'];
+			$database=new Database();
+			date_default_timezone_set("Europe/Warsaw"); 
+			$returndate = date("Y-m-d h:i:s");
+			$whererental['id']= '="'.$rentalid.'"';
+			$data = array(
+				"ActualReturnDate" => $returndate,
+				"ApplicationStatusID" => 4
+			);
+			$database->updateRows('rentapplication', $data, $whererental);
+			$whereapplication['id']= '="'.$rentalid.'"';
+			$rental=$database->getRow("rentapplications","*",$whereapplication);
+			$f = 'Y-m-d H:i:s';
+			$applicationstartdate = new DateTime($rental['PickupDate']);
+			$applicationreturndate = new DateTime($rental['ReturnDate']);
+			$actualreturndate = new DateTime($returndate);
+			/**
+			 * @var \DateInterval $diff
+			 */
+			$diff= $applicationreturndate->diff($applicationstartdate); 
+			$hourint = $diff->h + ($diff->days * 24);
+			$sumrentpayment = $rental['PaymentPerHr'] * $hourint;
+			if($actualreturndate < $applicationreturndate) {
+				$diff= $applicationreturndate->diff($actualreturndate); 
+				$hourint = $diff->h + ($diff->days * 24);
+				$EarlyReturnDiscount = (0.2) * $rental['PaymentPerHr'] * $hourint;
+				$LateReturnPayment = 0;
+			}
+			else {
+				$diff= $actualreturndate->diff($applicationreturndate); 
+				$hourint = $diff->h + ($diff->days * 24);
+				$LateReturnPayment = (1.5) * $rental['PaymentPerHr'] * $hourint;
+				$EarlyReturnDiscount = 0;
+			}
+			$total = $sumrentpayment - $EarlyReturnDiscount + $LateReturnPayment;
+			$data = array(
+				"RentApplicationId" => $rentalid,
+				"SumRentPayment" => $sumrentpayment,
+				"EarlyReturnDiscount" => $EarlyReturnDiscount,
+				"LateReturnPayment" => $LateReturnPayment,
+				"TotalAmount" => $total
+			);
+			$database->insertRows('clientreceipt', $data);
+			$updatedevice['id']= '="'.$rental['DeviceId'].'"';
+			$data = array(
+				"CurrentRentStatusID" => 5
+			);
+			$database->updateRows('deviceinfo', $data, $updatedevice);
+			header('Location: ../Client/Home/currentrental.php');
 			break;
    }
 }

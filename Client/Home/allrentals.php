@@ -86,7 +86,7 @@
 					<?php
 					$database=new Database();
 					$whereapplication['ClientId']= '="'.$_SESSION['userID'].'"';
-					$rentals=$database->getRows("rentapplications","*",$whereapplication);
+					$rentals=$database->getRows("rentapplications","*",$whereapplication,"AND","id DESC");
 					foreach ($rentals as $rental){
 						$wherecity['id'] = '='.$rental['PickUpLocation'];
 						$pick = $database->getRow("assetlocations","CityName",$wherecity);
@@ -117,18 +117,48 @@
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-										<button type="button" class="close" d
-										ata-dismiss="modal" aria-label="Close">
+										<h5 class="modal-title" id="exampleModalLongTitle">'.$rental['AssetName'].'</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
 									<div class="modal-body">
-										...
+										<div class="row">
+											Application Date = '.$rental['ApplicationDate'].'
+										</div>
+										<div class="row">
+											Pick-up Date = '.$rental['PickupDate'].'
+										</div>
+										<div class="row">
+											Planned Return Date = '.$rental['ReturnDate'].'
+										</div>
+										<div class="row">
+											Actual Returned Date = '.$rental['ActualReturnDate'].'
+										</div>
+										<div class="row">
+											Payment/Hr = '.$rental['PaymentPerHr'].' zl
+										</div>
+										<div class="row">
+											Rented Total Amount: + '.$receipt['SumRentPayment'].'
+										</div>
+										<div class="row">
+											Early Return Discount: - '.$receipt['EarlyReturnDiscount'].'
+										</div>
+										<div class="row">
+											Late Return Payment: + '.$receipt['LateReturnPayment'].'
+										</div>
+										<div class="row">
+											Additional charge pending (if additional charges require to be added when proccessing payment): - '.$receipt['CustomDescription'].'
+										</div>
+										<div class="row">
+											Late Return Payment (will be updated on Completed status): + '.$receipt['CustomDescriptionPayment'].'
+										</div>
+										<div class="row">
+											Total Amount: '.$receipt['TotalAmount'].' zl
+										</div>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									</div>
 									</div>
 								</div>
 							</div>';

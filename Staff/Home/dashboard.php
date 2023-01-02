@@ -38,22 +38,67 @@
                                 <div class="card-body">
                                     <div class="d-md-flex align-items-center">
                                         <div>
-                                            <h4 class="card-title">Assets Analysis</h4>
+                                            <h4 class="card-title">Users Analysis</h4>
                                             <h5 class="card-subtitle">Overview of Latest Month</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <?php
+                                            $database = new Database();
+                                            $allusers = $database->getRows("Clients","*");
+                                            $allcount = count($allusers);
+                                            $currentcount = 0;
+                                            foreach ($allusers as $user){
+                                                date_default_timezone_set("Europe/Warsaw"); 
+			                                    $currentdate = date("Y-m-d h:i:s");
+                                                $today = new DateTime($currentdate);
+                                                $userdate = new DateTime($user['CreatedOn']);
+                                                if($userdate->format('m') === $today->format('m') && $userdate->format('Y') === $today->format('Y')) {
+                                                    $currentcount = $currentcount + 1 ;
+                                                }
+                                            }
+                                        ?>
+                                        <div class="col-md-6 border-left text-center pt-2">
+                                            <h3 class="mb-0 fw-bold"><?php echo $currentcount; ?></h3>
+                                            <span class="text-muted">New Users This month</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="peity_line_neutral left text-center mt-2">
+                                                <span>
+                                                    <span style="display: none;">10,15,8,14,13,10,10</span>
+                                                    <canvas width="50" height="24"></canvas>
+                                                </span>
+                                                <h6>10% of all users</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-md-flex align-items-center">
+                                        <div>
+                                            <h4 class="card-title">Rental Analysis</h4>
+                                            <h5 class="card-subtitle"></h5>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <!-- column -->
                                         <div class="col-lg-9">
-                                            <div>
-                                                <!--iframe src="https://lidyagnuramo.grafana.net/public-dashboards/0892ce48b7eb4c158f83b97f75be1d00" sandbox="allow--origin allow-scripts"></iframe>
-                                                <image src="https://snapshots.raintank.io/dashboard/snapshot/a2z6qBfLwqTU25jZcJSj11Eb3delabSL"-->
-                                            </div>
-                                            <div>
-                                                <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
-                                                <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
-                                                <iframe is="x-frame-bypass" src="https://snapshots.raintank.io/dashboard/snapshot/F0mMsjghC4OAF4nisuIcUqEre01dbuLX"></iframe>
-                                            </div>
+                                            
+                                         </div>
+                                        <!-- column -->
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-md-flex align-items-center">
+                                        <div>
+                                            <h4 class="card-title">Assets Analysis</h4>
+                                            <h5 class="card-subtitle"></h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- column -->
+                                        <div class="col-lg-9">
+                                            
                                          </div>
                                         <!-- column -->
                                     </div>

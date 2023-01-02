@@ -89,6 +89,11 @@
 								"ApplicationStatusID" => 3
 							);
 							$database->updateRows('rentapplication', $data, $updaterent);
+							$updatedevice['id']= '="'.$currentrental['DeviceId'].'"';
+							$data = array(
+								"CurrentRentStatusID" => 3
+							);
+							$database->updateRows('deviceinfo', $data, $updatedevice);
 							echo '
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
@@ -129,7 +134,7 @@
 						</div>
 					<?php
 					}
-					else{
+					else if ($rental['ApplicationStatusID'] != "4"){
 					?>
 						<div class="form-group row">
 							<div class="col-md-4">  

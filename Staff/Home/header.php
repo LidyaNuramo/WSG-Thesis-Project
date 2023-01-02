@@ -154,7 +154,7 @@
                                     <img src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user me-1 ms-1"></i>
+                                    <a class="dropdown-item" href="profile.php"><i class="ti-user me-1 ms-1"></i>
                                         My Profile</a>
                                     <a class="dropdown-item" href="../index.php"><i
                                             class="fa fa-power-off me-1 ms-1"></i> Logout</a>
@@ -255,6 +255,10 @@
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
                                         <i class="fas fa-clock"></i>
                                         <span class="hide-menu"> Active Orders </span></a>
+                                    </li>
+                                    <li class="sidebar-item"><a href="#" class="sidebar-link">
+                                        <i class="fas fa-spinner"></i>
+                                        <span class="hide-menu"> Pending Returns </span></a>
                                     </li>
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
                                         <i class="far fa-calendar-check"></i>
