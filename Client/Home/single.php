@@ -190,7 +190,6 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12">
 					<div class="lightbox-gallery">
-						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
 						<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"-->
 						<div class="photo-gallery">
 							<div class="container">
