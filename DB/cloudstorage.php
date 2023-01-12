@@ -17,14 +17,15 @@ class Bucket{
 
     function upload_file($file_path, $filename, $id){
         try {
+            $random = rand(6, 9);
             $this->$storage_bucket->upload(
                 fopen($file_path,'r'),
                 [
                     'predefinedAcl' => 'publicRead',
-                    'name' => 'AssetsPictures/'.$id.$filename
+                    'name' => $random.$id.$filename
                 ]
             );
-            return 'https://storage.googleapis.com/mytravelrental-bucket/AssetsPictures/'.$id.$filename;
+            return 'https://storage.googleapis.com/mytravelrental-bucket/'.$random.$id.$filename;
         }
         
         catch (Exception $e) {
