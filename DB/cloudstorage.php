@@ -11,7 +11,7 @@ class Bucket{
     private $key_file = '../credentials/sa.json';
 
     function __construct() {
-	    $storage = $this->storage_client($key_file);
+	    $this->$storage = $this->storage_client($key_file);
         $this->$storage_bucket = $storage->bucket($bucket_name);
 	}
 
@@ -30,7 +30,7 @@ class Bucket{
         
         catch (Exception $e) {
             // maybe invalid private key ?
-            print $e;
+            echo $e;
             return "";
         }
     }
@@ -60,7 +60,7 @@ class Bucket{
         }
         catch (Exception $e) {
             // maybe invalid private key ?
-            print $e;
+            echo $e;
         }
 	}
 

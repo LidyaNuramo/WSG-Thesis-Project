@@ -455,7 +455,6 @@ Not Included: '.$_POST['NotIncluded'].'
 			date_default_timezone_set("Europe/Warsaw"); 
 			$time = date("Y-m-d h:i:s");
 			$database=new Database();
-			echo $AssetType;
 			$data=array(
 				"TypeId"=>$AssetType,
 				"AssetNumber"=>$AssetNumber,
