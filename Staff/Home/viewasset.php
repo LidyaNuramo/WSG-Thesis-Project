@@ -34,7 +34,7 @@ include('header.php');
                     <?php
                         $id=$_GET['id'];
                         $whererentasset['id']= '='.$id;
-                        $whereimage['DeviceID']='="'.$id/'"';
+                        $whereimage['DeviceID']='="'.$id.'"';
                         $database=new Database();
                         $results1=$database->getRow("assets","*",$whererentasset);
                         $results3=$database->getRows("devicephotogallery","*",$whereimage);
