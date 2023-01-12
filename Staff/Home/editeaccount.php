@@ -5,7 +5,7 @@
             $role = $_SESSION['role'];
             $where['id']= '="'.$role.'"';
 			$database=new Database();
-            $dept=$database->getRow("Role","*",$where);
+            $dept=$database->getRow("role","*",$where);
             $allow = array("1", "4", "5");
 			if (in_array($dept['DeptID'], $allow)){
 				?>
