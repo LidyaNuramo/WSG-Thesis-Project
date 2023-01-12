@@ -7,10 +7,9 @@ use Google\Cloud\Storage\StorageClient;
 class Bucket{
 
     private $storage_bucket = null;
-    private $keypath = "../credentials/svcaccount.JSON";
 
     function __construct() {
-	    $storage = $this->storage_client($this->$keypath);
+	    $storage = $this->storage_client();
         $this->$storage_bucket = $storage->bucket('mytravelrental-bucket');
 	}
 
@@ -45,10 +44,8 @@ class Bucket{
         );
     }
 
-    private function storage_client($path) {
-		$storage = new StorageClient([
-            'keyFile' => json_decode(file_get_contents($path), true)
-        ]);
+    private function storage_client() {
+		$storage = new StorageClient();
 		if (!$connection) {
 			echo " Cloud Storage Connection error.";
 			exit;
