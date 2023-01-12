@@ -51,7 +51,9 @@ class Bucket{
     }
 
     private function storage_client($key_file) {
-		$storage = new StorageClient();
+		$storage = new StorageClient([
+            'keyFilePath' => $key_file,
+        ]);
 		if (!$storage) {
 			echo " Cloud Storage Connection error.";
 			exit;
