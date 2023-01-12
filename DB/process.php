@@ -474,6 +474,7 @@ Not Included: '.$_POST['NotIncluded'].'
 			$whichnewasset['AssetNumber']="='".$AssetNumber."'";
 			$newasset = $database->getRow("deviceinfo","*",$whichnewasset);
 			$assetid= $newasset['id'];
+			echo "Before bucket";
 			$link=$bucket->upload_file($filename, $filename, $assetid);
 			removefile($filename);
 			$data=array(
