@@ -129,7 +129,7 @@
                                 <?php
                                     $database=new Database();
                                     $assetlocated['DeviceId']="='".$results1['DeviceId']."'";
-                                    $assetgpslocations1=$database->getRows("gpslocation","*",$assetlocated,"AND","id desc",1);
+                                    $assetgpslocations1=$database->getRow("gpslocation","*",$assetlocated,"AND","id desc",1);
                                     if (!empty($assetgpslocations1)){
                                         foreach ($assetgpslocations1 as $assetgpslocation1){
                                             $src="https://maps.google.com/maps?q=".$assetgpslocation1['Lat'].",".$assetgpslocation1['Long']."&z=16&output=embed";
@@ -156,6 +156,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php 
+                                }
+                                ?>
                             </td>
                             <td colspan="2">
                                 <?php
@@ -223,11 +226,6 @@
                 </table>
             </div>
         </div>
-            <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-            <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-            <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
-            <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
-            <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
             <script>
                 $('#zero_config').DataTable();
             </script>              
