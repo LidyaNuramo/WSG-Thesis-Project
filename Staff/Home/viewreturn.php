@@ -44,7 +44,9 @@
                     ?>
                     <thead class='thead-dark'>
                         <tr>
-                            <th colspan='4'><h1 style='text-align: left;font-weight: bold;'>Order #<?php echo $results1['id']?></h1></th>
+                            <th colspan='4'>
+                                <h1 style='text-align: left;font-weight: bold;'>Order #<?php echo $results1['id']?></h1>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,7 +54,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Asset Name: </font>
+                                        <label style="font-weight: bold;"> Asset Name: </label>
                                     </div>
                                     <div class="col">
                                         <?php echo $results1['AssetName'];?>
@@ -62,7 +64,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Client Name: </font>
+                                        <label style="font-weight: bold;"> Client Name: </label>
                                     </div>
                                     <div class="col">
                                         <?php echo $results1['ClientFirstName'].' '.$results1['ClientLastName'];?>
@@ -72,7 +74,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Payment per Hour: </font>
+                                        <label style="font-weight: bold;"> Payment per Hour: </label>
                                     </div>
                                     <div class="col">
                                         <?php echo $results1['PaymentPerHr'];?>
@@ -82,7 +84,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Application Date: </font>
+                                        <label style="font-weight: bold;"> Application Date: </label>
                                     </div>
                                     <div class="col">
                                         <?php echo $results1['ApplicationDate'];?>
@@ -94,7 +96,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Pick-up Date: </font>
+                                        <label style="font-weight: bold;"> Pick-up Date: </label>
                                     </div>
                                     <div class="col">
                                         <?php echo $results1['PickupDate'];?>
@@ -104,7 +106,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Planned Return Date: </font>
+                                        <label style="font-weight: bold;"> Planned Return Date: </label>
                                     </div>
                                     <div class="col">
                                         <?php echo $results1['ReturnDate'];?>
@@ -114,7 +116,7 @@
                             <td colspan="2">
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Pick-up Location: </font>
+                                        <label style="font-weight: bold;"> Pick-up Location: </label>
                                     </div>
                                     <div class="col">
                                         <?php echo $apppickuplocation['Address'].', '.$apppickuplocation['PostCode'].', '.$apppickuplocation['CityName'];?>
@@ -136,7 +138,7 @@
                                 ?>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Last ping location at: </font> <?php echo $assetgpslocation1['LocationDate']; ?>
+                                        <label style="font-weight: bold;"> Last ping location at: </label> <?php echo $assetgpslocation1['LocationDate']; ?>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -154,9 +156,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php
-                                    }
-                                ?>
                             </td>
                             <td colspan="2">
                                 <?php
@@ -169,7 +168,7 @@
                                 ?>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Drop Off/Returned date: </font> <?php echo $results1['ActualReturnDate']; ?>
+                                        <label style="font-weight: bold;"> Drop Off/Returned date: </label> <?php echo $results1['ActualReturnDate']; ?>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -194,7 +193,7 @@
                                 <td colspan="2">
                                     <div class="row">
                                         <div class="col">
-                                            <font style="font-weight: bold;"> Custom Fee Description: </font>
+                                            <label style="font-weight: bold;"> Custom Fee Description: </label>
                                         </div>
                                         <div class="col">
                                             <textarea class='form-control' rows='8'name="customfeedesc" required>None</textarea>
@@ -204,7 +203,7 @@
                                 <td>
                                     <div class="row">
                                         <div class="col">
-                                            <font style="font-weight: bold;">Custom Fee Amount: </font>
+                                            <label style="font-weight: bold;">Custom Fee Amount: </label>
                                         </div>
                                         <div class="col">
                                             <input type="number" class="form-control" placeholder="0" name='customfee' value="0" required>
