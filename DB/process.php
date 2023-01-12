@@ -469,14 +469,14 @@ Not Included: '.$_POST['NotIncluded'].'
 				"LastLocationDate"=>$time
 			);
 			$database->insertRows("deviceinfo",$data);
-			$bucket = new Bucket();
-			$filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
-			$whichnewasset['AssetNumber']="='".$AssetNumber."'";
-			$newasset = $database->getRow("deviceinfo","*",$whichnewasset);
-			$assetid= $newasset['id'];
-			echo "Before bucket";
-			$link=$bucket.upload_file($filename, $file_name, $assetid);
-			removefile($filename);
+			// $bucket = new Bucket();
+			// $filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
+			// $whichnewasset['AssetNumber']="='".$AssetNumber."'";
+			// $newasset = $database->getRow("deviceinfo","*",$whichnewasset);
+			// $assetid= $newasset['id'];
+			// echo "Before bucket";
+			// $link=$bucket.upload_file($filename, $file_name, $assetid);
+			// removefile($filename);
 			$data=array(
 				"PhotoLinks" => $link
 			);
