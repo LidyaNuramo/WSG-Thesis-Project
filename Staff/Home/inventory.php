@@ -80,7 +80,7 @@
                                         <tbody>
                                         <?php
                                         $database=new Database();
-                                        $assets=$database->getRows("Assets","*");
+                                        $assets=$database->getRows("assets","*");
                                         foreach ($assets as $asset){
                                             echo '<tr class="clickable-row" data-href="viewasset.php?id='.$asset['id'].'" style="cursor: pointer;">
                                                     <td>'.$asset['AssetNumber'].'</td>

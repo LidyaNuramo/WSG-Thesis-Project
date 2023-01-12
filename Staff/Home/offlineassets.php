@@ -53,7 +53,7 @@
                                         <tbody>
                                         <?php
                                         $database=new Database();
-                                        $assets=$database->getRows("Assets","*");
+                                        $assets=$database->getRows("assets","*");
                                         foreach ($assets as $asset){
                                             $Locationdatetime = strtotime ( $asset['LastLocationDate'] );
                                             if ($Locationdatetime <= strtotime("-1 hour")){
