@@ -190,6 +190,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12">
 					<div class="lightbox-gallery">
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
 						<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"-->
 						<div class="photo-gallery">
 							<div class="container">
@@ -200,7 +201,7 @@
 									<?php
 									$database=new Database();
 									$where2['DeviceID']='="'.$assetid.'"';
-									$photoresults=$database->getRows("DevicePhotoGallery","*",$where2);
+									$photoresults=$database->getRows("devicephotogallery","*",$where2);
 									$gallery = "";
 									foreach ($photoresults as $photoresult){
 										$gallery = $gallery.'<div class="col-sm-6 col-md-4 col-lg-3 item"><a href="'.$photoresult['Photolink'].'" data-lightbox="photos"><img class="img-fluid" src="'.$photoresult['Photolink'].'"></a></div>';
