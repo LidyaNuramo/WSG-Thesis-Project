@@ -7,10 +7,12 @@ use Google\Cloud\Storage\StorageClient;
 class Bucket{
 
     private $storage_bucket = null;
+    private $bucket_name = 'mytravelrental-bucket';
+    private $key_file = '../credentials/sa.json';
 
     function __construct() {
-	    $storage = $this->storage_client();
-        $this->$storage_bucket = $storage->bucket('mytravelrental-bucket');
+	    $storage = $this->storage_client($key_file);
+        $this->$storage_bucket = $storage->bucket($bucket_name);
 	}
 
     function upload_file($file_path, $filename, $id){
@@ -48,8 +50,10 @@ class Bucket{
         );
     }
 
-    private function storage_client() {
-		$storage = new StorageClient();
+    private function storage_client($key_file) {
+		$storage = new StorageClient([
+            'keyFilePath' => $key_file,
+        ]);
 		if (!$connection) {
 			echo " Cloud Storage Connection error.";
 			exit;
