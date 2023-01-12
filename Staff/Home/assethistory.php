@@ -33,7 +33,7 @@ include('header.php');
                 <table class="table table-bordered table-secondary">
                     <?php
                         $id=$_GET['id'];
-                        $where['id']= '='.$id;
+                        $where['id']= '="'.$id.'"';
                         $whereimage['DeviceID']='='.$id;
                         $database=new Database();
                         $results1=$database->getRow("assets","*",$where);
