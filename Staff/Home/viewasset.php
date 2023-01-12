@@ -33,7 +33,7 @@ include('header.php');
                 <table class="table table-bordered table-secondary">
                     <?php
                         $id=$_GET['id'];
-                        $whererentasset['id']= '='.$id;
+                        $whererentasset['id']= '="'.$id.'"';
                         $whereimage['DeviceID']='="'.$id.'"';
                         $database=new Database();
                         $results1=$database->getRow("assets","*",$whererentasset);
@@ -41,7 +41,9 @@ include('header.php');
                     ?>
                     <thead class='thead-dark'>
                         <tr>
-                            <th colspan='4'><h1 style='text-align: left;font-weight: bold;'><?php echo $results1['AssetName']?></h1></th>
+                            <th colspan='4'>
+                                <h1 style='text-align: left;font-weight: bold;'><?php echo $results1['AssetName']?></h1>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>  
@@ -50,8 +52,12 @@ include('header.php');
                             <td >
                                 <div class="row" style="text-align: right;">
                                     <div class="col" >
-                                        <a href="assethistory.php?id=<?php echo $id;?>" style="color: gray;"> <i class='fas fa-history' style='font-size:24px'></i> History </a>
-                                        <a href="editasset.php?id=<?php echo $id;?>" style="color: blue;"> <i class='fas fa-edit' style='font-size:24px'></i> Edit </a>
+                                        <a href="assethistory.php?id=<?php echo $id;?>" style="color: gray;"> 
+                                            <i class='fas fa-history' style='font-size:24px'></i> History 
+                                        </a>
+                                        <a href="editasset.php?id=<?php echo $id;?>" style="color: blue;"> 
+                                            <i class='fas fa-edit' style='font-size:24px'></i> Edit 
+                                        </a>
                                     </div>
                                 </div>
                             </td>
@@ -60,7 +66,7 @@ include('header.php');
                             <td>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Rent per hour (zl): </font>
+                                        <label style="font-weight: bold;"> Rent per hour (zl): </label>
                                         <?php echo $results1['RentPricePerHour']?>
                                     </div>
                                 </div>
@@ -69,7 +75,7 @@ include('header.php');
                                 <form action="../../DB/process.php?action=changestatus&id=<?php echo $id; ?>" method="post">
                                     <div class="row">
                                         <div class="col">
-                                            <font style="font-weight: bold;"> Status: </font>
+                                            <label style="font-weight: bold;"> Status: </label>
                                         </div>
                                         <div class="col">
                                             <select class="form-control" name="assetstatus" id="assetstatus" required>
@@ -102,7 +108,7 @@ include('header.php');
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <font style="font-weight: bold;"> Change display picture: </font>
+                                            <label style="font-weight: bold;"> Change display picture: </label>
                                         </div>
                                         <div class="col">
                                             <input type="file" class="form-control" id="validatedCustomFile" name="fileToUpload" required>
@@ -115,15 +121,15 @@ include('header.php');
                             </td>
                         </tr>
                         <tr style='font-size:15pt;'>
-                            <td><font style="font-weight: bold;"> Device number: </font><?php echo $results1['AssetNumber']?></td>
-                            <td><font style="font-weight: bold;">Manufacturer: </font><?php echo $results1['ManufacturerName']?></td>
-                            <td><font style="font-weight: bold;">Model Type: </font><?php echo $results1['AssetTypeName']; ?></td>
-                            <td><font style="font-weight: bold;"> Registration Date: </font><?php echo $results1['RegistrationDate']?></td>
+                            <td><label style="font-weight: bold;"> Device number: </label><?php echo $results1['AssetNumber']?></td>
+                            <td><label style="font-weight: bold;">Manufacturer: </label><?php echo $results1['ManufacturerName']?></td>
+                            <td><label style="font-weight: bold;">Model Type: </label><?php echo $results1['AssetTypeName']; ?></td>
+                            <td><label style="font-weight: bold;"> Registration Date: </label><?php echo $results1['RegistrationDate']?></td>
                         </tr>
                         <tr style='font-size:15pt;'>
                             <td colspan="2"></td>
-                            <td><font style="font-weight: bold;">Address: </font><?php echo $results1['AssetAddress'].", ".$results1['AssetPostCode'].", ".$results1['AssetCityName']; ?></td>
-                            <td><font style="font-weight: bold;"> Last Online:  </font><?php echo $results1['LastLocationDate']?></td>
+                            <td><label style="font-weight: bold;">Address: </label><?php echo $results1['AssetAddress'].", ".$results1['AssetPostCode'].", ".$results1['AssetCityName']; ?></td>
+                            <td><label style="font-weight: bold;"> Last Online:  </label><?php echo $results1['LastLocationDate']?></td>
                         </tr>
                         <tr style='font-size:12pt;'>
                             <td colspan='2'><p style='font-size:15pt;font-weight: bold;'>Description:</p><textarea class='form-control' rows='8'name="Description" required disabled="true"><?php echo $results1['Description']?></textarea></td>
@@ -164,7 +170,7 @@ include('header.php');
                                 <td colspan="3">
                                     <div class="row">
                                         <div class="col">
-                                            <font style="font-weight: bold;"> Upload more gallery photos: </font>
+                                            <label style="font-weight: bold;"> Upload more gallery photos: </label>
                                         </div>
                                         <div class="col">
                                             <input type="file" class="form-control" id="validatedCustomFile" name="filesToUpload[]" multiple required>
