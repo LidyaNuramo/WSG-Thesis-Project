@@ -18,20 +18,21 @@ class Bucket{
     function upload_file($file_path, $filename, $id){
         try {
             $random = rand(6, 9);
+            $name = $random.$id.$filename;
             $this->$storage_bucket->upload(
-                fopen($file_path,'r'),
+                $file_path,
                 [
                     'predefinedAcl' => 'publicRead',
-                    'name' => $random.$id.$filename
+                    'name' => $name
                 ]
             );
-            return 'https://storage.googleapis.com/mytravelrental-bucket/'.$random.$id.$filename;
+            $url = 'https://storage.googleapis.com/mytravelrental-bucket/'.$random.$id.$filename;
+            return $url;
         }
         
         catch (Exception $e) {
             // maybe invalid private key ?
             echo $e;
-            return "";
         }
     }
 
@@ -55,9 +56,15 @@ class Bucket{
     private function storage_client($key_file) {
         try {
             $storage = new StorageClient([
-                'keyFilePath' => $key_file,
+                'keyFilePath' => json_decode(file_get_contents($key_file), true),
             ]);
-            return $storage;
+            if (!$connection) {
+                echo " Cloud Storage Connection error.";
+                exit;
+            }
+            else{
+                return $connection;
+            } 
         }
         catch (Exception $e) {
             // maybe invalid private key ?

@@ -475,7 +475,7 @@ Not Included: '.$_POST['NotIncluded'].'
 			$newasset = $database->getRow("deviceinfo","*",$whichnewasset);
 			$assetid= $newasset['id'];
 			echo "Before bucket";
-			$link=$bucket->upload_file($filename, $filename, $assetid);
+			$link=$bucket.upload_file($filename, $file_name, $assetid);
 			removefile($filename);
 			$data=array(
 				"PhotoLinks" => $link
