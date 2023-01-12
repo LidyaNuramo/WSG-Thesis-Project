@@ -219,6 +219,7 @@ include('header.php');
                     </form>
                 </table>
             </div>
+        </div>
             <?php
 			}
             else{
