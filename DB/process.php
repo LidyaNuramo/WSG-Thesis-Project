@@ -93,7 +93,7 @@ if(!empty($_GET['action'])){
 			$password=$_POST['password'];
 			$where['Email']= '="'.$email.'"';
 			$database=new Database();
-			$user=$database->getRow("Employee","*",$where);
+			$user=$database->getRow("employee","*",$where);
 			if ($user==NULL){
 				header("Location: ../Staff/index.php?action=createaccount");
 				break;
