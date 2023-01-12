@@ -61,7 +61,7 @@
                                         <tbody>
                                         <?php
                                         $database=new Database();
-                                        $users=$database->getRows("Employees","*");
+                                        $users=$database->getRows("employees","*");
                                         foreach ($users as $user){
                                             echo '<tr class="clickable-row" data-href="editeaccount.php?id='.$user['id'].'" style="cursor: pointer;">
                                                 <td>'.$user['FullName'].'</td>

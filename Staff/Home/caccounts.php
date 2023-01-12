@@ -47,7 +47,7 @@
                                         <tbody>
                                         <?php
                                         $database=new Database();
-                                        $users=$database->getRows("Clients","*");
+                                        $users=$database->getRows("clients","*");
                                         foreach ($users as $user){
                                             echo '<tr>
                                                 <td>'.$user['FullName'].'</td>
