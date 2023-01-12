@@ -18,10 +18,37 @@
                         <div class="ms-auto text-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Assets</li>
                                 </ol>
                             </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <div class="ms-auto text-end">
+                        <ul class="navbar-nav float-end">
+                            <!-- Comment -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-secondary"> Add+ </button>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+                                <?php
+                                    $database=new Database();
+                                    $types=$database->getRows("assettype","*");
+                                    foreach ($types as $type){
+                                        echo '
+                                        <a class="dropdown-item" href="newasset.php?type='.$type['id'].'">'.$type['Name'].'</a>
+                                        <div class="dropdown-divider"></div>
+                                        ';
+                                    }
+                                ?>
+                                </ul>
+                            </li>
+                            <!-- User profile and search -->
+                        </ul>
                         </div>
                     </div>
                 </div>
@@ -48,7 +75,6 @@
                                                 <th>Rent Per Hour</th>
                                                 <th>Asset Status</th>
                                                 <th>Last Location On</th>
-                                                <th>Rented Days</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -56,7 +82,7 @@
                                         $database=new Database();
                                         $assets=$database->getRows("Assets","*");
                                         foreach ($assets as $asset){
-                                            echo '<tr>
+                                            echo '<tr class="clickable-row" data-href="viewasset.php?id='.$asset['id'].'" style="cursor: pointer;">
                                                     <td>'.$asset['AssetNumber'].'</td>
                                                     <td>'.$asset['AssetName'].'</td>
                                                     <td>'.$asset['AssetTypeName'].'</td>
@@ -66,7 +92,6 @@
                                                     <td>'.$asset['RentPricePerHour'].'</td>
                                                     <td>'.$asset['CurrentRentStatus'].'</td>
                                                     <td>'.$asset['LastLocationDate'].'</td>
-                                                    <td>'.$asset['TotalRentedDays'].'</td>
                                                 </tr>';
                                         }
                                         ?>
@@ -82,7 +107,6 @@
                                                 <th>Rent Per Hour</th>
                                                 <th>Asset Status</th>
                                                 <th>Last Location On</th>
-                                                <th>Rented Days</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -98,6 +122,12 @@
             <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
             <script>
                 $('#zero_config').DataTable();
+
+                jQuery(document).ready(function($) {
+                    $(".clickable-row").click(function() {
+                        window.location = $(this).data("href");
+                    });
+                });
             </script>              
                 <?php
 			}

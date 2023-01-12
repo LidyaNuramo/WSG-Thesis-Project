@@ -67,12 +67,12 @@
 						break;
 					case 'startrental':
 						$database=new Database();
-						$whereapplication['id']= '="'.$_GET['id'].'"';
-						$currentrental=$database->getRow("rentapplications","*",$whereapplication);
+						$whererentalapplication['id']= '="'.$_GET['id'].'"';
+						$currentrental=$database->getRow("rentapplications","*",$whererentalapplication);
 						date_default_timezone_set("Europe/Warsaw"); 
 						$pickuptime = $currentrental['PickupDate'];
-						$pickupdate = date('d/M/Y H:i:s', strtotime($pickuptime));
-						$nowdate = date("Y-m-d h:i:sa");
+						$pickupdate = date('Y-m-d H:i:s', strtotime($pickuptime));
+						$nowdate = date("Y-m-d h:i:s");
 						if ($pickupdate > $nowdate){
 							echo '
 								<div class="input-group mb-3">
@@ -109,7 +109,7 @@
 
 				$database=new Database();
 				$whereapplication['ClientId']= '="'.$_SESSION['userID'].'"';
-				$whereapplication['ApplicationStatusID']= '!= "5"';
+				$whereapplication['ApplicationStatusID']= 'NOT IN (5,6,7)';
 				$rental=$database->getRow("rentapplications","*",$whereapplication);
 
 				if(!empty($rental)){
@@ -154,8 +154,30 @@
 					$device=$database->getRow("rentapplications","*",$wheredevice);
 					$pickup=$database->getRow("assetlocations","*",$wherepickup);
 					$dropoff=$database->getRow("assetlocations","*",$wheredropoff);
+					$address=$pickup['Address'].", ".$pickup['CityName'].", ".$pickup['CountryName'];
+					$urladdress = str_replace(' ', '%20', $address);
+					$src2="https://maps.google.com/maps?q=".$urladdress."&z=16&ie=UTF8&iwloc=&output=embed";
 				?>
-
+				<div class="row">
+					<div class="col">
+						<font style="font-weight: bold;"> Pickup location on map: </font>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="mapouter">
+							<div class="gmap_canvas">
+								<iframe width="600px" height="500px" id="gmap_canvas" src="<?php echo $src2; ?>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));'></iframe>
+								<br>
+								<a href="https://www.embedgooglemap.net">google maps in website</a>
+								<style>
+									.mapouter{position:relative;text-align:right;height:500px;width:600px;}
+									.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}
+								</style>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-md-4">
 						Pick-up Location: 

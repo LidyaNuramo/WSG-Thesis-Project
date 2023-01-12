@@ -22,6 +22,9 @@
         <link href="dist/css/style.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
         <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
+        <link href="assets/libs/jquery-steps/steps.css" rel="stylesheet">
+        <link href="dist/css/style.min.css" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -228,7 +231,7 @@
                                     <span class="hide-menu"> Assets </span>
                                 </a>
                                 <ul aria-expanded="false" class="collapse  first-level">
-                                    <li class="sidebar-item"><a href="Inventory.php" class="sidebar-link">
+                                    <li class="sidebar-item"><a href="inventory.php" class="sidebar-link">
                                         <i class="fas fa-database"></i>
                                         <span class="hide-menu"> Inventory </span></a>
                                     </li>
@@ -262,14 +265,14 @@
                                     </li>
                                     <li class="sidebar-item"><a href="#" class="sidebar-link">
                                         <i class="far fa-calendar-check"></i>
-                                        <span class="hide-menu"> Completed Ordered </span></a>
+                                        <span class="hide-menu"> Completed Orders </span></a>
                                     </li>
                                 </ul>
                             </li>
                             <?php
                                 if ($role == "1" ){
                                     echo '
-                                        <li class="sidebar-item"> 
+                                        <!--li class="sidebar-item"> 
                                             <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                                                 <i class="mdi mdi-cash-multiple"></i>
                                                 <span class="hide-menu"> Finances </span>
@@ -284,7 +287,7 @@
                                                     <span class="hide-menu"> Annual Stats </span></a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li-->
                                     ';
                                 }
                             ?>

@@ -95,7 +95,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <table class="graph">
-                                    <caption>User account creation until <?php echo ($today->format('m')).", ".($today->format('Y'));?></caption>
+                                    <caption>User account creation from 01 - <?php echo ($today->format('m')).", ".($today->format('Y'));?></caption>
                                     <thead>
                                         <tr>
                                             <th scope="col">Month</th>
@@ -131,65 +131,68 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <?php
-                                        $database = new Database();
-                                        $allrentals = $database->getRows("rentapplications","*");
-                                        $allcount = count($allrentals);
-                                        $statuscount = array(
-                                            array(0,0),
-                                            array(0,0),
-                                            array(0,0),
-                                            array(0,0),
-                                            array(0,0),
-                                            array(0,0),
-                                            array(0,0)
-                                        );
-                                        $monthscountcurrent = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-                                        $monthscountlast = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-                                        $years = array();
-                                        array_push($years, ((int) $today->format('Y')));
-                                        array_push($years, ((int) $today->format('Y') - 1));
-                                        foreach ($allrentals as $rental){
-                                            date_default_timezone_set("Europe/Warsaw"); 
-                                            $currentdate = date("Y-m-d h:i:s");
-                                            $today = new DateTime($currentdate);
-                                            $applicationdate = new DateTime($rental['ApplicationDate']);
-                                            if($applicationdate->format('Y') === $today->format('Y')) {
-                                                $month = (int) $applicationdate->format('m') - 1;
-                                                $monthscountcurrent[$month] = $monthscountcurrent[$month] + 1;
-                                                $statusid = (int) $rental['ApplicationStatusID'] - 1;
-                                                $statuscount[$statusid][0] = ($statuscount[$statusid][0]) + 1;
-                                            }
-                                            if(((int) $applicationdate->format('Y')) === ( (int) $today->format('Y') - 1)) {
-                                                $monthscountlast[$month] = $monthscountcurrent[$month] + 1;
-                                                $statusid = (int) $rental['ApplicationStatusID'] - 1;
-                                                $statuscount[$statusid][1] = ($statuscount[$statusid][1]) + 1;
-                                            }
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <?php
+                                    $database = new Database();
+                                    $allrentals = $database->getRows("rentapplications","*");
+                                    $allcount = count($allrentals);
+                                    $statuscount = array(
+                                        array(0,0),
+                                        array(0,0),
+                                        array(0,0),
+                                        array(0,0),
+                                        array(0,0),
+                                        array(0,0),
+                                        array(0,0)
+                                    );
+                                    $monthscountcurrent = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                                    $monthscountlast = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                                    $years = array();
+                                    array_push($years, ((int) $today->format('Y')));
+                                    array_push($years, ((int) $today->format('Y') - 1));
+                                    foreach ($allrentals as $rental){
+                                        date_default_timezone_set("Europe/Warsaw"); 
+                                        $currentdate = date("Y-m-d h:i:s");
+                                        $today = new DateTime($currentdate);
+                                        $applicationdate = new DateTime($rental['ApplicationDate']);
+                                        if($applicationdate->format('Y') === $today->format('Y')) {
+                                            $month = (int) $applicationdate->format('m') - 1;
+                                            $monthscountcurrent[$month] = $monthscountcurrent[$month] + 1;
+                                            $statusid = (int) $rental['ApplicationStatusID'] - 1;
+                                            $statuscount[$statusid][0] = ($statuscount[$statusid][0]) + 1;
+                                        }
+                                        if(((int) $applicationdate->format('Y')) === ( (int) $today->format('Y') - 1)) {
+                                            $month = (int) $applicationdate->format('m') -1;
+                                            $monthscountlast[$month] = $monthscountlast[$month] + 1;
+                                            $statusid = (int) $rental['ApplicationStatusID'] - 1;
+                                            $statuscount[$statusid][1] = ($statuscount[$statusid][1]) + 1;
+                                        }
+                                    }
+                                ?>
+                                <caption>Rent Applications in the past two months</caption>
+                                <table border="1" id="dataTable">
+                                    <tr>
+                                        <th style="background-color: grey;">Months</th>
+                                        <th style="background-color: grey;"><?php echo $years[0]; ?></th>
+                                        <th style="background-color: grey;"><?php echo $years[1]; ?></th>
+                                    </tr>
+                                    <?php 
+                                        $start = 0;
+                                        $stop = 12;
+                                        while ($start < $stop){
+                                            echo '
+                                            <tr>
+                                                <td style="background-color: lightgrey;">'.$months[$start].'</td>
+                                                <td>'.$monthscountcurrent[$start].'</td>
+                                                <td>'.$monthscountlast[$start].'</td>
+                                            </tr>';
+                                            $start = $start + 1;
                                         }
                                     ?>
-                                    <table border="1" id="dataTable">
-                                        <tr>
-                                            <th style="background-color: grey;">Months</th>
-                                            <th id="<?php echo $years[0]; ?>" onClick="header_clicked()" style="cursor: pointer;background-color: grey;"><?php echo $years[0]; ?></th>
-                                            <th id="<?php echo $years[1]; ?>" onClick="header_clicked()" style="cursor: pointer;background-color: grey;"><?php echo $years[1]; ?></th>
-                                        </tr>
-                                        <?php 
-                                            $start = 0;
-                                            $stop = 11;
-                                            while ($start < $stop){
-                                                echo '
-                                                <tr>
-                                                    <td style="background-color: lightgrey;">'.$months[$start].'</td>
-                                                    <td>'.$monthscountcurrent[$start].'</td>
-                                                    <td>'.$monthscountlast[$start].'</td>
-                                                </tr>';
-                                                $start = $start + 1;
-                                            }
-                                        ?>
-                                    </table>
-                                    <div id="chartContainer" style="height: 360px; width: 100%;"></div>
+                                </table>
+                                <div id="chartContainer" style="height: 360px; width: 100%;">
                                 </div>
                             </div>
                         </div>
@@ -197,3 +200,7 @@
                 </div>
 
                 <script src="../../assets/libs/chart/customgraph.js"></script>
+                <script src="https://code.highcharts.com/highcharts.js"></script>
+                <script src="https://code.highcharts.com/modules/data.js"></script>
+                <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                <script src="https://code.highcharts.com/modules/export-data.js"></script>

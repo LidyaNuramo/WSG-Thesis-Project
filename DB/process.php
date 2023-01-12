@@ -157,7 +157,7 @@ if(!empty($_GET['action'])){
 			}
 			else{
 				$whereapplication['ClientId']= '="'.$user_id.'"';
-				$whereapplication['ApplicationStatusID']= '!= "5"';
+				$whereapplication['ApplicationStatusID']= 'NOT IN (5,6,7)';
 				$application=$database->getRow("rentapplication","*",$whereapplication);
 				if ($application == NULL) { 
 					$clientid=$user_id;
@@ -170,9 +170,7 @@ if(!empty($_GET['action'])){
 					$bookpickdate = $_POST['book_pick_date']." ".$_POST['time_pick'];
 					$bookoffdate = $_POST['book_off_date']." ".$_POST['time_drop'];
 					$pickuplocation = $device['CurrentAssetLocationID'];
-					$wherecity['CityID']= '="'.$_POST['dropoffcity'].'"';
-					$location=$database->getRow("assetlocation","*",$wherecity);
-					$dropofflocation = $location['id'];
+					$dropofflocation = $_POST['dropoffcity'];
 					$data = array(
 						"ClientId" => $clientid,
 						"DeviceId" => $deviceid,
@@ -300,7 +298,244 @@ if(!empty($_GET['action'])){
 			$database->updateRows('deviceinfo', $data, $updatedevice);
 			header('Location: ../Client/Home/currentrental.php');
 			break;
+		case 'newstaff':
+			$fname=$_POST['name'];
+			$lname=$_POST['surname'];
+			$email=$_POST['email'];
+			$phone=$_POST['phone'];
+			$password=$_POST['password'];
+			$city=$_POST['city'];
+			$role=$_POST['jobrole'];
+			date_default_timezone_set("Europe/Warsaw"); 
+			$time = date("Y-m-d h:i:s");
+			$database=new Database();
+			$where['Email'] ='="'.$email.'"';
+	        $results=$database->getRows("employee","*",$where);
+			$num=1;
+			foreach($results as $result){
+				if ($email == $result['Email']){
+					$num=$num+1;
+				}
+			}
+			if ($num==1){
+				$data=array(
+					"FirstName"=>$fname,
+					"LastName"=>$lname,
+					"Phone"=>$phone,
+					"Email"=>$email,
+					"Phone"=>$phone,
+					"Password"=>$password,
+					"CityID"=>$city,
+					"CreatedOn"=>$time,
+					"LastModifiedOn"=>$time,
+					"RoleID"=>$role
+				);
+				$database->insertRows("employee",$data);
+				$rr="Location: ../Staff/Home/eaccounts.php";
+				header($rr);
+				break;
+			}
+			$rr="Location: ../Staff/Home/neweaccount.php?action=no";
+			header($rr);
+			break;
+		case 'deleteeaccount':
+			session_start();
+			$user_id = $_SESSION['userID'];
+			$accountid = $_GET['id'];
+			if ($user_id == $accountid){
+				$rr="Location: ../Staff/Home/editeaccount.php?action=rejecteddelete&id=".$_GET['id'];
+				header($rr);
+				break;
+			}
+			else{
+				$database=new Database();
+				$where['id'] ='="'.$_GET['id'].'"';
+				$results=$database->removeRows("employee",$where);
+				$rr="Location: ../Staff/Home/eaccounts.php";
+				header($rr);
+				break;
+			}
+			break;
+		case 'addAsset':
+			$type = $_GET['type'];
+			$file_name = $_FILES['fileToUpload']['name']; 
+			$file_size = $_FILES['fileToUpload']['size']; 
+			$file_tmpname = $_FILES['fileToUpload']['tmp_name']; 
+			// $filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
+			// removefile($filename);
+			$name=$_POST['Name'];
+			$AssetNumber=$_POST['AssetNumber'];
+			$assetlocation=$_POST['assetlocation'];
+			$Manufacturer=$_POST['Manufacturer'];
+			$AssetType=$_POST['AssetType'];
+			$rent=$_POST['rent'];
+			$Description=$_POST['Description'];
+			if ($_GET['type'] == 2){
+				$Features='
+Mileage: '.$_POST['Mileage'].'
+Transmission: '.$_POST['Transmission'].'
+Fuel: '.$_POST['Fuel'].'
+Luggage: '.$_POST['Luggage'].'
+Seats: '.$_POST['Seats'].'
+
+Includes: '.$_POST['Includes'].'
+Not Included: '.$_POST['NotIncluded'].'
+				';
+			}
+			else{
+				$Features='
+Includes: '.$_POST['Includes'].'
+Not Included: '.$_POST['NotIncluded'].'
+				';
+			}
+			date_default_timezone_set("Europe/Warsaw"); 
+			$time = date("Y-m-d h:i:s");
+			$database=new Database();
+			$data=array(
+				"TypeId"=>$AssetType,
+				"AssetNumber"=>$AssetNumber,
+				"Name"=>$name,
+				"Description"=>$Description,
+				"Features"=>$Features,
+				"ManufacturerID"=>$Manufacturer,
+				"RegistrationDate"=>$time,
+				"RentPricePerHour"=>$rent,
+				"CurrentRentStatusID"=>7,
+				"CurrentAssetLocationID"=>$assetlocation,
+				"LastLocationDate"=>$time
+			);
+			$database->insertRows("deviceinfo",$data);
+			$rr="Location: ../Staff/Home/inventory.php";
+			header($rr);
+			break;
+		case 'addPhotoGallery':
+			$id = $_GET['id'];
+			foreach ($_FILES['filesToUpload']['tmp_name'] as $key => $value) {
+	            $file_name = $_FILES['filesToUpload']['name'][$key]; 
+	            $file_size = $_FILES['filesToUpload']['size'][$key]; 
+				$file_tmpname = $_FILES['filesToUpload']['tmp_name'][$key]; 
+				$filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
+				removefile($filename);
+			}
+			$rr="Location: ../Staff/Home/viewasset.php?id=".$id;
+			header($rr);
+			break;
+		case 'changedisplaypic':
+			$id = $_GET['id'];
+			$file_name = $_FILES['fileToUpload']['name']; 
+			$file_size = $_FILES['fileToUpload']['size']; 
+			$file_tmpname = $_FILES['fileToUpload']['tmp_name']; 
+			$filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
+			removefile($filename);
+			$rr="Location: ../Staff/Home/viewasset.php?id=".$id;
+			header($rr);
+			break;
+		case 'changestatus':
+			$id = $_GET['id'];
+			$status = $_POST['assetstatus'];
+			$updatedevice['id']= '='.$id;
+			$database=new Database();
+			$data = array(
+				"CurrentRentStatusID" => $status
+			);
+			$database->updateRows('deviceinfo', $data, $updatedevice);
+			$rr="Location: ../Staff/Home/viewasset.php?id=".$id;
+			header($rr);
+			break;
+		case 'updateasset':
+			$id = $_GET['id'];
+			$name=$_POST['Name'];
+			$AssetNumber=$_POST['AssetNumber'];
+			$assetlocation=$_POST['assetlocation'];
+			$Manufacturer=$_POST['Manufacturer'];
+			$AssetType=$_POST['AssetType'];
+			$rent=$_POST['rent'];
+			$Description=$_POST['Description'];
+			$Features=$_POST['Features'];
+			$database=new Database();
+			$updatedevice['id']= '='.$id;
+			$data=array(
+				"TypeId"=>$AssetType,
+				"AssetNumber"=>$AssetNumber,
+				"Name"=>$name,
+				"Description"=>$Description,
+				"Features"=>$Features,
+				"ManufacturerID"=>$Manufacturer,
+				"RentPricePerHour"=>$rent,
+				"CurrentAssetLocationID"=>$assetlocation
+			);
+			$database->updateRows('deviceinfo', $data, $updatedevice);
+			$rr="Location: ../Staff/Home/viewasset.php?id=".$id;
+			header($rr);
+			break;
    }
+}
+
+function pictureupload($file_name,$file_size,$file_tmpname,$target_directory){
+	$target_dir = $target_directory;
+	$target_file = $target_dir . basename($file_name);
+	$uploadOk = 1;
+	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+	// Check if image file is a actual image or fake image
+	if(isset($_POST["submit"])) {
+		$check = getimagesize($file_tmpname);
+		if($check !== false) {
+			echo "File is an image - " . $check["mime"] . ".";
+			$uploadOk = 1;
+		} 
+		else {
+			echo "File is not an image.";
+			$uploadOk = 0;
+		}
+	}
+
+	// Check if file already exists
+	if (file_exists($target_file)) {
+		echo "Sorry, file already exists.";
+		$uploadOk = 0;
+	}
+
+	// Check file size
+	if ($file_size > (2 * 1024 * 1024)) {
+		echo "Sorry, your file is too large.";
+		$uploadOk = 0;
+	}
+
+	// Allow certain file formats
+	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+		&& $imageFileType != "gif" ) {
+		echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+		$uploadOk = 0;
+	}
+
+	// Check if $uploadOk is set to 0 by an error
+	if ($uploadOk == 0) {
+		echo "Sorry, your file was not uploaded.";
+		// if everything is ok, try to upload file
+	} 
+	else {
+		if (move_uploaded_file($file_tmpname, $target_file)) {
+			echo "The file ". htmlspecialchars( basename( $file_name)). " has been uploaded.";
+		} else {
+			echo "Sorry, there was an error uploading your file.";
+		}
+	}
+	return $target_file;
+
+}
+
+function removefile($filename){
+	if(file_exists($filename))
+    {
+        $status  = unlink($filename) ? 'The file '.$filename.' has been deleted' : 'Error deleting '.$filename;
+        echo $status;
+    }
+ 
+    else
+    {
+        echo 'The file '.$filename.' doesnot exist';
+    }
 }
 ?>
 

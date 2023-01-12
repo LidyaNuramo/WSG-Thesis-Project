@@ -14,8 +14,6 @@
                         $fname = $_POST['fname'];
                         $lname = $_POST['lname'];
                         $phone = $_POST['phone'];
-                        $address = $_POST['address'];
-                        $postcode = $_POST['postcode'];
                         $city = $_POST['city'];
                         date_default_timezone_set("Europe/Warsaw"); 
 			            $updatedate = date("Y-m-d h:i:s");
@@ -23,13 +21,11 @@
                             "FirstName"=>$fname,
                             "LastName"=>$lname,
                             "Phone"=>$phone,
-                            "Address"=>$address,
-                            "PostCode"=>$postcode,
                             "CItyID"=>$city,
                             "LastModifiedOn" => $updatedate
                         );
                         $database=new Database();
-                        $database->updateRows("Employee",$data,$where);
+                        $database->updateRows("employee",$data,$where);
                     ?>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -44,7 +40,7 @@
                         $where['Password']='="'.$_POST['oldpassword'].'"';
                         $newpassword = $_POST['newpassword'];
                         $database=new Database();
-                        $user=$database->getRow("Client","*",$where);
+                        $user=$database->getRow("employee","*",$where);
                         if ($user==NULL){
                     ?>
                         <div class="input-group mb-3">
@@ -63,7 +59,7 @@
                                 "LastModifiedOn" => $updatedate
                             );
                             $database=new Database();
-                            $database->updateRows("Client",$data,$where);
+                            $database->updateRows("employee",$data,$where);
                     ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -108,21 +104,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Office Address</label>
-                        <div class="col-sm-9">
-                        <input type="text" placeholder="Address 1" name="address" aria-label="Address" class="form-control form-control-lg" value="<?php echo $user['Address'];?>" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Office Post Code</label>
-                        <div class="col-sm-9">
-                            <input type="number" min="00000" max="99999" name="postcode" aria-label="Post Code" class="form-control form-control-lg" style="-webkit-appearance: none; margin: 0;-moz-appearance: textfield;" value="<?php echo $user['PostCode'];?>" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Office City</label>
                         <div class="col-sm-9">
-                            <select class="form-control form-control-lg" id="city" placeholder="City" name="city" required>
+                            <select class="form-control" id="city" placeholder="City" name="city" required>
                                 <?php
                                     $db=new Database();
                                     $where['id']="";
@@ -206,7 +190,6 @@
                 }
             }
         }
-
     </script>
 
 <?php

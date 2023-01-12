@@ -48,17 +48,16 @@
                                                 <th>Rent Per Hour</th>
                                                 <th>Asset Status</th>
                                                 <th>Last Location On</th>
-                                                <th>Rented Days</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php
                                         $database=new Database();
-                                        $assets=$database->getRows("Assets","*",$where);
+                                        $assets=$database->getRows("Assets","*");
                                         foreach ($assets as $asset){
                                             $Locationdatetime = strtotime ( $asset['LastLocationDate'] );
                                             if ($Locationdatetime <= strtotime("-1 hour")){
-                                                echo '<tr>
+                                                echo '<tr class="clickable-row" data-href="assethistory.php?id='.$asset['id'].'" style="cursor: pointer;">
                                                 <td>'.$asset['AssetNumber'].'</td>
                                                 <td>'.$asset['AssetName'].'</td>
                                                 <td>'.$asset['AssetTypeName'].'</td>
@@ -68,7 +67,6 @@
                                                 <td>'.$asset['RentPricePerHour'].'</td>
                                                 <td>'.$asset['CurrentRentStatus'].'</td>
                                                 <td>'.$asset['LastLocationDate'].'</td>
-                                                <td>'.$asset['TotalRentedDays'].'</td>
                                                 </tr>';
                                             }
                                         }
@@ -85,7 +83,6 @@
                                                 <th>Rent Per Hour</th>
                                                 <th>Asset Status</th>
                                                 <th>Last Location On</th>
-                                                <th>Rented Days</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -101,6 +98,12 @@
             <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
             <script>
                 $('#zero_config').DataTable();
+
+                jQuery(document).ready(function($) {
+                    $(".clickable-row").click(function() {
+                        window.location = $(this).data("href");
+                    });
+                });
             </script>              
                 <?php
 			}

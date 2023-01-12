@@ -124,37 +124,122 @@
 									</div>
 									<div class="modal-body">
 										<div class="row">
-											Application Date = '.$rental['ApplicationDate'].'
+											<div class="col">
+												Application Date: 
+											</div>
+											<div class="col">
+												'.$rental['ApplicationDate'].'
+											</div>
 										</div>
 										<div class="row">
-											Pick-up Date = '.$rental['PickupDate'].'
+											<div class="col">
+												Pick-up Date: 
+											</div>
+											<div class="col">
+												'.$rental['PickupDate'].'
+											</div>
 										</div>
 										<div class="row">
-											Planned Return Date = '.$rental['ReturnDate'].'
+											<div class="col">
+												Planned Return Date:
+											</div>
+											<div class="col">
+												'.$rental['ReturnDate'].'
+											</div>
 										</div>
 										<div class="row">
-											Actual Returned Date = '.$rental['ActualReturnDate'].'
+											<div class="col">
+												Actual Returned Date:
+											</div>
+											<div class="col">
+												'.$rental['ActualReturnDate'].'
+											</div>
 										</div>
 										<div class="row">
-											Payment/Hr = '.$rental['PaymentPerHr'].' zl
+											<div class="col">
+												Payment/Hr:
+											</div>
+											<div class="col">
+												'.$rental['PaymentPerHr'].' zl
+											</div>
 										</div>
 										<div class="row">
-											Rented Total Amount: + '.$receipt['SumRentPayment'].'
+											<div class="col" style="font-weight: bold;">
+												Item
+											</div>
+											<div class="col" style="font-weight: bold;">
+												Description
+											</div>
+											<div class="col" style="font-weight: bold;">
+												Type
+											</div>
+											<div class="col" style="font-weight: bold;">
+												Amount in zl
+											</div>
 										</div>
 										<div class="row">
-											Early Return Discount: - '.$receipt['EarlyReturnDiscount'].'
+											<div class="col">
+												1.
+											</div>
+											<div class="col">
+												Rented Total Amount
+											</div>
+											<div class="col">
+												+
+											</div>
+											<div class="col">
+												'.$receipt['SumRentPayment'].'
+											</div>
 										</div>
 										<div class="row">
-											Late Return Payment: + '.$receipt['LateReturnPayment'].'
+											<div class="col">
+												2.
+											</div>
+											<div class="col">
+												Early Return Discount
+											</div>
+											<div class="col" style="color: red">
+												-
+											</div>
+											<div class="col" style="color: red">
+												'.$receipt['EarlyReturnDiscount'].'
+											</div>
 										</div>
 										<div class="row">
-											Additional charge pending (if additional charges require to be added when proccessing payment): - '.$receipt['CustomDescription'].'
+											<div class="col">
+												3.
+											</div>
+											<div class="col">
+												Late Return Payment
+											</div>
+											<div class="col">
+												+
+											</div>
+											<div class="col">
+												'.$receipt['LateReturnPayment'].'
+											</div>
 										</div>
 										<div class="row">
-											Late Return Payment (will be updated on Completed status): + '.$receipt['CustomDescriptionPayment'].'
+											<div class="col">
+												4.
+											</div>
+											<div class="col">
+												Additional charge pending (updated when proccessing return)
+											</div>
+											<div class="col">
+												+
+											</div>
+											<div class="col">
+												'.$receipt['CustomDescriptionPayment'].'
+											</div>
 										</div>
-										<div class="row">
-											Total Amount: '.$receipt['TotalAmount'].' zl
+										<div class="row" style="font-weight: bold;">
+											<div class="col">
+												Total Amount: 
+											</div>
+											<div class="col">
+												'.$receipt['TotalAmount'].' zl
+											</div>
 										</div>
 									</div>
 									<div class="modal-footer">

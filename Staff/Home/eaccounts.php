@@ -18,10 +18,19 @@
                         <div class="ms-auto text-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Employees</li>
                                 </ol>
                             </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <div class="ms-auto text-end">
+                            <a href="neweaccount.php">
+                                <button class="btn btn-secondary"> Add+ </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +63,7 @@
                                         $database=new Database();
                                         $users=$database->getRows("Employees","*");
                                         foreach ($users as $user){
-                                            echo '<tr>
+                                            echo '<tr class="clickable-row" data-href="editeaccount.php?id='.$user['id'].'" style="cursor: pointer;">
                                                 <td>'.$user['FullName'].'</td>
                                                 <td>'.$user['Email'].'</td>
                                                 <td>'.$user['CityName'].'</td>
@@ -92,6 +101,12 @@
             <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
             <script>
                 $('#zero_config').DataTable();
+
+                jQuery(document).ready(function($) {
+                    $(".clickable-row").click(function() {
+                        window.location = $(this).data("href");
+                    });
+                });
             </script>              
                 <?php
 			}

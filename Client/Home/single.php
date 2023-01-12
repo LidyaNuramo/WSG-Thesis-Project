@@ -131,21 +131,29 @@
 											<select class="form-control" id="city" id="dropoffcity" name="dropoffcity" placeholder="City" name="city" required>
 												<?php
 													if(!empty($catagory)){
-														?><option disabled>City</option><?php
+														?>
+														<option disabled>City</option><?php
 													}
 													else{
-														?><option disabled selected>City</option><?php
+														?>
+														<option disabled selected>City</option><?php
 													}
 													$database=new Database();
-													$where['id']="";
-													$results=$database->getRows("assetlocations","DISTINCT id, CityID, CityName",$where,"AND","CityName");
-													foreach($results as $loadresult){
-														if(!empty($catagory) && $loadresult['CityID']==$dropoffcity){
-															echo '<option value="'.$loadresult['CityID'].'" selected style="color: black; size:6;">'.$loadresult['CityName'].'</option>';
+													$wherecity['id']="";
+													$cities=$database->getRows("assetlocations","DISTINCT CityID, CityName",$wherecity,"AND","CityName");
+													foreach($cities as $city) {
+														$wherelocation['CityName']='="'.$city['CityName'].'"';
+														$locations=$database->getRows("assetlocations","*",$wherelocation,"AND","CityName");
+														if(!empty($catagory) && $city['CityID']==$dropoffcity){
+															echo '<optgroup label="'.$city['CityName'].'" selected>';
 														}
 														else{
-															echo '<option value="'.$loadresult['CityID'].'" style="color: black; size:6;">'.$loadresult['CityName'].'</option>';
+															echo '<optgroup label="'.$city['CityName'].'">';
 														}
+														foreach($locations as $location){
+															echo '<option value="'.$location['id'].'" >'.$location['Address'].'</option>';
+														}
+														echo '</optgroup>';
 													}
 												?>
 											</select>
