@@ -18,7 +18,7 @@ if(!empty($_GET['action'])){
 			$time = date("Y-m-d h:i:s");
 			$database=new Database();
 			$where['Email'] ='="'.$email.'"';
-	        $results=$database->getRows("Client","*",$where);
+	        $results=$database->getRows("client","*",$where);
 			$num=1;
 			foreach($results as $result){
 				if ($email == $result['Email']){
@@ -41,7 +41,7 @@ if(!empty($_GET['action'])){
 					"LastModifiedOn"=>$time,
 					"VerificationStatus"=>'No',
 				);
-				$database->insertRows("Client",$data);
+				$database->insertRows("client",$data);
 				$rr="Location: ../Client/login.php?action=yes";
 				header($rr);
 				break;
@@ -54,7 +54,7 @@ if(!empty($_GET['action'])){
 			$password=$_POST['password'];
 			$where['Email']= '="'.$email.'"';
 			$database=new Database();
-			$user=$database->getRow("Client","*",$where);
+			$user=$database->getRow("client","*",$where);
 			if ($user==NULL){
 				header("Location: ../Client/login.php?action=createaccount");
 				break;
@@ -143,7 +143,7 @@ if(!empty($_GET['action'])){
 					"Lat" => $lat,
 					"LocationDate" => $datetime
 				);
-				$database->insertRows('GPSLocation', $data);
+				$database->insertRows('gpslocation', $data);
 			}
 			break;
 		case 'rent':
