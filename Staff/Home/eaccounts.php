@@ -102,11 +102,11 @@
             <script>
                 $('#zero_config').DataTable();
 
-                jQuery(document).ready(function($) {
-                    $(".clickable-row").click(function() {
-                        window.location = $(this).data("href");
-                    });
-                });
+                // jQuery(document).ready(function($) {
+                //     $(".clickable-row").click(function() {
+                //         window.location = $(this).data("href");
+                //     });
+                // });
             </script>              
                 <?php
 			}
