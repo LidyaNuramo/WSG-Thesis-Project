@@ -57,13 +57,6 @@ class Bucket{
             $storage = new StorageClient([
                 'keyFilePath' => $key_file,
             ]);
-            if (!$storage) {
-                echo " Cloud Storage Connection error.";
-                exit;
-            }
-            else{
-                return $storage;
-            } 
         }
         catch (Exception $e) {
             // maybe invalid private key ?
