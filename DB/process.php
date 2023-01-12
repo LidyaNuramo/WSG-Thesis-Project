@@ -477,10 +477,10 @@ Not Included: '.$_POST['NotIncluded'].'
 			// echo "Before bucket";
 			// $link=$bucket.upload_file($filename, $file_name, $assetid);
 			// removefile($filename);
-			$data=array(
-				"PhotoLinks" => $link
-			);
-			$database->updateRows("deviceinfo",$data,$whichnewasset);
+			// $data=array(
+			// 	"PhotoLinks" => $link
+			// );
+			// $database->updateRows("deviceinfo",$data,$whichnewasset);
 			$rr="Location: ../Staff/Home/inventory.php";
 			header($rr);
 			break;
