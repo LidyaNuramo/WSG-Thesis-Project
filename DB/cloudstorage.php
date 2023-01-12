@@ -21,10 +21,10 @@ class Bucket{
                 fopen($file_path,'r'),
                 [
                     'predefinedAcl' => 'publicRead',
-                    'name' => 'AssetsPictures/'.$id.'/'.$filename
+                    'name' => 'AssetsPictures/'.$id.$filename
                 ]
             );
-            return 'https://storage.googleapis.com/mytravelrental-bucket/AssetsPictures/'.$id.'/'.$filename;
+            return 'https://storage.googleapis.com/mytravelrental-bucket/AssetsPictures/'.$id.$filename;
         }
         
         catch (Exception $e) {
