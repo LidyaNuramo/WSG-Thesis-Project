@@ -66,7 +66,4 @@ class Bucket{
 
 }
 
-$bucket = new Bucket();
-$bucket.upload_file();
-
 ?>
