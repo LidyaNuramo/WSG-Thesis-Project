@@ -33,10 +33,10 @@ include('header.php');
                 <table class="table table-bordered table-secondary">
                     <?php
                         $id=$_GET['id'];
-                        $where['id']= '='.$id;
-                        $whereimage['DeviceID']='='.$id;
+                        $whererentasset['id']= '='.$id;
+                        $whereimage['DeviceID']='="'.$id/'"';
                         $database=new Database();
-                        $results1=$database->getRow("assets","*",$where);
+                        $results1=$database->getRow("assets","*",$whererentasset);
                         $results3=$database->getRows("devicephotogallery","*",$whereimage);
                     ?>
                     <thead class='thead-dark'>
@@ -74,8 +74,8 @@ include('header.php');
                                         <div class="col">
                                             <select class="form-control" name="assetstatus" id="assetstatus" required>
                                                 <?php 
-                                                    $where['id']="";
-                                                    $statusresults=$database->getRows("assetstatus","*",$where,"AND","Name asc");
+                                                    $whereresult['id']="";
+                                                    $statusresults=$database->getRows("assetstatus","*",$whereresult,"AND","Name asc");
                                                     foreach($statusresults as $statusresult){
                                                         if ($results1['CurrentRentStatusID']==$statusresult['id']){
                                                             echo '<option value="' .$statusresult['id'].'" selected>' . $statusresult['Name']. '</option>';
