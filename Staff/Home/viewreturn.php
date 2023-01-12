@@ -33,11 +33,11 @@
                 <table class="table table-bordered table-secondary">
                     <?php
                         $id=$_GET['id'];
-                        $where['id']= '='.$id;
+                        $wherearentaplication['id']= '="'.$id."'";
                         $database=new Database();
-                        $results1=$database->getRow("rentapplications","*",$where);
-                        $wherepickup['id']="=".$results1['PickUpLocation'];
-                        $wheredropoff['id']="=".$results1['DropOffLocation'];
+                        $results1=$database->getRow("rentapplications","*",$wherearentaplication);
+                        $wherepickup['id']="='".$results1['PickUpLocation']."'";
+                        $wheredropoff['id']="='".$results1['DropOffLocation']."'";
                         $apppickuplocation=$database->getRow("assetlocations","*",$wherepickup);
                         $appdropofflocation=$database->getRow("assetlocations","*",$wherepickup);
                                             
@@ -161,7 +161,7 @@
                             <td colspan="2">
                                 <?php
                                     $database=new Database();
-                                    $whereasset['id']='='.$results1['DropOffLocation'];
+                                    $whereasset['id']='="'.$results1['DropOffLocation'].'"';
                                     $assetlocate=$database->getRow("assetlocations","*",$whereasset);
                                     $address=$assetlocate['Address'].", ".$assetlocate['CityName'].", ".$assetlocate['CountryName'];
                                     $urladdress = str_replace(' ', '%20', $address);
@@ -224,6 +224,7 @@
                 </table>
             </div>
             <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
             <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
             <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
             <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
