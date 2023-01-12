@@ -81,7 +81,7 @@
                 <?php
                     $where['id']= '="'.$_SESSION['userID'].'"';
                     $database=new Database();
-                    $user=$database->getRow("Employees","*",$where);
+                    $user=$database->getRow("employees","*",$where);
                 ?>
                 <div class="card-body">
                     <h4 class="card-title">Personal Info</h4>
@@ -110,7 +110,7 @@
                                 <?php
                                     $db=new Database();
                                     $where['id']="";
-                                    $results=$db->getRows("City","*",$where,"AND","Name");
+                                    $results=$db->getRows("city","*",$where,"AND","Name");
                                     foreach($results as $result){
                                         if ($user['CItyID']==$result['id']){
                                             echo '<option value="' .$result['id'].'" selected>' . $result['Name']. '</option>';
