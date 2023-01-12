@@ -203,6 +203,7 @@ include('header.php');
                     </tbody>
                 </table>
             </div>
+        </div>
             <?php
 			}
             else{
