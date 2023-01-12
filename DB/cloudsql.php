@@ -9,7 +9,7 @@ class Database
 	private $host = "10.251.32.3";
 	private $db = "mytravelrental";
 	private $user = "root";
-	private $password = "&v{+ikY$*xKTM^n\";
+	private $password = "z^fL<GJ>Qz}5LLh<";
 	private $db_prefix = "";
 
 	function __construct() {
