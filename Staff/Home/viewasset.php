@@ -149,7 +149,7 @@ include('header.php');
                                                 <?php
                                                 $database=new Database();
                                                 $where2['DeviceID']='="'.$id.'"';
-                                                $photoresults=$database->getRows("DevicePhotoGallery","*",$where2);
+                                                $photoresults=$database->getRows("devicephotogallery","*",$where2);
                                                 $gallery = "";
                                                 foreach ($photoresults as $photoresult){
                                                     $gallery = $gallery.'<div class="col-sm-6 col-md-4 col-lg-3 item"><a href="'.$photoresult['Photolink'].'" data-lightbox="photos"><img class="img-fluid" src="'.$photoresult['Photolink'].'"></a></div>';
