@@ -48,7 +48,7 @@
                             <div class="row">
                                 <?php
                                     $database = new Database();
-                                    $allusers = $database->getRows("Clients","*");
+                                    $allusers = $database->getRows("clients","*");
                                     $allcount = count($allusers);
                                     $currentcount = 0;
                                     $months = array("Jan", "Feb", "March", "April", "May", "June", "July", "August", "Sept", "Oct", "Nov", "Dec");
