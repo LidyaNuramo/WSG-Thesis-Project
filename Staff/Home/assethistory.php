@@ -37,7 +37,6 @@ include('header.php');
                         $whereimage['DeviceID']='='.$id;
                         $database=new Database();
                         $results1=$database->getRow("assets","*",$where);
-                        $results3=$database->getRows("devicephotogallery","*",$whereimage);
                     ?>
                     <thead class='thead-dark'>
                         <tr>
