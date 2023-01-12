@@ -104,7 +104,7 @@
 					$database=new Database();
 					$where['CatalogTypeID']='="'.$type.'"';
 					$where['CurrentRentStatus']='="Available"';
-					$results=$database->getRows("Assets","*",$where,"AND","AssetCityID",$resultrows);
+					$results=$database->getRows("assets","*",$where,"AND","AssetCityID",$resultrows);
 					$count=count($results);
 					echo '<div class="row"> 
 							<div class="col-md-4" style=""> Results: '.$count.'</div>

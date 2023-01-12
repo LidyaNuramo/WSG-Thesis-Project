@@ -197,7 +197,7 @@
 													$database=new Database();
 													$where['CatalogTypeID']='="'.$catagory.'"';
 													$where['AssetCityID']='="'.$pickupcity.'"';
-													$results=$database->getRows("Assets","*",$where);
+													$results=$database->getRows("assets","*",$where);
 													$carouselIndicators='';
 													$carouselInner='<h5 style="font-weight: bold;">No result available with these requirements.</h5>';
 													$i=0;

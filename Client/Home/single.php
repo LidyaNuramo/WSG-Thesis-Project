@@ -47,7 +47,7 @@
     <?php
 		$database=new Database();
 		$where['id']='="'.$assetid.'"';
-		$result=$database->getRow("Assets","*",$where);
+		$result=$database->getRow("assets","*",$where);
 		echo '
 		<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(../Images/'.$result['PhotoLinks'].');" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
@@ -235,7 +235,7 @@
 					$where['CatalogTypeID']='="'.$result['CatalogTypeID'].'"';
 					$where['CurrentRentStatus']='="Available"';
 					$resultrows="3;";
-					$relatedresults=$database->getRows("Assets","*",$where,"AND","AssetCityID",$resultrows);
+					$relatedresults=$database->getRows("assets","*",$where,"AND","AssetCityID",$resultrows);
 					foreach ($relatedresults as $related){
 						echo '
 						<div class="col-md-4">

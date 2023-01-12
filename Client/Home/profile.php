@@ -66,7 +66,7 @@
                                 "VerificationStatus"=>"Yes"
                             );
                             $database=new Database();
-                            $database->updateRows("Client",$data,$where);
+                            $database->updateRows("client",$data,$where);
                         ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -96,7 +96,7 @@
                                 "LastModifiedOn" => $updatedate,
                             );
                             $database=new Database();
-                            $database->updateRows("Client",$data,$where);
+                            $database->updateRows("client",$data,$where);
                         ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -121,7 +121,7 @@
                             $where['Password']='="'.$_POST['oldpassword'].'"';
                             $newpassword = $_POST['newpassword'];
                             $database=new Database();
-                            $user=$database->getRow("Client","*",$where);
+                            $user=$database->getRow("client","*",$where);
                             if ($user==NULL){
                         ?>
                             <div class="input-group mb-3">
@@ -140,7 +140,7 @@
                                     "LastModifiedOn" => $updatedate
                                 );
                                 $database=new Database();
-                                $database->updateRows("Client",$data,$where);
+                                $database->updateRows("client",$data,$where);
                         ?>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -161,7 +161,7 @@
                     <?php
                         $where['id']= '="'.$_SESSION['userID'].'"';
                         $database=new Database();
-                        $user=$database->getRow("Clients","*",$where);
+                        $user=$database->getRow("clients","*",$where);
                     ?>
                     <div class="card-body">
                         <h4 class="card-title">Personal Info</h4>
@@ -202,7 +202,7 @@
                                     <?php
                                         $db=new Database();
                                         $where['id']="";
-                                        $results=$db->getRows("City","*",$where,"AND","Name");
+                                        $results=$db->getRows("city","*",$where,"AND","Name");
                                         foreach($results as $result){
                                             if ($user['CItyID']==$result['id']){
                                                 echo '<option value="' .$result['id'].'" selected>' . $result['Name']. '</option>';
