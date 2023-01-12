@@ -33,7 +33,7 @@
                 <table class="table table-bordered table-secondary">
                     <?php
                         $id=$_GET['id'];
-                        $wherearentaplication['id']= '="'.$id."'";
+                        $wherearentaplication['id']= '="'.$id.'"';
                         $database=new Database();
                         $results1=$database->getRow("rentapplications","*",$wherearentaplication);
                         $wherepickup['id']="='".$results1['PickUpLocation']."'";
