@@ -57,6 +57,7 @@ class Bucket{
             $storage = new StorageClient([
                 'keyFilePath' => $key_file,
             ]);
+            return $storage;
         }
         catch (Exception $e) {
             // maybe invalid private key ?
