@@ -83,7 +83,7 @@ include('header.php');
                                 </div>
                             </td>
                         </tr>
-                        <!--tr>
+                        <tr>
                             <td colspan="2">
                                 <?php
                                     $database=new Database();
@@ -149,7 +149,7 @@ include('header.php');
                                     </div>
                                 </div>
                             </td>
-                        </tr-->
+                        </tr>
                         <tr>
                             <td colspan="4">
                                 <div class="row">
