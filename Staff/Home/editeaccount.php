@@ -65,7 +65,7 @@
                                     "LastModifiedOn" => $updatedate
                                 );
                                 $database=new Database();
-                                $database->updateRows("Employee",$data,$where);
+                                $database->updateRows("employee",$data,$where);
                             ?>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -147,7 +147,7 @@
                         <?php
                             $where['id']= '="'.$_GET['id'].'"';
                             $database=new Database();
-                            $user=$database->getRow("Employees","*",$where);
+                            $user=$database->getRow("employees","*",$where);
                         ?>
                         <div class="form-group row">
                         <div class="card-body">
@@ -177,7 +177,7 @@
                                         <?php
                                             $db=new Database();
                                             $where['id']="";
-                                            $results=$db->getRows("City","*",$where,"AND","Name");
+                                            $results=$db->getRows("city","*",$where,"AND","Name");
                                             foreach($results as $result){
                                                 if ($user['CItyID']==$result['id']){
                                                     echo '<option value="' .$result['id'].'" selected>' . $result['Name']. '</option>';
