@@ -235,11 +235,11 @@
                                         <i class="fas fa-database"></i>
                                         <span class="hide-menu"> Inventory </span></a>
                                     </li>
-                                    <li class="sidebar-item"><a href="AvailableAssets.php" class="sidebar-link">
+                                    <li class="sidebar-item"><a href="availableassets.php" class="sidebar-link">
                                         <i class="mdi mdi-car-connected"></i>
                                         <span class="hide-menu"> Available Assets </span></a>
                                     </li>
-                                    <li class="sidebar-item"><a href="OfflineAssets.php" class="sidebar-link">
+                                    <li class="sidebar-item"><a href="offlineassets.php" class="sidebar-link">
                                         <i class="mdi mdi-cloud-outline-off"></i>
                                         <span class="hide-menu"> Offline Assets </span></a>
                                     </li>
