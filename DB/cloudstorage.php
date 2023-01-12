@@ -31,6 +31,7 @@ class Bucket{
         catch (Exception $e) {
             // maybe invalid private key ?
             print $e;
+            return "";
         }
     }
 
