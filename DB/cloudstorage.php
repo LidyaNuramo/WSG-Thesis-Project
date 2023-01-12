@@ -11,7 +11,7 @@ class Bucket{
     private $key_file = '../credentials/sa.json';
 
     function __construct() {
-	    $this->$storage = $this->storage_client($key_file);
+	    $storage = $this->storage_client($this->$keypath);
         $this->$storage_bucket = $storage->bucket($bucket_name);
 	}
 
