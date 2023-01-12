@@ -123,7 +123,7 @@ include('header.php');
                                 <?php
                                     $database=new Database();
                                     $whereasset['id']='='.$id;
-                                    $assetlocate=$database->getRow("Assets","*",$whereasset);
+                                    $assetlocate=$database->getRow("assets","*",$whereasset);
                                     $address=$assetlocate['AssetAddress'].", ".$assetlocate['AssetCityName'].", ".$assetlocate['AssetCountryName'];
                                     $urladdress = str_replace(' ', '%20', $address);
                                     $src2="https://maps.google.com/maps?q=".$urladdress."&z=16&ie=UTF8&iwloc=&output=embed";
@@ -193,11 +193,6 @@ include('header.php');
                                         ';
                                     }
                                 ?>
-                                <div class="row">
-                                    <div class="col">
-                                        
-                                    </div>
-                                </div>
                             </td>
                         </tr>
                     </tbody>
