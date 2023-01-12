@@ -117,6 +117,7 @@
                 </div>
             </div>
             <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
             <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
             <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
             <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
