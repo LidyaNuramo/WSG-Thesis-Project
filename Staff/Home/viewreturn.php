@@ -1,12 +1,12 @@
 <?php
-include('header.php');
+    include('header.php');
     try {
-        if(isset($_SESSION['role']) && !empty($_GET['id'])){
+        if(isset($_SESSION['role'])){
             $role = $_SESSION['role'];
             $where['id']= '="'.$role.'"';
 			$database=new Database();
             $dept=$database->getRow("Role","*",$where);
-            $allow = array("1", "2", "5", "6", "7");
+            $allow = array("1", "2", "5", "6","7");
 			if (in_array($dept['DeptID'], $allow)){
 				?>
         <div class="page-wrapper">
@@ -14,13 +14,12 @@ include('header.php');
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Asset History</h4>
+                        <h4 class="page-title">Returned Rental</h4>
                         <div class="ms-auto text-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="inventory.php">Assets</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">History</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Rentals</li>
                                 </ol>
                             </nav>
                         </div>
@@ -30,56 +29,95 @@ include('header.php');
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- Container fluid  -->
             <div class="container-fluid">
+                <!-- Start Page Content -->
                 <table class="table table-bordered table-secondary">
                     <?php
                         $id=$_GET['id'];
                         $where['id']= '='.$id;
-                        $whereimage['DeviceID']='='.$id;
                         $database=new Database();
-                        $results1=$database->getRow("assets","*",$where);
-                        $results3=$database->getRows("devicephotogallery","*",$whereimage);
+                        $results1=$database->getRow("rentapplications","*",$where);
+                        $wherepickup['id']="=".$results1['PickUpLocation'];
+                        $wheredropoff['id']="=".$results1['DropOffLocation'];
+                        $apppickuplocation=$database->getRow("assetlocations","*",$wherepickup);
+                        $appdropofflocation=$database->getRow("assetlocations","*",$wherepickup);
+                                            
                     ?>
                     <thead class='thead-dark'>
                         <tr>
-                            <th colspan='4'><h1 style='text-align: left;font-weight: bold;'><?php echo $results1['AssetName']?></h1></th>
+                            <th colspan='4'><h1 style='text-align: left;font-weight: bold;'>Order #<?php echo $results1['id']?></h1></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan='3'>
+                            <td>
                                 <div class="row">
+                                    <div class="col">
+                                        <font style="font-weight: bold;"> Asset Name: </font>
+                                    </div>
+                                    <div class="col">
+                                        <?php echo $results1['AssetName'];?>
+                                    </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="row">
-                                    <div class="col" style="text-align: right;">
-                                        <a href="viewasset.php?id=<?php echo $id;?>" style="color: gray;"> <i class='fas fa-th-list' style='font-size:24px'></i> View Asset</a>
+                                    <div class="col">
+                                        <font style="font-weight: bold;"> Client Name: </font>
+                                    </div>
+                                    <div class="col">
+                                        <?php echo $results1['ClientFirstName'].' '.$results1['ClientLastName'];?>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col">
+                                        <font style="font-weight: bold;"> Payment per Hour: </font>
+                                    </div>
+                                    <div class="col">
+                                        <?php echo $results1['PaymentPerHr'];?>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col">
+                                        <font style="font-weight: bold;"> Application Date: </font>
+                                    </div>
+                                    <div class="col">
+                                        <?php echo $results1['ApplicationDate'];?>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Device number: </font>
+                                        <font style="font-weight: bold;"> Pick-up Date: </font>
                                     </div>
                                     <div class="col">
-                                        <?php echo $results1['AssetNumber']?>
+                                        <?php echo $results1['PickupDate'];?>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col">
+                                        <font style="font-weight: bold;"> Planned Return Date: </font>
+                                    </div>
+                                    <div class="col">
+                                        <?php echo $results1['ReturnDate'];?>
                                     </div>
                                 </div>
                             </td>
                             <td colspan="2">
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Status: </font> 
+                                        <font style="font-weight: bold;"> Pick-up Location: </font>
                                     </div>
                                     <div class="col">
-                                        <select class="form-control" name="assetstatus" id="assetstatus" disabled>
-                                            <?php
-                                                echo '<option value="' .$results1['CurrentRentStatusID'].'" selected>' . $results1['CurrentRentStatus'].'</option>';
-                                            ?>
-                                        </select>
+                                        <?php echo $apppickuplocation['Address'].', '.$apppickuplocation['PostCode'].', '.$apppickuplocation['CityName'];?>
                                     </div>
                                 </div>
                             </td>
@@ -88,7 +126,7 @@ include('header.php');
                             <td colspan="2">
                                 <?php
                                     $database=new Database();
-                                    $assetlocated['DeviceId']="='".$_GET['id']."'";
+                                    $assetlocated['DeviceId']="='".$results1['DeviceId']."'";
                                     $assetgpslocations1=$database->getRows("gpslocation","*",$assetlocated,"AND","id desc",1);
                                     if (!empty($assetgpslocations1)){
                                         foreach ($assetgpslocations1 as $assetgpslocation1){
@@ -123,15 +161,15 @@ include('header.php');
                             <td colspan="2">
                                 <?php
                                     $database=new Database();
-                                    $whereasset['id']='='.$id;
-                                    $assetlocate=$database->getRow("Assets","*",$whereasset);
-                                    $address=$assetlocate['AssetAddress'].", ".$assetlocate['AssetCityName'].", ".$assetlocate['AssetCountryName'];
+                                    $whereasset['id']='='.$results1['DropOffLocation'];
+                                    $assetlocate=$database->getRow("assetlocations","*",$whereasset);
+                                    $address=$assetlocate['Address'].", ".$assetlocate['CityName'].", ".$assetlocate['CountryName'];
                                     $urladdress = str_replace(' ', '%20', $address);
                                     $src2="https://maps.google.com/maps?q=".$urladdress."&z=16&ie=UTF8&iwloc=&output=embed";
                                 ?>
                                 <div class="row">
                                     <div class="col">
-                                        <font style="font-weight: bold;"> Last pickup location: </font> <?php echo $assetlocate['LastLocationDate']; ?>
+                                        <font style="font-weight: bold;"> Drop Off/Returned date: </font> <?php echo $results1['ActualReturnDate']; ?>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -152,59 +190,47 @@ include('header.php');
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="4">
-                                <div class="row">
-                                    <div class="col">
-                                        <font style="font-weight: bold;"> Rental History: </font>
-                                    </div>
-                                </div>
-                                <?php
-                                    $whichrentals['DeviceId']='='.$id;
-                                    $database = new Database();
-                                    $assetrentals=$database->getRows("rentapplications","*",$whichrentals,"AND","id desc");
-                                    foreach ($assetrentals as $assetrental){
-                                        $pickup['id'] = '='.$assetrental['PickUpLocation'];
-                                        $pickuplocation = $database->getRow("assetlocations","*",$pickup);
-                                        $dropoff['id'] ='='.$assetrental['DropOffLocation'];
-                                        $dropofflocation = $database->getRow("assetlocations","*",$dropoff);
-                                        echo '
-                                        <br>
-                                        <div class="row">
-                                            <div class="col">
-                                                <font style="font-weight: bold;"> '.$assetrental['ClientFirstName'].' '.$assetrental['ClientLastName'].': </font>
-                                            </div>
+                            <form action="../../DB/process.php?action=confirmreturn&id=<?php echo $id; ?>" method="post">
+                                <td colspan="2">
+                                    <div class="row">
+                                        <div class="col">
+                                            <font style="font-weight: bold;"> Custom Fee Description: </font>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                Status: '.$assetrental['RentApplicationStatus'].'
-                                            </div>
-                                            <div class="col">
-                                                Pickup Date: '.$assetrental['PickupDate'].'
-                                            </div>
-                                            <div class="col">
-                                                Dropoff Date: '.$assetrental['ActualReturnDate'].'
-                                            </div>
-                                            <div class="col">
-                                                Pickup Location: '.$pickuplocation['Address'].', '.$pickuplocation['PostCode'].', '.$pickuplocation['CityName'].'
-                                            </div>
-                                            <div class="col">
-                                                Dropoff Location: '.$dropofflocation['Address'].', '.$dropofflocation['PostCode'].', '.$dropofflocation['CityName'].'
-                                            </div>
+                                        <div class="col">
+                                            <textarea class='form-control' rows='8'name="customfeedesc" required>None</textarea>
                                         </div>
-                                        ';
-                                    }
-                                ?>
-                                <div class="row">
-                                    <div class="col">
-                                        
                                     </div>
-                                </div>
-                            </td>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col">
+                                            <font style="font-weight: bold;">Custom Fee Amount: </font>
+                                        </div>
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="0" name='customfee' value="0" required>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="submit" name="submit" value="Confirm Return" class='btn btn-dark'>
+                                        </div>
+                                    </div>
+                                </td>
+                            </form>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <?php
+            <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+            <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+            <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+            <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+            <script>
+                $('#zero_config').DataTable();
+            </script>              
+                <?php
 			}
             else{
                 header("Location: index.php");

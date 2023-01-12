@@ -255,15 +255,15 @@
                                         <i class="far fa-bookmark"></i>
                                         <span class="hide-menu"> Reservations </span></a>
                                     </li-->
-                                    <li class="sidebar-item"><a href="#" class="sidebar-link">
+                                    <li class="sidebar-item"><a href="activeorders.php" class="sidebar-link">
                                         <i class="fas fa-clock"></i>
                                         <span class="hide-menu"> Active Orders </span></a>
                                     </li>
-                                    <li class="sidebar-item"><a href="#" class="sidebar-link">
+                                    <li class="sidebar-item"><a href="pendingreturns.php" class="sidebar-link">
                                         <i class="fas fa-spinner"></i>
                                         <span class="hide-menu"> Pending Returns </span></a>
                                     </li>
-                                    <li class="sidebar-item"><a href="#" class="sidebar-link">
+                                    <li class="sidebar-item"><a href="completedorders.php" class="sidebar-link">
                                         <i class="far fa-calendar-check"></i>
                                         <span class="hide-menu"> Completed Orders </span></a>
                                     </li>

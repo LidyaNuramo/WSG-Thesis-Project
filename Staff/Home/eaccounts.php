@@ -6,7 +6,7 @@
             $where['id']= '="'.$role.'"';
 			$database=new Database();
             $dept=$database->getRow("Role","*",$where);
-            $allow = array("1", "2", "5", "6");
+            $allow = array("1", "4", "5");
 			if (in_array($dept['DeptID'], $allow)){
 				?>
         <div class="page-wrapper">
