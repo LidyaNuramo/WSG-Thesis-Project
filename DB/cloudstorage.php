@@ -13,12 +13,16 @@ class Bucket{
         $this->$storage_bucket = $storage->bucket('mytravelrental-bucket');
 	}
 
-    function upload_file(){
+    function upload_file($file_path, $filename, $id){
         try {
             $this->$storage_bucket->upload(
-                "Test file",
-                ['name' => "Test2.txt"]
+                fopen($file_path,'r'),
+                [
+                    'predefinedAcl' => 'publicRead',
+                    'name' => 'AssetsPictures/'.$id.'/'.$filename
+                ]
             );
+            return 'https://storage.googleapis.com/mytravelrental-bucket/AssetsPictures/'.$id.'/'.$filename;
         }
         
         catch (Exception $e) {

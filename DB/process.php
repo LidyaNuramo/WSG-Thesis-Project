@@ -1,5 +1,6 @@
 <?php
 require_once('cloudsql.php');
+require_once('cloudstorage.php');
 
 if(!empty($_GET['action'])){
 	switch($_GET['action']){
@@ -468,6 +469,17 @@ Not Included: '.$_POST['NotIncluded'].'
 				"LastLocationDate"=>$time
 			);
 			$database->insertRows("deviceinfo",$data);
+			$bucket = new Bucket();
+			$filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
+			$whichnewasset['AssetNumber']="='".$AssetNumber."'";
+			$newasset = $database->getRow("deviceinfo","*",$whichnewasset);
+			$assetid= $newasset['id'];
+			$link=$bucket->upload_file($filename, $filename, $assetid);
+			removefile($filename);
+			$data=array(
+				"PhotoLinks" => $link
+			);
+			$database->updateRows("deviceinfo",$data,$whichnewasset);
 			$rr="Location: ../Staff/Home/inventory.php";
 			header($rr);
 			break;
