@@ -469,28 +469,36 @@ Not Included: '.$_POST['NotIncluded'].'
 				"LastLocationDate"=>$time
 			);
 			$database->insertRows("deviceinfo",$data);
-			// $bucket = new Bucket();
-			// $filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
-			// $whichnewasset['AssetNumber']="='".$AssetNumber."'";
-			// $newasset = $database->getRow("deviceinfo","*",$whichnewasset);
-			// $assetid= $newasset['id'];
-			// echo "Before bucket";
-			// $link=$bucket.upload_file($filename, $file_name, $assetid);
-			// removefile($filename);
-			// $data=array(
-			// 	"PhotoLinks" => $link
-			// );
-			// $database->updateRows("deviceinfo",$data,$whichnewasset);
+			$bucket = new Bucket();
+			$filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
+			$whichnewasset['AssetNumber']="='".$AssetNumber."'";
+			$newasset = $database->getRow("deviceinfo","*",$whichnewasset);
+			$assetid= $newasset['id'];
+			echo "Before bucket";
+			$link=$bucket.upload_file($filename, $file_name, $assetid);
+			removefile($filename);
+			$data=array(
+				"PhotoLinks" => $link
+			);
+			$database->updateRows("deviceinfo",$data,$whichnewasset);
 			$rr="Location: ../Staff/Home/inventory.php";
 			header($rr);
 			break;
 		case 'addPhotoGallery':
 			$id = $_GET['id'];
+			$bucket = new Bucket();
+			$database=new Database();
 			foreach ($_FILES['filesToUpload']['tmp_name'] as $key => $value) {
 	            $file_name = $_FILES['filesToUpload']['name'][$key]; 
 	            $file_size = $_FILES['filesToUpload']['size'][$key]; 
 				$file_tmpname = $_FILES['filesToUpload']['tmp_name'][$key]; 
 				$filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
+				$link=$bucket.upload_file($filename, $file_name, $id);
+				$data=array(
+					"DeviceID"=>$id,
+					"Photolink"=>$link
+				);
+				$database->insertRows("devicephotogallery",$data);
 				removefile($filename);
 			}
 			$rr="Location: ../Staff/Home/viewasset.php?id=".$id;
@@ -501,7 +509,15 @@ Not Included: '.$_POST['NotIncluded'].'
 			$file_name = $_FILES['fileToUpload']['name']; 
 			$file_size = $_FILES['fileToUpload']['size']; 
 			$file_tmpname = $_FILES['fileToUpload']['tmp_name']; 
+			$bucket = new Bucket();
+			$database=new Database();
+			$updatedevice['id']= '='.$id;
 			$filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
+			$link=$bucket.upload_file($filename, $file_name, $id);
+			$data=array(
+				"PhotoLinks"=>$link
+			);
+			$database->updateRows("deviceinfo",$data,$updatedevice);
 			removefile($filename);
 			$rr="Location: ../Staff/Home/viewasset.php?id=".$id;
 			header($rr);
