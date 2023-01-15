@@ -111,7 +111,7 @@ if(!empty($_GET['action'])){
 					break;
 				}
 				else{
-					header("Location: /Staff/index.php?action=no");
+					header("Location: ../Staff/index.php?action=no");
 					break;
 				}
 			}
@@ -475,7 +475,7 @@ Not Included: '.$_POST['NotIncluded'].'
 			$newasset = $database->getRow("deviceinfo","*",$whichnewasset);
 			$assetid= $newasset['id'];
 			echo "Before bucket";
-			$link=$bucket.upload_file($filename, $file_name, $assetid);
+			$link=$bucket->upload_file($filename, $file_name, $assetid);
 			removefile($filename);
 			$data=array(
 				"PhotoLinks" => $link
@@ -493,7 +493,7 @@ Not Included: '.$_POST['NotIncluded'].'
 	            $file_size = $_FILES['filesToUpload']['size'][$key]; 
 				$file_tmpname = $_FILES['filesToUpload']['tmp_name'][$key]; 
 				$filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
-				$link=$bucket.upload_file($filename, $file_name, $id);
+				$link=$bucket->upload_file($filename, $file_name, $id);
 				$data=array(
 					"DeviceID"=>$id,
 					"Photolink"=>$link
@@ -513,7 +513,7 @@ Not Included: '.$_POST['NotIncluded'].'
 			$database=new Database();
 			$updatedevice['id']= '='.$id;
 			$filename = pictureupload($file_name,$file_size,$file_tmpname,"../Images/");
-			$link=$bucket.upload_file($filename, $file_name, $id);
+			$link=$bucket->upload_file($filename, $file_name, $id);
 			$data=array(
 				"PhotoLinks"=>$link
 			);
