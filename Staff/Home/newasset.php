@@ -69,7 +69,7 @@ include('header.php');
                                     </select>
                                 </td>
                                 <td><label for="AssetNumber">Model Type</label> 
-                                    <select class="form-control" id="AssetType" name="AssetType">
+                                    <select class="form-control" id="AssetType" name="AssetType" required>
                                         <option disabled selected> Choose Asset Type...</option>
                                         <?php
                                             $database=new Database();
