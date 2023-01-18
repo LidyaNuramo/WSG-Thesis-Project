@@ -6,7 +6,7 @@ class Database
 	private $results = array();
 	// private $host = "localhost";
 	// private $host = "34.140.88.200";
-	private $host = "10.251.32.3";
+	private $host = "10.251.32.6";
 	private $db = "mytravelrental";
 	private $user = "root";
 	private $password = "z^fL<GJ>Qz}5LLh<";
