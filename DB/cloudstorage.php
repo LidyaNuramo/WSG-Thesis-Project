@@ -29,8 +29,6 @@ class Bucket{
         }
         
         catch (Exception $e) {
-            // maybe invalid private key ?
-            echo "Here";
             echo $e;
         }
     }
