@@ -18,7 +18,8 @@ class Bucket{
     function upload_file($file_path, $filename, $id){
         try {
             $random = rand(1000000000, 9999999999);
-            $name = $random."_".$id."_".$filename;
+            $random2 = rand(1000000000, 9999999999);
+            $name = $random."_".$random2."_".$id."_".$filename;
             $this->storage_bucket->upload(
                 fopen(realpath($file_path),'r'),
                 ['predefinedAcl' => 'publicRead',
