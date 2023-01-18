@@ -565,7 +565,7 @@ Not Included: '.$_POST['NotIncluded'].'
 
 function pictureupload($file_name,$file_size,$file_tmpname,$target_directory){
 	$target_dir = $target_directory;
-	$target_file = $target_dir . basename($file_name);
+	$target_file = $target_dir.basename($file_name);
 	$uploadOk = 1;
 	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
