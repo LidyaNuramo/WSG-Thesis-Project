@@ -130,7 +130,7 @@ if(!empty($_GET['action'])){
 			$database=new Database();
 			$device=$_GET['device'];
 			$where['AssetNumber']= '="'.$device.'"';
-			$dev=$database->getRow("DeviceInfo","*",$where);
+			$dev=$database->getRow("deviceInfo","*",$where);
 			date_default_timezone_set("Europe/Warsaw"); 
 			$time = date("Y-m-d h:i:s");
 			if ($dev != NULL){
