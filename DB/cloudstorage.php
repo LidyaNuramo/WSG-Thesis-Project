@@ -38,6 +38,7 @@ class Bucket{
         // Download and store an object from the bucket locally.
         $object = $this->storage_bucket->object($file_path);
         $object->downloadToFile($download_path);
+        echo "File downloaded";
     }
 
     private function storage_client($key_file) {
@@ -57,5 +58,7 @@ class Bucket{
 }
 
 $bucket= new Bucket();
+$bucket -> download_file("9_1_1.jpg","9_1_1.jpg");
+
 
 ?>
