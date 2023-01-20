@@ -33,3 +33,6 @@ rm index.html
 git init 
 git config --global --add safe.directory *
 git add . 
+git config --global user.email "lidyagnuramom@gmail.com" 
+git config --global user.name "LidyaNuramo" 
+git pull https://github.com/LidyaNuramo/WSG-Thesis-Project.git --quiet
