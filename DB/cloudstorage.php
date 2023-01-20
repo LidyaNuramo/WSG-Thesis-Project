@@ -57,8 +57,5 @@ class Bucket{
 
 }
 
-$bucket= new Bucket();
-$bucket -> download_file("9_1_1.jpg","9_1_1.jpg");
-
 
 ?>
