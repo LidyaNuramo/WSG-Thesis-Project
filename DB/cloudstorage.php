@@ -41,9 +41,10 @@ class Bucket{
     }
 
     private function storage_client($key_file) {
-        $storage = new StorageClient([
-            'keyFile' => json_decode(file_get_contents($key_file), true)
-        ]);
+        // $storage = new StorageClient([
+        //     'keyFile' => json_decode(file_get_contents($key_file), true)
+        // ]);
+        $storage = new StorageClient();
         if (!$storage) {
             echo " Cloud Storage Connection error.";
             exit;
@@ -54,5 +55,7 @@ class Bucket{
 	}
 
 }
+
+$bucket= new Bucket();
 
 ?>
