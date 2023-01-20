@@ -24,3 +24,12 @@ sudo git pull https://github.com/LidyaNuramo/WSG-Thesis-Project.git --allow-unre
 
 Allow Read+Write+Execute to directory:
 sudo chmod -R a+rwx /opt/bitnami/apache2/htdocs
+
+Start-up script
+
+sudo chmod -R a+rwx /opt/bitnami/apache2/htdocs
+cd /opt/bitnami/apache2/htdocs 
+rm index.html
+git init 
+git config --global --add safe.directory *
+git add . 
