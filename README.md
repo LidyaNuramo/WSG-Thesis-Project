@@ -17,7 +17,7 @@ sudo git pull https://github.com/LidyaNuramo/WSG-Thesis-Project.git
 
 To update:
 cd /opt/bitnami/apache2/htdocs 
-sudo git pull https://github.com/LidyaNuramo/WSG-Thesis-Project.git
+sudo git pull https://github.com/LidyaNuramo/WSG-Thesis-Project.git -allow-unrelated-histories 
 
 Conflict:
 sudo git pull https://github.com/LidyaNuramo/WSG-Thesis-Project.git --allow-unrelated-histories 
