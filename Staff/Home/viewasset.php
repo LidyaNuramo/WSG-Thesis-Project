@@ -103,7 +103,7 @@ include('header.php');
                                 <form action="../../DB/process.php?action=changedisplaypic&id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col">
-                                            <img src='<?php echo $results1['PhotoLinks']?>' class='rounded mx-auto d-block'>
+                                            <img src='<?php echo $results1['PhotoLinks']?>' width="500px" height="400px" class='rounded mx-auto d-block'>
                                         </div>
                                     </div>
                                     <div class="row">

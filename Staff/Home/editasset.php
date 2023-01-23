@@ -78,7 +78,7 @@ include('header.php');
                                 <td colspan="2">
                                     <div class="row">
                                         <div class="col">
-                                            <img src='<?php echo $results1['PhotoLinks']?>' class='rounded mx-auto d-block'>
+                                            <img src='<?php echo $results1['PhotoLinks']?>' width="500px" height="400px" class='rounded mx-auto d-block'>
                                         </div>
                                     </div>
                                 </td>
