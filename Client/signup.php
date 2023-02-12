@@ -94,7 +94,7 @@
                                         <?php
                                             $database=new Database();
                                             $where['id']="";
-                                            $results=$database->getRows("City","*",$where,"AND","Name");
+                                            $results=$database->getRows("city","*",$where,"AND","Name");
                                             foreach($results as $result){
                                                 echo '<option value="' .$result['id'].'">' . $result['Name']. '</option>';
                                             }
