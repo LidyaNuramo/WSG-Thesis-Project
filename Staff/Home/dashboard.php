@@ -171,7 +171,7 @@
                                         }
                                     }
                                 ?>
-                                <caption>Rent Applications in the past two months</caption>
+                                <caption>Rent Applications in the past two years</caption>
                                 <table border="1" id="dataTable">
                                     <tr>
                                         <th style="background-color: grey;">Months</th>
