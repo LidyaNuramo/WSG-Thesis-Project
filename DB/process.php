@@ -610,6 +610,7 @@ function pictureupload($file_name,$file_size,$file_tmpname,$target_directory){
 		if (move_uploaded_file($file_tmpname, $target_file)) {
 			echo "The file ". htmlspecialchars( basename( $file_name)). " has been uploaded.";
 		} else {
+			echo $file_tmpname." ".$target_file;
 			echo "Sorry, there was an error uploading your file.";
 		}
 	}
