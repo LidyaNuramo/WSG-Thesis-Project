@@ -209,7 +209,7 @@
                         <h4 class="card-title">Update Account login</h4>
                     </div>
                     <div class="border-top">
-                        <form class="form-horizontal" action="editeaccount.php?action=updateemail&id=<?php echo $_GET['id'];?>" method="POST">
+                        <form class="form-horizontal" action="editcaccount.php?action=updateemail&id=<?php echo $_GET['id'];?>" method="POST">
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-3 text-end control-label col-form-label">Email:</label>
@@ -226,7 +226,7 @@
                         </form>
                     <div>
                     <div class="border-top">
-                        <form class="form-horizontal" action="editeaccount.php?action=updatepassword&id=<?php echo $_GET['id'];?>" method="POST" onsubmit="return validatePassword()">
+                        <form class="form-horizontal" action="editcaccount.php?action=updatepassword&id=<?php echo $_GET['id'];?>" method="POST" onsubmit="return validatePassword()">
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="newpassword" class="col-sm-3 text-end control-label col-form-label">New Password</label>
