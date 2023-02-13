@@ -49,7 +49,7 @@
                                         $database=new Database();
                                         $users=$database->getRows("clients","*");
                                         foreach ($users as $user){
-                                            echo '<tr>
+                                            echo '<tr class="clickable-row" data-href="editcaccount.php?id='.$user['id'].'" style="cursor: pointer;">
                                                 <td>'.$user['FullName'].'</td>
                                                 <td>'.$user['Email'].'</td>
                                                 <td>'.$user['CityName'].'</td>
@@ -85,6 +85,11 @@
             <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
             <script>
                 $('#zero_config').DataTable();
+                jQuery(document).ready(function($) {
+                    $(".clickable-row").click(function() {
+                        window.location = $(this).data("href");
+                    });
+                });
             </script>              
                 <?php
 			}
