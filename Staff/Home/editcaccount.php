@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <form class="form-horizontal" action="editcaccount.php?action=updateprofile" method="POST">
+                    <form class="form-horizontal" action="editcaccount.php?action=updateprofile&id=<?php echo $_GET['id'];?>" method="POST">
                         <?php
                             $where['id']= '="'.$_GET['id'].'"';
                             $database=new Database();
