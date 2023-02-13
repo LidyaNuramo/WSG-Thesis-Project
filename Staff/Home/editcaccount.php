@@ -29,15 +29,15 @@
             </div>
             
             <br>
-            <div class="row">
+            <!--div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
                     <div class="ms-auto text-end">
-                        <a href="../../DB/process.php?action=deletecaccount&id=<?php echo $_GET['id'];?>">
+                        <a href="../../DB/process.php?action=deletecaccount&id=">
                             <button class="btn btn-danger"> Delete account </button>
                         </a>
                     </div>
                 </div>
-            </div>
+            </div-->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- Container fluid  -->
             <div class="container-fluid">
