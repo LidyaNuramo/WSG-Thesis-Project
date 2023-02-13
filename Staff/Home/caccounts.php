@@ -41,7 +41,7 @@
                                                 <th>Country</th>
                                                 <th>Created On</th>
                                                 <th>Last Modified On</th>
-                                                <th>Account Verified</th>
+                                                <th>Payment method added</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -69,7 +69,7 @@
                                                 <th>Country</th>
                                                 <th>Created On</th>
                                                 <th>Last Modified On</th>
-                                                <th>Account Verified</th>
+                                                <th>Payment method added</th>
                                             </tr>
                                         </tfoot>
                                     </table>
