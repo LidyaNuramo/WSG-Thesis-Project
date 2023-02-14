@@ -73,7 +73,7 @@
 						$pickuptime = $currentrental['PickupDate'];
 						$pickupdate = date('Y-m-d H:i:s', strtotime($pickuptime));
 						$nowdate = date("Y-m-d h:i:s");
-						if ($pickupdate > $nowdate){
+						if ($pickupdate < $nowdate){
 							echo '
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
